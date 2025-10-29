@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-threat-modeling/index" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.1">
+<title data-rh="true">E-commerce Application Threat Model | Full-Stack Developer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://tamnk74.github.io/fullstack-dev/docs/threat-modeling/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="E-commerce Application Threat Model | Full-Stack Developer"><meta data-rh="true" name="description" content="This document outlines the threat model for the e-commerce application based on the provided C4 model and architecture diagrams."><meta data-rh="true" property="og:description" content="This document outlines the threat model for the e-commerce application based on the provided C4 model and architecture diagrams."><link data-rh="true" rel="icon" href="/fullstack-dev/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://tamnk74.github.io/fullstack-dev/docs/threat-modeling/"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/threat-modeling/" hreflang="en"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/threat-modeling/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"E-commerce Application Threat Model","item":"https://tamnk74.github.io/fullstack-dev/docs/threat-modeling/"}]}</script><link rel="alternate" type="application/rss+xml" href="/fullstack-dev/blog/rss.xml" title="Full-Stack Developer RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/fullstack-dev/blog/atom.xml" title="Full-Stack Developer Atom Feed"><link rel="stylesheet" href="/fullstack-dev/assets/css/styles.60db8567.css">
+<script src="/fullstack-dev/assets/js/runtime~main.cf2d537a.js" defer="defer"></script>
+<script src="/fullstack-dev/assets/js/main.bc47c3ee.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/fullstack-dev/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_DozU" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/fullstack-dev/"><div class="navbar__logo"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent_dued themedComponent--light_Jgez"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent_dued themedComponent--dark_OEZ1"></div><b class="navbar__title text--truncate">Full-Stack Developer</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/fullstack-dev/docs/intro">Documentation</a><a class="navbar__item navbar__link" href="/fullstack-dev/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_SFyi"><div class="navbar__search searchBarContainer_jFf1" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_mr2x" value=""><div class="loadingRing__lbt searchBarLoadingRing_pf7H"><div></div><div></div><div></div><div></div></div></div></div><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_WCEm colorModeToggle_eIxa"><button class="clean-btn toggleButton_nhoX toggleButtonDisabled_GPdO" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF lightToggleIcon_DH_d"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF darkToggleIcon_j7cc"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF systemToggleIcon_sRCC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_Inon"><div class="docsWrapper_vTcP"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_Kk4I" type="button"></button><div class="docRoot_oC9v"><aside class="theme-doc-sidebar-container docSidebarContainer_o76a"><div class="sidebarViewport_X9l3"><div class="sidebar_nRMc"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_QChV"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/intro"><span title="Introduction" class="linkLabel_ttjv">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/search-guide"><span title="Search Documentation" class="linkLabel_ttjv">Search Documentation</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/setup"><span title="Getting Started" class="categoryLinkLabel_K4TR">Getting Started</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/assessments/developer-assessment-with-development-plans"><span title="Career Development" class="categoryLinkLabel_K4TR">Career Development</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/security-practices/"><span title="Security Practices" class="categoryLinkLabel_K4TR">Security Practices</span></a><button aria-label="Expand sidebar category &#x27;Security Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/qa-practices/"><span title="QA Practices" class="categoryLinkLabel_K4TR">QA Practices</span></a><button aria-label="Expand sidebar category &#x27;QA Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/architecture-practices/"><span title="Architecture Practices" class="categoryLinkLabel_K4TR">Architecture Practices</span></a><button aria-label="Expand sidebar category &#x27;Architecture Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/non-functional-requirements/nfr-export"><span title="Non-Functional Requirements" class="categoryLinkLabel_K4TR">Non-Functional Requirements</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/coding-conventions/"><span title="Coding Conventions" class="categoryLinkLabel_K4TR">Coding Conventions</span></a><button aria-label="Expand sidebar category &#x27;Coding Conventions&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/rag-recommendations/"><span title="RAG Recommendations" class="categoryLinkLabel_K4TR">RAG Recommendations</span></a><button aria-label="Expand sidebar category &#x27;RAG Recommendations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/system-design/"><span title="System Design" class="categoryLinkLabel_K4TR">System Design</span></a><button aria-label="Expand sidebar category &#x27;System Design&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/backend/"><span title="Backend" class="categoryLinkLabel_K4TR">Backend</span></a><button aria-label="Expand sidebar category &#x27;Backend&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/ai-machine-learning/vertex-ai-gemini-guide"><span title="AI &amp; Machine Learning" class="categoryLinkLabel_K4TR">AI &amp; Machine Learning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/features"><span title="Features" class="categoryLinkLabel_K4TR">Features</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/devops/gitops-microservices-gcp-guide"><span title="DevOps" class="categoryLinkLabel_K4TR">DevOps</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/testing"><span title="Development" class="categoryLinkLabel_K4TR">Development</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/fullstack-dev/docs/threat-modeling/"><span title="Threat Modeling" class="categoryLinkLabel_K4TR">Threat Modeling</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/fullstack-dev/docs/threat-modeling/"><span title="E-commerce Application Threat Model" class="linkLabel_ttjv">E-commerce Application Threat Model</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/api-reference"><span title="API Reference" class="categoryLinkLabel_K4TR">API Reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/mobile/architecture-process/"><span title="Mobile Architecture" class="categoryLinkLabel_K4TR">Mobile Architecture</span></a><button aria-label="Expand sidebar category &#x27;Mobile Architecture&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-basics/create-a-document"><span title="Tutorial" class="categoryLinkLabel_K4TR">Tutorial</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-extras/manage-docs-versions"><span title="Advanced" class="categoryLinkLabel_K4TR">Advanced</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_Go1O"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_tbb6"><div class="docItemContainer_loSK"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Lu9I" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/fullstack-dev/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_x1cF"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Threat Modeling</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">E-commerce Application Threat Model</span></li></ul></nav><div class="tocCollapsible_e8zW theme-doc-toc-mobile tocMobile_QFGV"><button type="button" class="clean-btn tocCollapsibleButton_N02v">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>E-commerce Application Threat Model</h1></header>
+<p>This document outlines the threat model for the e-commerce application based on the provided C4 model and architecture diagrams.</p>
+<p>The model uses the <strong>STRIDE</strong> methodology (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) to identify and mitigate threats at each layer of the system.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="1-key-assets--trust-boundaries">1. Key Assets &amp; Trust Boundaries<a href="#1-key-assets--trust-boundaries" class="hash-link" aria-label="Direct link to 1. Key Assets &amp; Trust Boundaries" title="Direct link to 1. Key Assets &amp; Trust Boundaries" translate="no">​</a></h2>
+<p>Before analyzing threats, let&#x27;s identify what we&#x27;re protecting (assets) and where the system&#x27;s trust levels change (boundaries).</p>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="key-assets">Key Assets<a href="#key-assets" class="hash-link" aria-label="Direct link to Key Assets" title="Direct link to Key Assets" translate="no">​</a></h3>
+<ul>
+<li><strong>Data:</strong>
+<ul>
+<li><strong>Customer PII:</strong> Names, addresses, contact info (from <code>UserService</code>).</li>
+<li><strong>Authentication Data:</strong> Password hashes, refresh tokens, user IDs (from <code>AuthService</code>, <code>PostgreSQL</code>, <code>Redis</code>).</li>
+<li><strong>Payment Data:</strong> Payment method tokens/references (from <code>PaymentService</code>).</li>
+<li><strong>Business Data:</strong> Order history, product details, sales analytics (from <code>OrderService</code>, <code>ProductService</code>).</li>
+</ul>
+</li>
+<li><strong>Infrastructure &amp; Code:</strong>
+<ul>
+<li><strong>API Keys:</strong> Secrets for Auth0, Stripe, SendGrid, and Cloud Storage.</li>
+<li><strong>CI/CD Pipeline:</strong> The ability to build and deploy code (<code>GitHub Actions</code>, <code>ArgoCD</code>).</li>
+<li><strong>System Availability:</strong> The ability of the platform to remain online and process orders.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="primary-trust-boundaries">Primary Trust Boundaries<a href="#primary-trust-boundaries" class="hash-link" aria-label="Direct link to Primary Trust Boundaries" title="Direct link to Primary Trust Boundaries" translate="no">​</a></h3>
+<ol>
+<li><strong>Internet ↔ Cloud Armor/LB:</strong> The primary external boundary. Untrusted users (Customers, Admins) interact with the system.</li>
+<li><strong>Web App ↔ API Gateway:</strong> The boundary between the client-side browser and the server-side backend.</li>
+<li><strong>API Gateway ↔ Microservices:</strong> An internal boundary. The gateway is the single entry point, but services must trust (or verify) that requests from it are legitimate.</li>
+<li><strong>Microservices ↔ Data Layer:</strong> The boundary between the application logic and its state (databases, caches, queues).</li>
+<li><strong>Microservices ↔ External APIs:</strong> The boundary where your system calls out to third-party services (Auth0, Stripe, SendGrid).</li>
+<li><strong>DevOps Pipeline ↔ GKE Cluster:</strong> A critical administrative boundary. The CI/CD system has privileged access to deploy applications.</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="2-threat-analysis-by-component">2. Threat Analysis by Component<a href="#2-threat-analysis-by-component" class="hash-link" aria-label="Direct link to 2. Threat Analysis by Component" title="Direct link to 2. Threat Analysis by Component" translate="no">​</a></h2>
+<p>Here is a breakdown of potential threats (STRIDE) for each major component and boundary, along with planned and recommended mitigations.</p>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="component-1-public-facing--edge-web-app-lb-cloud-armor">Component 1: Public-Facing &amp; Edge (Web App, LB, Cloud Armor)<a href="#component-1-public-facing--edge-web-app-lb-cloud-armor" class="hash-link" aria-label="Direct link to Component 1: Public-Facing &amp; Edge (Web App, LB, Cloud Armor)" title="Direct link to Component 1: Public-Facing &amp; Edge (Web App, LB, Cloud Armor)" translate="no">​</a></h3>
+<p>This layer is the first line of defense against all external traffic.</p>
+<ul>
+<li><strong>[S] Spoofing:</strong> An attacker impersonates a user via session hijacking.<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> Use of JWTs.</li>
+<li><strong>Mitigation (Recommended):</strong> Store tokens in <code>Secure</code>, <code>HttpOnly</code> cookies to prevent access from client-side scripts (XSS). Implement strict CSRF (Cross-Site Request Forgery) protection.</li>
+</ul>
+</li>
+<li><strong>[T] Tampering:</strong> An attacker intercepts and modifies traffic (Man-in-the-Middle).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> Global HTTP(S) Load Balancer.</li>
+<li><strong>Mitigation (Recommended):</strong> Enforce HTTPS-only traffic with HSTS (HTTP Strict Transport Security) headers.</li>
+</ul>
+</li>
+<li><strong>[I] Information Disclosure:</strong> Client-side code in the Next.js app or Microfrontends leaks sensitive information (e.g., internal API paths, non-public keys).<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> Use Next.js environment variables correctly (prefixing with <code>NEXT_PUBLIC_</code> <em>only</em> for non-sensitive, public-facing keys). All other keys must be server-side only.</li>
+</ul>
+</li>
+<li><strong>[D] Denial of Service:</strong> An attacker floods the application with traffic (L3/L4 or L7 DDoS).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <strong>Cloud Armor</strong> (WAF &amp; DDoS Protection) and <strong>Rate Limiter</strong> (in API Gateway).</li>
+<li><strong>Mitigation (Recommended):</strong> Configure Cloud Armor rules to block known-bad IPs and geographic locations. Implement CDN caching via <code>Cloud Storage</code> for all static assets to reduce origin load.</li>
+</ul>
+</li>
+<li><strong>[E] Elevation of Privilege:</strong> An attacker injects a malicious script via <strong>Cross-Site Scripting (XSS)</strong> to steal a user&#x27;s or admin&#x27;s session cookie/token.<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> React automatically escapes content, providing a baseline defense.</li>
+<li><strong>Mitigation (Recommended):</strong> Implement a strict <strong>Content Security Policy (CSP)</strong> header to control which scripts, styles, and media can be loaded. Sanitize all user-generated content (e.g., product reviews, user profiles) before rendering.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="component-2-api-gateway">Component 2: API Gateway<a href="#component-2-api-gateway" class="hash-link" aria-label="Direct link to Component 2: API Gateway" title="Direct link to Component 2: API Gateway" translate="no">​</a></h3>
+<p>This is the central chokepoint for all backend logic.</p>
+<ul>
+<li><strong>[S] Spoofing:</strong> An attacker forges a JWT or replays a stolen one.<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <strong>JWT Middleware</strong> validates the token&#x27;s signature, expiration (<code>exp</code>), and issuer (<code>iss</code>).</li>
+<li><strong>Mitigation (Recommended):</strong> Use short-lived access tokens (e.g., 15 minutes) and longer-lived refresh tokens. Store refresh tokens in <code>Redis</code> (as hinted by your diagram) to allow for instant revocation (logout) or to detect token reuse.</li>
+</ul>
+</li>
+<li><strong>[T] Tampering:</strong> An attacker modifies a request payload after it passes the firewall (e.g., changing <code>quantity</code> to a negative number).<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> Implement rigorous DTO (Data Transfer Object) validation in NestJS (using <code>class-validator</code>) on <em>all</em> incoming requests at the controller level.</li>
+</ul>
+</li>
+<li><strong>[R] Repudiation:</strong> An admin or user denies performing a critical action (e.g., &quot;I never deleted that product&quot;).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <strong>Request Logger</strong> (Audit &amp; Monitoring).</li>
+<li><strong>Mitigation (Recommended):</strong> Ensure logs capture the authenticated <code>userId</code>, source IP, timestamp, and the full request body for all state-changing operations (POST, PUT, DELETE, PATCH).</li>
+</ul>
+</li>
+<li><strong>[D] Denial of Service:</strong> An attacker bypasses <code>Cloud Armor</code> with requests that are valid but resource-intensive (e.g., a complex search query).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <strong>Rate Limiter</strong> (Request Throttling).</li>
+<li><strong>Mitigation (Recommended):</strong> Implement rate limiting based on IP, user ID, and API key. Add pagination and complexity limits to all list/search endpoints (e.g., <code>ProductController</code>).</li>
+</ul>
+</li>
+<li><strong>[E] Elevation of Privilege:</strong> A regular user attempts to access an admin-only endpoint (e.g., <code>/api/products/delete/123</code>).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <strong>Auth Guard</strong> (checks for authentication) and <strong>Role Guard</strong> (checks for authorization/RBAC). This is the correct approach.</li>
+<li><strong>Mitigation (Recommended):</strong> Ensure the <code>RoleGuard</code> is applied to <em>all</em> sensitive endpoints and that roles are derived from the validated JWT, not from a parameter in the request body.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="component-3-microservices-internal">Component 3: Microservices (Internal)<a href="#component-3-microservices-internal" class="hash-link" aria-label="Direct link to Component 3: Microservices (Internal)" title="Direct link to Component 3: Microservices (Internal)" translate="no">​</a></h3>
+<p>These components trust requests from the API Gateway.</p>
+<ul>
+<li><strong>[S] Spoofing:</strong> A compromised microservice (e.g., <code>NotificationService</code>) calls another microservice directly (e.g., <code>OrderService</code>), bypassing the API Gateway&#x27;s authorization.<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> Do not allow direct inter-service communication by default. If required, implement <strong>service-to-service authentication</strong> (e.g., mutual TLS (mTLS) within the GKE cluster or signed internal-use-only JWTs).</li>
+</ul>
+</li>
+<li><strong>[T] Tampering:</strong> An attacker finds a way to inject malicious data into the <strong>Message Queue (Kafka)</strong>, (e.g., a fake &quot;payment_success&quot; event).<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> Secure Kafka topics with ACLs. Only the <code>PaymentService</code> pod&#x27;s service account should have write access to payment topics. All consuming services (<code>OrderService</code>, <code>NotificationService</code>) must validate the schema of incoming messages before processing.</li>
+</ul>
+</li>
+<li><strong>[I] Information Disclosure:</strong> A microservice leaks internal data in an error message (e.g., <code>ProductService</code> returns a full database stack trace).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> NestJS framework conventions.</li>
+<li><strong>Mitigation (Recommended):</strong> Implement global exception filters in each microservice to catch all unhandled errors and return a standardized, generic error message. Log the full details internally for debugging.</li>
+</ul>
+</li>
+<li><strong>[E] Elevation of Privilege:</strong> An attacker exploits an <strong>Insecure Direct Object Reference (IDOR)</strong>. For example, an authenticated user <code>A</code> calls <code>/api/orders/123</code> (their own order) but then changes the request to <code>/api/orders/124</code> (user <code>B</code>&#x27;s order).<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> This is a critical business logic flaw. The <code>OrderService</code> (and <code>UserService</code>, etc.) <em>must not</em> trust the ID from the URL alone. It must perform a check like: <code>SELECT * FROM orders WHERE id = 124 AND user_id = {authenticated_user_id_from_jwt}</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="component-4-data--storage-layer">Component 4: Data &amp; Storage Layer<a href="#component-4-data--storage-layer" class="hash-link" aria-label="Direct link to Component 4: Data &amp; Storage Layer" title="Direct link to Component 4: Data &amp; Storage Layer" translate="no">​</a></h3>
+<p>This is where your most valuable assets are stored.</p>
+<ul>
+<li><strong>[T] Tampering:</strong> An attacker gains database access and modifies data directly (e.g., changes an order status to &quot;Shipped&quot;).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <code>Cloud SQL</code> is in a separate data namespace.</li>
+<li><strong>Mitigation (Recommended):</strong>
+<ol>
+<li><strong>Network:</strong> Use <strong>private IP</strong> for <code>Cloud SQL</code> and configure firewall rules so it only accepts connections from your GKE pod network.</li>
+<li><strong>Auth:</strong> Do <em>not</em> use static database passwords. Use <strong>GCP Workload Identity</strong> to map GKE service accounts (e.g., <code>order-service-sa</code>) to GCP service accounts that have IAM permissions to access <code>Cloud SQL</code>.</li>
+<li><strong>ORM:</strong> The use of <code>TypeORM</code> is a good defense against <strong>SQL Injection</strong>.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>[I] Information Disclosure:</strong>
+<ol>
+<li>A database backup or <code>Cloud Storage</code> bucket is made public.</li>
+<li><code>Redis</code> cache is exposed, leaking session tokens.</li>
+</ol>
+<ul>
+<li><strong>Mitigation (Recommended):</strong>
+<ol>
+<li><strong>Storage:</strong> Enforce &quot;Encryption at Rest&quot; (default on GCP, but verify). Make all <code>Cloud Storage</code> buckets private by default. Use signed URLs for temporary access to media if needed.</li>
+<li><strong>Redis:</strong> Deploy <code>Redis</code> within the GKE private network. Enable <code>Redis</code> authentication (<code>AUTH command</code>) with a strong password stored in a secret manager.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>[D] Denial of Service:</strong> A malicious query to <code>Elasticsearch</code> overloads the search cluster.<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <code>Elasticsearch</code> is used by <code>ProductService</code>.</li>
+<li><strong>Mitigation (Recommended):</strong> The <code>ProductService</code> must sanitize, validate, and place limits on all search parameters (e.g., max query length, no leading wildcards) before passing them to <code>Elasticsearch</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="component-5-third-party-integrations-external">Component 5: Third-Party Integrations (External)<a href="#component-5-third-party-integrations-external" class="hash-link" aria-label="Direct link to Component 5: Third-Party Integrations (External)" title="Direct link to Component 5: Third-Party Integrations (External)" translate="no">​</a></h3>
+<p>Your system is vulnerable to threats originating from or targeting these external partners.</p>
+<ul>
+<li><strong>[S] Spoofing:</strong> An attacker sends a fake webhook to your <code>PaymentService</code>, spoofing a successful payment from <code>Stripe</code>.<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> <strong>Validate all webhook signatures.</strong> Stripe (and most other providers) includes a signature in the request headers. Your service <em>must</em> verify this signature using your shared secret before trusting the payload.</li>
+</ul>
+</li>
+<li><strong>[I] Information Disclosure:</strong> Your secret API keys for <strong>Stripe</strong>, <strong>Auth0</strong>, or <strong>SendGrid</strong> are leaked (e.g., committed to Git).<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> Use of <code>SonarQube</code> (SAST) can help detect this.</li>
+<li><strong>Mitigation (Recommended):</strong> Store <em>all</em> secrets in <strong>GCP Secret Manager</strong>. Use Workload Identity to grant GKE pods access to read specific secrets at runtime. Never store secrets in config files, environment variables in your Git repo, or Docker images.</li>
+</ul>
+</li>
+<li><strong>[R] Repudiation:</strong> <code>Auth0</code> claims they never authenticated a user, or <code>Stripe</code> claims a payment was never made.<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> Log all outgoing API requests and the core details of the incoming responses (e.g., <code>stripe_charge_id</code>, <code>auth0_user_id</code>). This provides an audit trail for dispute resolution.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="component-6-cicd--infrastructure-devops">Component 6: CI/CD &amp; Infrastructure (DevOps)<a href="#component-6-cicd--infrastructure-devops" class="hash-link" aria-label="Direct link to Component 6: CI/CD &amp; Infrastructure (DevOps)" title="Direct link to Component 6: CI/CD &amp; Infrastructure (DevOps)" translate="no">​</a></h3>
+<p>A compromised pipeline means a compromised application.</p>
+<ul>
+<li><strong>[T] Tampering:</strong> An attacker with access to your GitHub repo injects malicious code into a branch, which is then automatically built and deployed by <code>ArgoCD</code>.<!-- -->
+<ul>
+<li><strong>Mitigation (Planned):</strong> <code>GitHub Actions</code> CI/CD, <code>ArgoCD</code> (GitOps), <code>SonarQube</code> (SAST), <code>OWASP ZAP</code> (DAST).</li>
+<li><strong>Mitigation (Recommended):</strong>
+<ol>
+<li><strong>GitHub:</strong> Enforce <strong>branch protection rules</strong> on <code>main</code>. Require PRs, mandatory code reviews from at least one other developer, and successful <code>SonarQube</code> and <code>ZAP</code> scans before merging.</li>
+<li><strong>Image Security:</strong> Scan Docker images for known vulnerabilities (e.g., with GCR&#x27;s built-in scanner or a tool like Trivy) before they are deployed.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>[E] Elevation of Privilege:</strong> An attacker compromises a <code>GitHub Actions</code> runner or <code>ArgoCD</code> and uses its credentials to take over the GKE cluster.<!-- -->
+<ul>
+<li><strong>Mitigation (Recommended):</strong> Apply the <strong>principle of least privilege</strong>. The service account used by <code>ArgoCD</code> should <em>only</em> have permission to deploy to the <code>Frontend</code> and <code>Backend</code> namespaces, not <code>kube-system</code> or <code>default</code>. The <code>GitHub Actions</code> service account should only have permissions to push images to GCR and trigger <code>ArgoCD</code> syncs.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="3-summary-of-key-recommendations">3. Summary of Key Recommendations<a href="#3-summary-of-key-recommendations" class="hash-link" aria-label="Direct link to 3. Summary of Key Recommendations" title="Direct link to 3. Summary of Key Recommendations" translate="no">​</a></h2>
+<p>Your architecture has many strong, modern controls. The highest-priority risks to address are in <strong>business logic</strong> and <strong>configuration</strong>.</p>
+<ol>
+<li><strong>Implement IDOR Protection:</strong> Ensure <em>every</em> microservice validates that the authenticated user (<code>sub</code> from JWT) is authorized to access or modify the specific resource they are requesting (e.g., their <em>own</em> order, their <em>own</em> profile).</li>
+<li><strong>Validate All Webhooks:</strong> This is non-negotiable. Use signature validation for Stripe and any other webhook provider.</li>
+<li><strong>Secure All Secrets:</strong> Use GCP Secret Manager + Workload Identity. Remove <em>all</em> static keys and passwords from code, configs, and environment variables.</li>
+<li><strong>Enforce Strict CI/CD Security:</strong> Use GitHub branch protection rules. A PR and a successful security scan (SAST/DAST) must be mandatory to merge to <code>main</code>.</li>
+<li><strong>Implement Service-to-Service Auth:</strong> If microservices need to call each other directly, secure that internal traffic with mTLS or internal JWTs.</li>
+<li><strong>Apply a Strict CSP:</strong> This is your best defense against XSS, which is a primary vector for session/token theft.</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/tamnk74/fullstack-dev/tree/main/docs-site/docs/threat-modeling/index.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_oUsg" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_nFFz"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/fullstack-dev/docs/contributing"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Contributing</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/fullstack-dev/docs/api-reference"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">API Reference</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_dfCb thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-key-assets--trust-boundaries" class="table-of-contents__link toc-highlight">1. Key Assets &amp; Trust Boundaries</a><ul><li><a href="#key-assets" class="table-of-contents__link toc-highlight">Key Assets</a></li><li><a href="#primary-trust-boundaries" class="table-of-contents__link toc-highlight">Primary Trust Boundaries</a></li></ul></li><li><a href="#2-threat-analysis-by-component" class="table-of-contents__link toc-highlight">2. Threat Analysis by Component</a><ul><li><a href="#component-1-public-facing--edge-web-app-lb-cloud-armor" class="table-of-contents__link toc-highlight">Component 1: Public-Facing &amp; Edge (Web App, LB, Cloud Armor)</a></li><li><a href="#component-2-api-gateway" class="table-of-contents__link toc-highlight">Component 2: API Gateway</a></li><li><a href="#component-3-microservices-internal" class="table-of-contents__link toc-highlight">Component 3: Microservices (Internal)</a></li><li><a href="#component-4-data--storage-layer" class="table-of-contents__link toc-highlight">Component 4: Data &amp; Storage Layer</a></li><li><a href="#component-5-third-party-integrations-external" class="table-of-contents__link toc-highlight">Component 5: Third-Party Integrations (External)</a></li><li><a href="#component-6-cicd--infrastructure-devops" class="table-of-contents__link toc-highlight">Component 6: CI/CD &amp; Infrastructure (DevOps)</a></li></ul></li><li><a href="#3-summary-of-key-recommendations" class="table-of-contents__link toc-highlight">3. Summary of Key Recommendations</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/intro">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/architecture-practices">Architecture Practices</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/features">Features</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Development</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/setup">Setup &amp; Installation</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/testing">Testing</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/deployment">Deployment</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub (Fullstack Dev)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Next.js for Production. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
