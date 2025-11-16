@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-system-design/basics" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.1">
+<title data-rh="true">System Design Basics | Full-Stack Developer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://tamnk74.github.io/fullstack-dev/docs/system-design/basics"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="System Design Basics | Full-Stack Developer"><meta data-rh="true" name="description" content="Essential system design concepts, patterns, and fundamentals for building scalable distributed systems"><meta data-rh="true" property="og:description" content="Essential system design concepts, patterns, and fundamentals for building scalable distributed systems"><meta data-rh="true" name="keywords" content="system design basics,load balancer,api gateway,caching,database scaling,microservices,rate limiting"><link data-rh="true" rel="icon" href="/fullstack-dev/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://tamnk74.github.io/fullstack-dev/docs/system-design/basics"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/system-design/basics" hreflang="en"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/system-design/basics" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"System Design","item":"https://tamnk74.github.io/fullstack-dev/docs/system-design/"},{"@type":"ListItem","position":2,"name":"System Design Basics","item":"https://tamnk74.github.io/fullstack-dev/docs/system-design/basics"}]}</script><link rel="alternate" type="application/rss+xml" href="/fullstack-dev/blog/rss.xml" title="Full-Stack Developer RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/fullstack-dev/blog/atom.xml" title="Full-Stack Developer Atom Feed">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/fullstack-dev/assets/css/styles.8183a660.css">
+<script src="/fullstack-dev/assets/js/runtime~main.0444a14b.js" defer="defer"></script>
+<script src="/fullstack-dev/assets/js/main.c0bb4399.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/fullstack-dev/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_DozU" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/fullstack-dev/"><div class="navbar__logo"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent_dued themedComponent--light_Jgez"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent_dued themedComponent--dark_OEZ1"></div><b class="navbar__title text--truncate">Full-Stack Developer</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/fullstack-dev/docs/intro">Documentation</a><a class="navbar__item navbar__link" href="/fullstack-dev/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_SFyi"><div class="navbar__search searchBarContainer_kSpa" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_WXpg" value=""><div class="loadingRing_lBXj searchBarLoadingRing_AWbH"><div></div><div></div><div></div><div></div></div></div></div><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_WCEm colorModeToggle_eIxa"><button class="clean-btn toggleButton_nhoX toggleButtonDisabled_GPdO" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF lightToggleIcon_DH_d"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF darkToggleIcon_j7cc"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF systemToggleIcon_sRCC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_Inon"><div class="docsWrapper_vTcP"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_Kk4I" type="button"></button><div class="docRoot_oC9v"><aside class="theme-doc-sidebar-container docSidebarContainer_o76a"><div class="sidebarViewport_X9l3"><div class="sidebar_nRMc"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_QChV"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/intro"><span title="Introduction" class="linkLabel_ttjv">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/search-guide"><span title="Search Documentation" class="linkLabel_ttjv">Search Documentation</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/setup"><span title="Getting Started" class="categoryLinkLabel_K4TR">Getting Started</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fundermentals/concurrency"><span title="Fundamentals" class="categoryLinkLabel_K4TR">Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/how-web-works"><span title="Web Fundamentals" class="categoryLinkLabel_K4TR">Web Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/assessments/developer-assessment-with-development-plans"><span title="Career Development" class="categoryLinkLabel_K4TR">Career Development</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/security-practices/"><span title="Security Practices" class="categoryLinkLabel_K4TR">Security Practices</span></a><button aria-label="Expand sidebar category &#x27;Security Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/security-learning/"><span title="Security Learning (90 Days)" class="categoryLinkLabel_K4TR">Security Learning (90 Days)</span></a><button aria-label="Expand sidebar category &#x27;Security Learning (90 Days)&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/qa-practices/"><span title="QA Practices" class="categoryLinkLabel_K4TR">QA Practices</span></a><button aria-label="Expand sidebar category &#x27;QA Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/architecture-practices/"><span title="Architecture Practices" class="categoryLinkLabel_K4TR">Architecture Practices</span></a><button aria-label="Expand sidebar category &#x27;Architecture Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/non-functional-requirements/nfr-export"><span title="Non-Functional Requirements" class="categoryLinkLabel_K4TR">Non-Functional Requirements</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/coding-conventions/"><span title="Coding Conventions" class="categoryLinkLabel_K4TR">Coding Conventions</span></a><button aria-label="Expand sidebar category &#x27;Coding Conventions&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--active" href="/fullstack-dev/docs/system-design/"><span title="System Design" class="categoryLinkLabel_K4TR">System Design</span></a><button aria-label="Collapse sidebar category &#x27;System Design&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/best-system-design-resources"><span title="Best System Design Resources" class="linkLabel_ttjv">Best System Design Resources</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/resources"><span title="System Design Resources" class="linkLabel_ttjv">System Design Resources</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/interview-questions"><span title="System Design Interview Questions" class="linkLabel_ttjv">System Design Interview Questions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/fullstack-dev/docs/system-design/basics"><span title="System Design Basics" class="linkLabel_ttjv">System Design Basics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/theory"><span title="System Design Theory &amp; Concepts" class="linkLabel_ttjv">System Design Theory &amp; Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/system-design-primer"><span title="The System Design Primer" class="linkLabel_ttjv">The System Design Primer</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/system-design/intro"><span title="System Design Course" class="categoryLinkLabel_K4TR">System Design Course</span></a><button aria-label="Expand sidebar category &#x27;System Design Course&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/system-design/design-pastebin"><span title="System Design Interview Questions" class="categoryLinkLabel_K4TR">System Design Interview Questions</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/system-design/bytebytego/"><span title="ByteByteGo Guides" class="categoryLinkLabel_K4TR">ByteByteGo Guides</span></a><button aria-label="Expand sidebar category &#x27;ByteByteGo Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/raft-consensus-algorithm"><span title="The Raft Consensus Algorithm" class="linkLabel_ttjv">The Raft Consensus Algorithm</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/spotify-system-design"><span title="Spotify System Design: A Music Streaming Platform" class="linkLabel_ttjv">Spotify System Design: A Music Streaming Platform</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/datadog-metrics-database"><span title="How Datadog Built a Custom Database to Ingest Billions of Metrics Per Second" class="linkLabel_ttjv">How Datadog Built a Custom Database to Ingest Billions of Metrics Per Second</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/system-design/feature-flags-guide"><span title="Feature Flags: Complete Implementation Guide" class="linkLabel_ttjv">Feature Flags: Complete Implementation Guide</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/frontend/checklist"><span title="Frontend" class="categoryLinkLabel_K4TR">Frontend</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/backend/"><span title="Backend" class="categoryLinkLabel_K4TR">Backend</span></a><button aria-label="Expand sidebar category &#x27;Backend&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/ai-machine-learning/vertex-ai-gemini-guide"><span title="AI &amp; Machine Learning" class="categoryLinkLabel_K4TR">AI &amp; Machine Learning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/features"><span title="Features" class="categoryLinkLabel_K4TR">Features</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/devops/"><span title="DevOps" class="categoryLinkLabel_K4TR">DevOps</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/testing"><span title="Development" class="categoryLinkLabel_K4TR">Development</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/static-analysis"><span title="Code Quality &amp; Tools" class="categoryLinkLabel_K4TR">Code Quality &amp; Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/threat-modeling/"><span title="Threat Modeling" class="categoryLinkLabel_K4TR">Threat Modeling</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/api-reference"><span title="API Reference" class="categoryLinkLabel_K4TR">API Reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/mobile/architecture-process/"><span title="Mobile Architecture" class="categoryLinkLabel_K4TR">Mobile Architecture</span></a><button aria-label="Expand sidebar category &#x27;Mobile Architecture&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-basics/create-a-document"><span title="Tutorial" class="categoryLinkLabel_K4TR">Tutorial</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-extras/manage-docs-versions"><span title="Advanced" class="categoryLinkLabel_K4TR">Advanced</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_Go1O"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_tbb6"><div class="docItemContainer_loSK"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Lu9I" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/fullstack-dev/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_x1cF"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/fullstack-dev/docs/system-design/"><span>System Design</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">System Design Basics</span></li></ul></nav><div class="tocCollapsible_e8zW theme-doc-toc-mobile tocMobile_QFGV"><button type="button" class="clean-btn tocCollapsibleButton_N02v">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>🎓 System Design Basics</h1></header>
+<p>Essential concepts every software engineer should understand for building scalable, reliable distributed systems.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-core-components">🔧 Core Components<a href="#-core-components" class="hash-link" aria-label="Direct link to 🔧 Core Components" title="Direct link to 🔧 Core Components" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="api-gateway-vs-load-balancer">API Gateway vs Load Balancer<a href="#api-gateway-vs-load-balancer" class="hash-link" aria-label="Direct link to API Gateway vs Load Balancer" title="Direct link to API Gateway vs Load Balancer" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="api-gateway">API Gateway<a href="#api-gateway" class="hash-link" aria-label="Direct link to API Gateway" title="Direct link to API Gateway" translate="no">​</a></h4>
+<p><strong>What is it?</strong><br>
+<!-- -->A single entry point for all client requests that handles routing, authentication, rate limiting, and request transformation.</p>
+<p><strong>Key Functions:</strong></p>
+<ul>
+<li>Request routing</li>
+<li>Authentication &amp; authorization</li>
+<li>Rate limiting &amp; throttling</li>
+<li>Request/response transformation</li>
+<li>API versioning</li>
+<li>Caching</li>
+<li>Logging &amp; monitoring</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Microservices architecture</li>
+<li>Need centralized authentication</li>
+<li>API composition required</li>
+<li>Client-specific responses (mobile vs web)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Client → API Gateway → [Auth Service, User Service, Order Service]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    → Cache Layer</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    → Rate Limiter</span><br></span></code></pre></div></div>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="load-balancer">Load Balancer<a href="#load-balancer" class="hash-link" aria-label="Direct link to Load Balancer" title="Direct link to Load Balancer" translate="no">​</a></h4>
+<p><strong>What is it?</strong><br>
+<!-- -->Distributes incoming network traffic across multiple servers to ensure no single server bears too much load.</p>
+<p><strong>Key Functions:</strong></p>
+<ul>
+<li>Traffic distribution</li>
+<li>Health checks</li>
+<li>SSL termination</li>
+<li>Session persistence</li>
+<li>Failover</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Multiple identical servers</li>
+<li>High traffic volumes</li>
+<li>Need redundancy</li>
+<li>Horizontal scaling</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Client → Load Balancer → [Server1, Server2, Server3, Server4]</span><br></span></code></pre></div></div>
+<p><strong>Key Difference:</strong></p>
+<ul>
+<li><strong>API Gateway</strong>: Application-level routing, business logic</li>
+<li><strong>Load Balancer</strong>: Network-level distribution, no business logic</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="forward-proxy-vs-reverse-proxy">Forward Proxy vs Reverse Proxy<a href="#forward-proxy-vs-reverse-proxy" class="hash-link" aria-label="Direct link to Forward Proxy vs Reverse Proxy" title="Direct link to Forward Proxy vs Reverse Proxy" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="forward-proxy">Forward Proxy<a href="#forward-proxy" class="hash-link" aria-label="Direct link to Forward Proxy" title="Direct link to Forward Proxy" translate="no">​</a></h4>
+<p><strong>What is it?</strong><br>
+<!-- -->Acts on behalf of clients to access resources from servers.</p>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>Hide client identity</li>
+<li>Bypass geo-restrictions</li>
+<li>Content filtering (corporate networks)</li>
+<li>Caching for clients</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Client → Forward Proxy → Internet → Server</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         (VPN, corporate proxy)</span><br></span></code></pre></div></div>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="reverse-proxy">Reverse Proxy<a href="#reverse-proxy" class="hash-link" aria-label="Direct link to Reverse Proxy" title="Direct link to Reverse Proxy" translate="no">​</a></h4>
+<p><strong>What is it?</strong><br>
+<!-- -->Acts on behalf of servers, intercepting requests before they reach the backend.</p>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>Load balancing</li>
+<li>SSL termination</li>
+<li>Caching</li>
+<li>Compression</li>
+<li>Security (DDoS protection)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Client → Internet → Reverse Proxy → [Backend Servers]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    (NGINX, HAProxy)</span><br></span></code></pre></div></div>
+<p><strong>Key Difference:</strong></p>
+<ul>
+<li><strong>Forward Proxy</strong>: Protects clients, clients know about it</li>
+<li><strong>Reverse Proxy</strong>: Protects servers, clients don&#x27;t know about it</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-scaling-strategies">📊 Scaling Strategies<a href="#-scaling-strategies" class="hash-link" aria-label="Direct link to 📊 Scaling Strategies" title="Direct link to 📊 Scaling Strategies" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="horizontal-vs-vertical-scaling">Horizontal vs Vertical Scaling<a href="#horizontal-vs-vertical-scaling" class="hash-link" aria-label="Direct link to Horizontal vs Vertical Scaling" title="Direct link to Horizontal vs Vertical Scaling" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="vertical-scaling-scale-up">Vertical Scaling (Scale Up)<a href="#vertical-scaling-scale-up" class="hash-link" aria-label="Direct link to Vertical Scaling (Scale Up)" title="Direct link to Vertical Scaling (Scale Up)" translate="no">​</a></h4>
+<p><strong>Definition</strong>: Add more resources (CPU, RAM, disk) to existing machine</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simple to implement</li>
+<li>No code changes needed</li>
+<li>Maintains data consistency (single machine)</li>
+<li>Lower maintenance</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Hardware limits (can only scale so far)</li>
+<li>Single point of failure</li>
+<li>Downtime during upgrades</li>
+<li>More expensive at scale</li>
+</ul>
+<p><strong>Best For:</strong></p>
+<ul>
+<li>Legacy applications</li>
+<li>Databases with complex joins</li>
+<li>Applications not designed for distribution</li>
+<li>Early-stage startups</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="horizontal-scaling-scale-out">Horizontal Scaling (Scale Out)<a href="#horizontal-scaling-scale-out" class="hash-link" aria-label="Direct link to Horizontal Scaling (Scale Out)" title="Direct link to Horizontal Scaling (Scale Out)" translate="no">​</a></h4>
+<p><strong>Definition</strong>: Add more machines to distribute load</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Nearly unlimited scaling</li>
+<li>Better fault tolerance</li>
+<li>Cost-effective (commodity hardware)</li>
+<li>No downtime during scaling</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Complex implementation</li>
+<li>Data consistency challenges</li>
+<li>More operational overhead</li>
+<li>Network latency between machines</li>
+</ul>
+<p><strong>Best For:</strong></p>
+<ul>
+<li>Web applications</li>
+<li>Stateless services</li>
+<li>High-traffic systems</li>
+<li>Cloud-native applications</li>
+</ul>
+<p><strong>Comparison:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Vertical Scaling:     Single Server [CPU ↑, RAM ↑, Disk ↑]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Horizontal Scaling:   [Server1] [Server2] [Server3] [Server4]</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="️-database-scaling">🗄️ Database Scaling<a href="#️-database-scaling" class="hash-link" aria-label="Direct link to 🗄️ Database Scaling" title="Direct link to 🗄️ Database Scaling" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="database-replication">Database Replication<a href="#database-replication" class="hash-link" aria-label="Direct link to Database Replication" title="Direct link to Database Replication" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="master-slave-replication">Master-Slave Replication<a href="#master-slave-replication" class="hash-link" aria-label="Direct link to Master-Slave Replication" title="Direct link to Master-Slave Replication" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Master handles all writes</li>
+<li>Slaves replicate data from master</li>
+<li>Slaves handle read queries</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Improved read performance</li>
+<li>Data redundancy</li>
+<li>Backup capability</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Replication lag</li>
+<li>Single point of failure (master)</li>
+<li>Complex failover</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Application</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ↓ (write)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Master DB</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ↓ (replicate)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[Slave1, Slave2, Slave3] ← (read) Application</span><br></span></code></pre></div></div>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="master-master-replication">Master-Master Replication<a href="#master-master-replication" class="hash-link" aria-label="Direct link to Master-Master Replication" title="Direct link to Master-Master Replication" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Multiple masters that can accept writes</li>
+<li>Bi-directional replication</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>No single point of failure</li>
+<li>Better write performance</li>
+<li>Geographic distribution</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Conflict resolution needed</li>
+<li>More complex</li>
+<li>Consistency challenges</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="database-sharding">Database Sharding<a href="#database-sharding" class="hash-link" aria-label="Direct link to Database Sharding" title="Direct link to Database Sharding" translate="no">​</a></h3>
+<p><strong>What is it?</strong><br>
+<!-- -->Horizontally partitioning data across multiple databases.</p>
+<p><strong>Sharding Strategies:</strong></p>
+<ol>
+<li>
+<p><strong>Range-Based</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Users A-M → Shard 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Users N-Z → Shard 2</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>Hash-Based</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">hash(user_id) % num_shards → Shard N</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p><strong>Geographic</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">US users → US Shard</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">EU users → EU Shard</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Horizontal scaling</li>
+<li>Better performance</li>
+<li>Reduced index size</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Complex queries (joins across shards)</li>
+<li>Rebalancing difficulty</li>
+<li>Hotspot issues</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="database-partitioning">Database Partitioning<a href="#database-partitioning" class="hash-link" aria-label="Direct link to Database Partitioning" title="Direct link to Database Partitioning" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="vertical-partitioning">Vertical Partitioning<a href="#vertical-partitioning" class="hash-link" aria-label="Direct link to Vertical Partitioning" title="Direct link to Vertical Partitioning" translate="no">​</a></h4>
+<p><strong>Definition</strong>: Split table columns into separate tables</p>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">User Table:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Before: [id, name, email, bio, settings, preferences]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">After:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">User_Basic: [id, name, email]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">User_Profile: [id, bio, settings, preferences]</span><br></span></code></pre></div></div>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Large columns (BLOBs, text)</li>
+<li>Frequently vs rarely accessed data</li>
+<li>Different security requirements</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="horizontal-partitioning-sharding">Horizontal Partitioning (Sharding)<a href="#horizontal-partitioning-sharding" class="hash-link" aria-label="Direct link to Horizontal Partitioning (Sharding)" title="Direct link to Horizontal Partitioning (Sharding)" translate="no">​</a></h4>
+<p><strong>Definition</strong>: Split table rows across multiple tables/databases</p>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Users Table:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Before: All 10M users in one table</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">After:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Users_1: Users with id 1-5M</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Users_2: Users with id 5M-10M</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-caching-strategies">🚀 Caching Strategies<a href="#-caching-strategies" class="hash-link" aria-label="Direct link to 🚀 Caching Strategies" title="Direct link to 🚀 Caching Strategies" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="9-caching-strategies">9 Caching Strategies<a href="#9-caching-strategies" class="hash-link" aria-label="Direct link to 9 Caching Strategies" title="Direct link to 9 Caching Strategies" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="1-cache-aside-lazy-loading">1. Cache-Aside (Lazy Loading)<a href="#1-cache-aside-lazy-loading" class="hash-link" aria-label="Direct link to 1. Cache-Aside (Lazy Loading)" title="Direct link to 1. Cache-Aside (Lazy Loading)" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>Check cache first</li>
+<li>If miss, fetch from DB</li>
+<li>Update cache</li>
+<li>Return data</li>
+</ol>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Only cache what&#x27;s needed</li>
+<li>Resilient to cache failures</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Initial request penalty</li>
+<li>Stale data possible</li>
+</ul>
+<p><strong>Code Example:</strong></p>
+<div class="language-python codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-python codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">get_user</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">user_id</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    user </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> cache</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">get</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;user:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">not</span><span class="token plain"> user</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        user </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> db</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">query</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;SELECT * FROM users WHERE id=</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        cache</span><span class="token punctuation" style="color:#393A34">.</span><span class="token builtin">set</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;user:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> user</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> ttl</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">3600</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> user</span><br></span></code></pre></div></div>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="2-read-through">2. Read-Through<a href="#2-read-through" class="hash-link" aria-label="Direct link to 2. Read-Through" title="Direct link to 2. Read-Through" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Cache sits between app and database</li>
+<li>Cache handles loading from DB</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simplified application code</li>
+<li>Transparent caching</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Initial request slow</li>
+<li>Cache dependency</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="3-write-through">3. Write-Through<a href="#3-write-through" class="hash-link" aria-label="Direct link to 3. Write-Through" title="Direct link to 3. Write-Through" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Write to cache and database simultaneously</li>
+<li>Synchronous operation</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Cache always consistent</li>
+<li>No stale data</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Higher write latency</li>
+<li>Unnecessary caching of all writes</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="4-write-behind-write-back">4. Write-Behind (Write-Back)<a href="#4-write-behind-write-back" class="hash-link" aria-label="Direct link to 4. Write-Behind (Write-Back)" title="Direct link to 4. Write-Behind (Write-Back)" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Write to cache immediately</li>
+<li>Asynchronously write to DB</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Fast write operations</li>
+<li>Batch writes possible</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Risk of data loss</li>
+<li>Complex implementation</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="5-write-around">5. Write-Around<a href="#5-write-around" class="hash-link" aria-label="Direct link to 5. Write-Around" title="Direct link to 5. Write-Around" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Write directly to database</li>
+<li>Cache only on read</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Avoids cache pollution</li>
+<li>Good for write-heavy</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Cache misses on recent writes</li>
+<li>Read latency for new data</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="6-refresh-ahead">6. Refresh-Ahead<a href="#6-refresh-ahead" class="hash-link" aria-label="Direct link to 6. Refresh-Ahead" title="Direct link to 6. Refresh-Ahead" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Automatically refresh hot cache entries before expiration</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Reduced latency</li>
+<li>Predictable performance</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Complex prediction logic</li>
+<li>Wasted refreshes</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="7-cache-invalidation-strategies">7. Cache Invalidation Strategies<a href="#7-cache-invalidation-strategies" class="hash-link" aria-label="Direct link to 7. Cache Invalidation Strategies" title="Direct link to 7. Cache Invalidation Strategies" translate="no">​</a></h4>
+<p><strong>TTL (Time To Live):</strong></p>
+<div class="language-python codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-python codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">cache</span><span class="token punctuation" style="color:#393A34">.</span><span class="token builtin">set</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">key</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> value</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> ttl</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">3600</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># Expires in 1 hour</span><br></span></code></pre></div></div>
+<p><strong>Event-Based:</strong></p>
+<div class="language-python codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-python codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">update_user</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">user_id</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    db</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">update</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">user_id</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    cache</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">delete</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;user:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># Invalidate</span><br></span></code></pre></div></div>
+<p><strong>Versioning:</strong></p>
+<div class="language-python codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-python codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">cache</span><span class="token punctuation" style="color:#393A34">.</span><span class="token builtin">set</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;user:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">:v</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">version</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> user</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="️-rate-limiting">⚖️ Rate Limiting<a href="#️-rate-limiting" class="hash-link" aria-label="Direct link to ⚖️ Rate Limiting" title="Direct link to ⚖️ Rate Limiting" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="what-is-rate-limiting">What is Rate Limiting?<a href="#what-is-rate-limiting" class="hash-link" aria-label="Direct link to What is Rate Limiting?" title="Direct link to What is Rate Limiting?" translate="no">​</a></h3>
+<p>Controlling the rate of requests to prevent abuse and ensure fair usage.</p>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="common-algorithms">Common Algorithms<a href="#common-algorithms" class="hash-link" aria-label="Direct link to Common Algorithms" title="Direct link to Common Algorithms" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="1-token-bucket">1. Token Bucket<a href="#1-token-bucket" class="hash-link" aria-label="Direct link to 1. Token Bucket" title="Direct link to 1. Token Bucket" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Bucket holds tokens</li>
+<li>Each request consumes a token</li>
+<li>Tokens refill at fixed rate</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Allows bursts</li>
+<li>Smooth traffic</li>
+<li>Simple implementation</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-python codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-python codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">class</span><span class="token plain"> </span><span class="token class-name">TokenBucket</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">__init__</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">self</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> capacity</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> refill_rate</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">capacity </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> capacity</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">tokens </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> capacity</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">refill_rate </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> refill_rate  </span><span class="token comment" style="color:#999988;font-style:italic"># tokens per second</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">last_refill </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> time</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">time</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">allow_request</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">self</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">_refill</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">tokens </span><span class="token operator" style="color:#393A34">&gt;=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">tokens </span><span class="token operator" style="color:#393A34">-=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">True</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">False</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">_refill</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">self</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        now </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> time</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">time</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        tokens_to_add </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">now </span><span class="token operator" style="color:#393A34">-</span><span class="token plain"> self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">last_refill</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">*</span><span class="token plain"> self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">refill_rate</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">tokens </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">min</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">capacity</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">tokens </span><span class="token operator" style="color:#393A34">+</span><span class="token plain"> tokens_to_add</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        self</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">last_refill </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> now</span><br></span></code></pre></div></div>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="2-leaky-bucket">2. Leaky Bucket<a href="#2-leaky-bucket" class="hash-link" aria-label="Direct link to 2. Leaky Bucket" title="Direct link to 2. Leaky Bucket" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Requests enter bucket</li>
+<li>Process at constant rate</li>
+<li>Overflow requests rejected</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Smooth output rate</li>
+<li>Predictable behavior</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>No burst allowance</li>
+<li>Queue buildup</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="3-fixed-window">3. Fixed Window<a href="#3-fixed-window" class="hash-link" aria-label="Direct link to 3. Fixed Window" title="Direct link to 3. Fixed Window" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Fixed time windows (e.g., per minute)</li>
+<li>Count requests in window</li>
+<li>Reset at window boundary</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simple to implement</li>
+<li>Low memory usage</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Burst at window boundaries</li>
+<li>Unfair distribution</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="4-sliding-window-log">4. Sliding Window Log<a href="#4-sliding-window-log" class="hash-link" aria-label="Direct link to 4. Sliding Window Log" title="Direct link to 4. Sliding Window Log" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Track timestamp of each request</li>
+<li>Count requests in sliding window</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>No boundary issues</li>
+<li>Accurate rate limiting</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Memory intensive</li>
+<li>Complex implementation</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="5-sliding-window-counter">5. Sliding Window Counter<a href="#5-sliding-window-counter" class="hash-link" aria-label="Direct link to 5. Sliding Window Counter" title="Direct link to 5. Sliding Window Counter" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Hybrid of fixed window and sliding window</li>
+<li>Weighted count based on overlap</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Memory efficient</li>
+<li>Smooth rate limiting</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-python codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-python codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">sliding_window_counter</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">user_id</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> limit</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> window</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    current_window </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">int</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">time</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">time</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">/</span><span class="token plain"> window</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    previous_window </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> current_window </span><span class="token operator" style="color:#393A34">-</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    current_count </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> redis</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">get</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;rate:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">current_window</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">or</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    previous_count </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> redis</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">get</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;rate:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">previous_window</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">or</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic"># Weight previous window by overlap</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    overlap </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">time</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">time</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">%</span><span class="token plain"> window</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">/</span><span class="token plain"> window</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    weighted_count </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> previous_count </span><span class="token operator" style="color:#393A34">*</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain"> overlap</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">+</span><span class="token plain"> current_count</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> weighted_count </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain"> limit</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        redis</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">incr</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-interpolation string" style="color:#e3116c">f&quot;rate:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">user_id</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">:</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">{</span><span class="token string-interpolation interpolation">current_window</span><span class="token string-interpolation interpolation punctuation" style="color:#393A34">}</span><span class="token string-interpolation string" style="color:#e3116c">&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">True</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">False</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-message-queues">🔄 Message Queues<a href="#-message-queues" class="hash-link" aria-label="Direct link to 🔄 Message Queues" title="Direct link to 🔄 Message Queues" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="what-is-a-message-queue">What is a Message Queue?<a href="#what-is-a-message-queue" class="hash-link" aria-label="Direct link to What is a Message Queue?" title="Direct link to What is a Message Queue?" translate="no">​</a></h3>
+<p>Asynchronous communication pattern where messages are stored in a queue between producers and consumers.</p>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="popular-message-queues">Popular Message Queues<a href="#popular-message-queues" class="hash-link" aria-label="Direct link to Popular Message Queues" title="Direct link to Popular Message Queues" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="1-apache-kafka">1. Apache Kafka<a href="#1-apache-kafka" class="hash-link" aria-label="Direct link to 1. Apache Kafka" title="Direct link to 1. Apache Kafka" translate="no">​</a></h4>
+<p><strong>Best For</strong>: High-throughput, event streaming</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Distributed, partitioned</li>
+<li>High throughput (millions/sec)</li>
+<li>Data persistence</li>
+<li>Pub/sub and streaming</li>
+</ul>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>Event sourcing</li>
+<li>Log aggregation</li>
+<li>Real-time analytics</li>
+<li>Stream processing</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="2-rabbitmq">2. RabbitMQ<a href="#2-rabbitmq" class="hash-link" aria-label="Direct link to 2. RabbitMQ" title="Direct link to 2. RabbitMQ" translate="no">​</a></h4>
+<p><strong>Best For</strong>: Complex routing, task queues</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>AMQP protocol</li>
+<li>Flexible routing</li>
+<li>Multiple exchange types</li>
+<li>Priority queues</li>
+</ul>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>Task queues</li>
+<li>RPC patterns</li>
+<li>Microservices communication</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="3-amazon-sqs">3. Amazon SQS<a href="#3-amazon-sqs" class="hash-link" aria-label="Direct link to 3. Amazon SQS" title="Direct link to 3. Amazon SQS" translate="no">​</a></h4>
+<p><strong>Best For</strong>: Simple queue, managed service</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Fully managed</li>
+<li>Scalable</li>
+<li>Simple API</li>
+<li>Dead letter queues</li>
+</ul>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>Decoupling microservices</li>
+<li>Batch job processing</li>
+<li>AWS integration</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="message-queue-patterns">Message Queue Patterns<a href="#message-queue-patterns" class="hash-link" aria-label="Direct link to Message Queue Patterns" title="Direct link to Message Queue Patterns" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="1-point-to-point-queue">1. Point-to-Point (Queue)<a href="#1-point-to-point-queue" class="hash-link" aria-label="Direct link to 1. Point-to-Point (Queue)" title="Direct link to 1. Point-to-Point (Queue)" translate="no">​</a></h4>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Producer → Queue → Consumer</span><br></span></code></pre></div></div>
+<ul>
+<li>One message, one consumer</li>
+<li>Message removed after processing</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="2-publish-subscribe-topic">2. Publish-Subscribe (Topic)<a href="#2-publish-subscribe-topic" class="hash-link" aria-label="Direct link to 2. Publish-Subscribe (Topic)" title="Direct link to 2. Publish-Subscribe (Topic)" translate="no">​</a></h4>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Producer → Topic → [Consumer1, Consumer2, Consumer3]</span><br></span></code></pre></div></div>
+<ul>
+<li>One message, multiple consumers</li>
+<li>All subscribers receive message</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="3-request-reply">3. Request-Reply<a href="#3-request-reply" class="hash-link" aria-label="Direct link to 3. Request-Reply" title="Direct link to 3. Request-Reply" translate="no">​</a></h4>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Client → Request Queue → Server → Reply Queue → Client</span><br></span></code></pre></div></div>
+<ul>
+<li>Synchronous-like pattern</li>
+<li>Correlation IDs track requests</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="️-microservices-vs-monolithic">🏗️ Microservices vs Monolithic<a href="#️-microservices-vs-monolithic" class="hash-link" aria-label="Direct link to 🏗️ Microservices vs Monolithic" title="Direct link to 🏗️ Microservices vs Monolithic" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="monolithic-architecture">Monolithic Architecture<a href="#monolithic-architecture" class="hash-link" aria-label="Direct link to Monolithic Architecture" title="Direct link to Monolithic Architecture" translate="no">​</a></h3>
+<p><strong>Definition</strong>: Single, unified codebase and deployment unit</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simple to develop initially</li>
+<li>Easy to test and debug</li>
+<li>Single deployment</li>
+<li>Better performance (in-process calls)</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Difficult to scale</li>
+<li>Tech stack locked in</li>
+<li>Long deployment cycles</li>
+<li>Single point of failure</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Small teams</li>
+<li>Simple applications</li>
+<li>MVP/early stage</li>
+<li>Tight deadlines</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="microservices-architecture">Microservices Architecture<a href="#microservices-architecture" class="hash-link" aria-label="Direct link to Microservices Architecture" title="Direct link to Microservices Architecture" translate="no">​</a></h3>
+<p><strong>Definition</strong>: Application composed of small, independent services</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Independent scaling</li>
+<li>Technology flexibility</li>
+<li>Team autonomy</li>
+<li>Fault isolation</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Operational complexity</li>
+<li>Network latency</li>
+<li>Data consistency challenges</li>
+<li>Testing complexity</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Large teams</li>
+<li>Complex domains</li>
+<li>Need for scalability</li>
+<li>Different scaling requirements</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="comparison-table">Comparison Table<a href="#comparison-table" class="hash-link" aria-label="Direct link to Comparison Table" title="Direct link to Comparison Table" translate="no">​</a></h3>
+<table><thead><tr><th>Aspect</th><th>Monolithic</th><th>Microservices</th></tr></thead><tbody><tr><td><strong>Deployment</strong></td><td>Single unit</td><td>Independent services</td></tr><tr><td><strong>Scaling</strong></td><td>Scale entire app</td><td>Scale individual services</td></tr><tr><td><strong>Development</strong></td><td>Simpler initially</td><td>More complex</td></tr><tr><td><strong>Team Size</strong></td><td>Works for small teams</td><td>Better for large teams</td></tr><tr><td><strong>Technology</strong></td><td>Single tech stack</td><td>Polyglot possible</td></tr><tr><td><strong>Testing</strong></td><td>Easier integration tests</td><td>Complex E2E testing</td></tr><tr><td><strong>Reliability</strong></td><td>Single point of failure</td><td>Fault isolation</td></tr><tr><td><strong>Performance</strong></td><td>In-process calls</td><td>Network overhead</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-rest-vs-grpc-vs-graphql">🌐 REST vs gRPC vs GraphQL<a href="#-rest-vs-grpc-vs-graphql" class="hash-link" aria-label="Direct link to 🌐 REST vs gRPC vs GraphQL" title="Direct link to 🌐 REST vs gRPC vs GraphQL" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="rest-representational-state-transfer">REST (Representational State Transfer)<a href="#rest-representational-state-transfer" class="hash-link" aria-label="Direct link to REST (Representational State Transfer)" title="Direct link to REST (Representational State Transfer)" translate="no">​</a></h3>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>HTTP-based</li>
+<li>JSON/XML payloads</li>
+<li>Stateless</li>
+<li>Resource-oriented</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Widely adopted</li>
+<li>Easy to understand</li>
+<li>Browser-friendly</li>
+<li>Cacheable</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Over-fetching/under-fetching</li>
+<li>Multiple round trips</li>
+<li>Versioning challenges</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-http codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-http codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">GET /api/users/123</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">POST /api/users</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">PUT /api/users/123</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DELETE /api/users/123</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="grpc">gRPC<a href="#grpc" class="hash-link" aria-label="Direct link to gRPC" title="Direct link to gRPC" translate="no">​</a></h3>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>HTTP/2 based</li>
+<li>Protocol Buffers</li>
+<li>Bi-directional streaming</li>
+<li>Code generation</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>High performance</li>
+<li>Type safety</li>
+<li>Streaming support</li>
+<li>Efficient binary format</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Not browser-friendly</li>
+<li>Steeper learning curve</li>
+<li>Limited debugging tools</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Microservices communication</li>
+<li>High-performance requirements</li>
+<li>Streaming data</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-protobuf codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-protobuf codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">service UserService {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  rpc GetUser (UserRequest) returns (UserResponse);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  rpc StreamUsers (stream UserRequest) returns (stream UserResponse);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="graphql">GraphQL<a href="#graphql" class="hash-link" aria-label="Direct link to GraphQL" title="Direct link to GraphQL" translate="no">​</a></h3>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Query language</li>
+<li>Single endpoint</li>
+<li>Client defines response</li>
+<li>Strongly typed</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>No over-fetching</li>
+<li>Single request</li>
+<li>Strongly typed</li>
+<li>Introspection</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Complex caching</li>
+<li>N+1 query problem</li>
+<li>Learning curve</li>
+<li>Server complexity</li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Complex, nested data</li>
+<li>Multiple clients (mobile, web)</li>
+<li>Frequent schema changes</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-graphql codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-graphql codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">query</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property-query">user</span><span class="token punctuation" style="color:#393A34">(</span><span class="token attr-name" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;123&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">name</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">email</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token object">posts</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">title</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token object">comments</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">text</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-authentication--authorization">🔐 Authentication &amp; Authorization<a href="#-authentication--authorization" class="hash-link" aria-label="Direct link to 🔐 Authentication &amp; Authorization" title="Direct link to 🔐 Authentication &amp; Authorization" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="jwt-vs-session-based-auth">JWT vs Session-Based Auth<a href="#jwt-vs-session-based-auth" class="hash-link" aria-label="Direct link to JWT vs Session-Based Auth" title="Direct link to JWT vs Session-Based Auth" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="session-based-authentication">Session-Based Authentication<a href="#session-based-authentication" class="hash-link" aria-label="Direct link to Session-Based Authentication" title="Direct link to Session-Based Authentication" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>User logs in</li>
+<li>Server creates session, stores in DB</li>
+<li>Client receives session ID cookie</li>
+<li>Client sends cookie with each request</li>
+</ol>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Server-side control</li>
+<li>Easy revocation</li>
+<li>Secure (session stored server-side)</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Stateful (scalability issues)</li>
+<li>Session storage overhead</li>
+<li>CSRF vulnerability</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="jwt-json-web-token">JWT (JSON Web Token)<a href="#jwt-json-web-token" class="hash-link" aria-label="Direct link to JWT (JSON Web Token)" title="Direct link to JWT (JSON Web Token)" translate="no">​</a></h4>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>User logs in</li>
+<li>Server generates signed JWT</li>
+<li>Client stores JWT (localStorage/cookie)</li>
+<li>Client sends JWT in header</li>
+</ol>
+<p><strong>Structure:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">header.payload.signature</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">eyJ1c2VySWQiOiIxMjMiLCJleHAiOjE2MzA0NjEyMDB9.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">signature_hash_here</span><br></span></code></pre></div></div>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Stateless (scalable)</li>
+<li>Cross-domain</li>
+<li>Mobile-friendly</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Difficult to revoke</li>
+<li>Larger payload</li>
+<li>XSS vulnerability</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="oauth-20-vs-saml">OAuth 2.0 vs SAML<a href="#oauth-20-vs-saml" class="hash-link" aria-label="Direct link to OAuth 2.0 vs SAML" title="Direct link to OAuth 2.0 vs SAML" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="oauth-20">OAuth 2.0<a href="#oauth-20" class="hash-link" aria-label="Direct link to OAuth 2.0" title="Direct link to OAuth 2.0" translate="no">​</a></h4>
+<p><strong>Purpose</strong>: Authorization (delegated access)</p>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>&quot;Sign in with Google&quot;</li>
+<li>Third-party API access</li>
+<li>Mobile apps</li>
+</ul>
+<p><strong>Flow:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">User → App → OAuth Provider → Grant Token → App → API</span><br></span></code></pre></div></div>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="saml-security-assertion-markup-language">SAML (Security Assertion Markup Language)<a href="#saml-security-assertion-markup-language" class="hash-link" aria-label="Direct link to SAML (Security Assertion Markup Language)" title="Direct link to SAML (Security Assertion Markup Language)" translate="no">​</a></h4>
+<p><strong>Purpose</strong>: Single Sign-On (SSO)</p>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>Enterprise SSO</li>
+<li>Cross-domain authentication</li>
+</ul>
+<p><strong>Flow:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">User → Service Provider → Identity Provider → SAML Assertion → Service Provider</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="single-sign-on-sso">Single Sign-On (SSO)<a href="#single-sign-on-sso" class="hash-link" aria-label="Direct link to Single Sign-On (SSO)" title="Direct link to Single Sign-On (SSO)" translate="no">​</a></h3>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>User authenticates once with identity provider</li>
+<li>Receives security token</li>
+<li>Token used for multiple applications</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>One login for multiple apps</li>
+<li>Centralized user management</li>
+<li>Better security</li>
+<li>Improved user experience</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-cap-theorem">📊 CAP Theorem<a href="#-cap-theorem" class="hash-link" aria-label="Direct link to 📊 CAP Theorem" title="Direct link to 📊 CAP Theorem" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="the-trade-off-triangle">The Trade-Off Triangle<a href="#the-trade-off-triangle" class="hash-link" aria-label="Direct link to The Trade-Off Triangle" title="Direct link to The Trade-Off Triangle" translate="no">​</a></h3>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">        Consistency</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">           /\</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          /  \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         /    \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        /  CA  \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">       /        \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      /  CP  AP  \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     /______________\</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Partition        Availability</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Tolerance</span><br></span></code></pre></div></div>
+<p><strong>You can only choose 2 out of 3:</strong></p>
+<ul>
+<li><strong>Consistency</strong>: All nodes see the same data</li>
+<li><strong>Availability</strong>: Every request gets a response</li>
+<li><strong>Partition Tolerance</strong>: System continues despite network failures</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="real-world-choices">Real-World Choices<a href="#real-world-choices" class="hash-link" aria-label="Direct link to Real-World Choices" title="Direct link to Real-World Choices" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="cp-consistency--partition-tolerance">CP (Consistency + Partition Tolerance)<a href="#cp-consistency--partition-tolerance" class="hash-link" aria-label="Direct link to CP (Consistency + Partition Tolerance)" title="Direct link to CP (Consistency + Partition Tolerance)" translate="no">​</a></h4>
+<p><strong>Examples</strong>: MongoDB, HBase, Redis</p>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Prioritize data consistency</li>
+<li>May reject requests during partitions</li>
+<li>Strong consistency guarantees</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>Financial transactions</li>
+<li>Inventory systems</li>
+<li>Atomic operations required</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="ap-availability--partition-tolerance">AP (Availability + Partition Tolerance)<a href="#ap-availability--partition-tolerance" class="hash-link" aria-label="Direct link to AP (Availability + Partition Tolerance)" title="Direct link to AP (Availability + Partition Tolerance)" translate="no">​</a></h4>
+<p><strong>Examples</strong>: Cassandra, DynamoDB, CouchDB</p>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Always available for reads/writes</li>
+<li>Eventual consistency</li>
+<li>Conflict resolution needed</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>Social media feeds</li>
+<li>Shopping carts</li>
+<li>Analytics/logging</li>
+<li>High availability critical</li>
+</ul>
+<hr>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="ca-consistency--availability">CA (Consistency + Availability)<a href="#ca-consistency--availability" class="hash-link" aria-label="Direct link to CA (Consistency + Availability)" title="Direct link to CA (Consistency + Availability)" translate="no">​</a></h4>
+<p><strong>Examples</strong>: Traditional RDBMS (single node)</p>
+<p><strong>Note</strong>: Not realistic in distributed systems as network partitions will occur</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-consistency-models">🔍 Consistency Models<a href="#-consistency-models" class="hash-link" aria-label="Direct link to 🔍 Consistency Models" title="Direct link to 🔍 Consistency Models" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="strong-consistency">Strong Consistency<a href="#strong-consistency" class="hash-link" aria-label="Direct link to Strong Consistency" title="Direct link to Strong Consistency" translate="no">​</a></h3>
+<p><strong>Definition</strong>: Reads always return most recent write</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simple to reason about</li>
+<li>No stale data</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Higher latency</li>
+<li>Lower availability</li>
+<li>Coordination overhead</li>
+</ul>
+<p><strong>Example:</strong> Traditional databases with ACID transactions</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="eventual-consistency">Eventual Consistency<a href="#eventual-consistency" class="hash-link" aria-label="Direct link to Eventual Consistency" title="Direct link to Eventual Consistency" translate="no">​</a></h3>
+<p><strong>Definition</strong>: Given no new updates, all replicas eventually converge</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>High availability</li>
+<li>Low latency</li>
+<li>Better performance</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Stale reads possible</li>
+<li>Conflict resolution needed</li>
+<li>Complex application logic</li>
+</ul>
+<p><strong>Example:</strong> DNS, Cassandra, DynamoDB</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="causal-consistency">Causal Consistency<a href="#causal-consistency" class="hash-link" aria-label="Direct link to Causal Consistency" title="Direct link to Causal Consistency" translate="no">​</a></h3>
+<p><strong>Definition</strong>: Operations that are causally related are seen by all nodes in the same order</p>
+<p><strong>Use Case:</strong> Social media (see your own posts before others see them)</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="read-your-writes-consistency">Read-Your-Writes Consistency<a href="#read-your-writes-consistency" class="hash-link" aria-label="Direct link to Read-Your-Writes Consistency" title="Direct link to Read-Your-Writes Consistency" translate="no">​</a></h3>
+<p><strong>Definition</strong>: Users always see their own updates</p>
+<p><strong>Implementation:</strong> Route user&#x27;s reads to same replica that handled writes</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-common-design-patterns">🎯 Common Design Patterns<a href="#-common-design-patterns" class="hash-link" aria-label="Direct link to 🎯 Common Design Patterns" title="Direct link to 🎯 Common Design Patterns" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="1-event-sourcing">1. Event Sourcing<a href="#1-event-sourcing" class="hash-link" aria-label="Direct link to 1. Event Sourcing" title="Direct link to 1. Event Sourcing" translate="no">​</a></h3>
+<p><strong>Concept</strong>: Store changes (events) instead of current state</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Complete audit trail</li>
+<li>Time travel (replay events)</li>
+<li>Event-driven architecture</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Instead of: user.balance = 100</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Store: [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  {event: &quot;AccountCreated&quot;, balance: 0},</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  {event: &quot;MoneyDeposited&quot;, amount: 100}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">]</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="2-cqrs-command-query-responsibility-segregation">2. CQRS (Command Query Responsibility Segregation)<a href="#2-cqrs-command-query-responsibility-segregation" class="hash-link" aria-label="Direct link to 2. CQRS (Command Query Responsibility Segregation)" title="Direct link to 2. CQRS (Command Query Responsibility Segregation)" translate="no">​</a></h3>
+<p><strong>Concept</strong>: Separate models for reads and writes</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Optimized read/write models</li>
+<li>Independent scaling</li>
+<li>Flexibility</li>
+</ul>
+<p><strong>Pattern:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Write Model (Commands) → Event Store → Read Model (Queries)</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="3-saga-pattern">3. Saga Pattern<a href="#3-saga-pattern" class="hash-link" aria-label="Direct link to 3. Saga Pattern" title="Direct link to 3. Saga Pattern" translate="no">​</a></h3>
+<p><strong>Concept</strong>: Distributed transactions using compensating actions</p>
+<p><strong>Types:</strong></p>
+<ul>
+<li><strong>Choreography</strong>: Events coordinate services</li>
+<li><strong>Orchestration</strong>: Central coordinator</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Order Service → Payment Service → Inventory Service</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ↓               ↓                   ↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">If fails: Cancel Order ← Refund ← Rollback Inventory</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="4-circuit-breaker">4. Circuit Breaker<a href="#4-circuit-breaker" class="hash-link" aria-label="Direct link to 4. Circuit Breaker" title="Direct link to 4. Circuit Breaker" translate="no">​</a></h3>
+<p><strong>Concept</strong>: Prevent cascading failures</p>
+<p><strong>States:</strong></p>
+<ul>
+<li><strong>Closed</strong>: Normal operation</li>
+<li><strong>Open</strong>: Fail fast, don&#x27;t call service</li>
+<li><strong>Half-Open</strong>: Test if service recovered</li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Fault isolation</li>
+<li>Graceful degradation</li>
+<li>Faster failure detection</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="5-bulkhead-pattern">5. Bulkhead Pattern<a href="#5-bulkhead-pattern" class="hash-link" aria-label="Direct link to 5. Bulkhead Pattern" title="Direct link to 5. Bulkhead Pattern" translate="no">​</a></h3>
+<p><strong>Concept</strong>: Isolate resources to prevent total failure</p>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Thread Pool 1: Critical operations</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Thread Pool 2: Non-critical operations</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Thread Pool 3: Background tasks</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-additional-concepts">📚 Additional Concepts<a href="#-additional-concepts" class="hash-link" aria-label="Direct link to 📚 Additional Concepts" title="Direct link to 📚 Additional Concepts" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="idempotency">Idempotency<a href="#idempotency" class="hash-link" aria-label="Direct link to Idempotency" title="Direct link to Idempotency" translate="no">​</a></h3>
+<p><strong>Definition</strong>: Operation can be applied multiple times with same result</p>
+<p><strong>Importance:</strong></p>
+<ul>
+<li>Retry safety</li>
+<li>Network reliability</li>
+<li>Distributed systems</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="language-text codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-text codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token plain">Idempotent: PUT /users/123 {name: &quot;John&quot;}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Not Idempotent: POST /users {name: &quot;John&quot;}</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="distributed-tracing">Distributed Tracing<a href="#distributed-tracing" class="hash-link" aria-label="Direct link to Distributed Tracing" title="Direct link to Distributed Tracing" translate="no">​</a></h3>
+<p><strong>Purpose</strong>: Track requests across microservices</p>
+<p><strong>Tools</strong>: Jaeger, Zipkin, AWS X-Ray</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Performance debugging</li>
+<li>Dependency visualization</li>
+<li>Error tracking</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="service-mesh">Service Mesh<a href="#service-mesh" class="hash-link" aria-label="Direct link to Service Mesh" title="Direct link to Service Mesh" translate="no">​</a></h3>
+<p><strong>Purpose</strong>: Infrastructure layer for microservices communication</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Traffic management</li>
+<li>Security (mTLS)</li>
+<li>Observability</li>
+<li>Resilience</li>
+</ul>
+<p><strong>Examples</strong>: Istio, Linkerd, Consul</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-related-resources">🔗 Related Resources<a href="#-related-resources" class="hash-link" aria-label="Direct link to 🔗 Related Resources" title="Direct link to 🔗 Related Resources" translate="no">​</a></h2>
+<ul>
+<li><a href="/fullstack-dev/docs/system-design/interview-questions">System Design Interview Questions</a> - 100+ practice problems</li>
+<li><a href="/fullstack-dev/docs/system-design/resources">System Design Resources</a> - Best courses and books</li>
+<li><a href="/fullstack-dev/docs/system-design/">System Design Primer</a> - Comprehensive guide</li>
+</ul>
+<hr>
+<p><strong>Remember</strong>: Understanding these basics deeply is more valuable than memorizing solutions. Focus on trade-offs and when to apply each pattern.</p>
+<p><em>Last updated: November 2025</em></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/tamnk74/fullstack-dev/tree/main/docs-site/docs/system-design/basics.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_oUsg" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_nFFz"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/fullstack-dev/docs/system-design/interview-questions"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">System Design Interview Questions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/fullstack-dev/docs/system-design/theory"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">System Design Theory &amp; Concepts</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_dfCb thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#-core-components" class="table-of-contents__link toc-highlight">🔧 Core Components</a><ul><li><a href="#api-gateway-vs-load-balancer" class="table-of-contents__link toc-highlight">API Gateway vs Load Balancer</a></li><li><a href="#forward-proxy-vs-reverse-proxy" class="table-of-contents__link toc-highlight">Forward Proxy vs Reverse Proxy</a></li></ul></li><li><a href="#-scaling-strategies" class="table-of-contents__link toc-highlight">📊 Scaling Strategies</a><ul><li><a href="#horizontal-vs-vertical-scaling" class="table-of-contents__link toc-highlight">Horizontal vs Vertical Scaling</a></li></ul></li><li><a href="#️-database-scaling" class="table-of-contents__link toc-highlight">🗄️ Database Scaling</a><ul><li><a href="#database-replication" class="table-of-contents__link toc-highlight">Database Replication</a></li><li><a href="#database-sharding" class="table-of-contents__link toc-highlight">Database Sharding</a></li><li><a href="#database-partitioning" class="table-of-contents__link toc-highlight">Database Partitioning</a></li></ul></li><li><a href="#-caching-strategies" class="table-of-contents__link toc-highlight">🚀 Caching Strategies</a><ul><li><a href="#9-caching-strategies" class="table-of-contents__link toc-highlight">9 Caching Strategies</a></li></ul></li><li><a href="#️-rate-limiting" class="table-of-contents__link toc-highlight">⚖️ Rate Limiting</a><ul><li><a href="#what-is-rate-limiting" class="table-of-contents__link toc-highlight">What is Rate Limiting?</a></li><li><a href="#common-algorithms" class="table-of-contents__link toc-highlight">Common Algorithms</a></li></ul></li><li><a href="#-message-queues" class="table-of-contents__link toc-highlight">🔄 Message Queues</a><ul><li><a href="#what-is-a-message-queue" class="table-of-contents__link toc-highlight">What is a Message Queue?</a></li><li><a href="#popular-message-queues" class="table-of-contents__link toc-highlight">Popular Message Queues</a></li><li><a href="#message-queue-patterns" class="table-of-contents__link toc-highlight">Message Queue Patterns</a></li></ul></li><li><a href="#️-microservices-vs-monolithic" class="table-of-contents__link toc-highlight">🏗️ Microservices vs Monolithic</a><ul><li><a href="#monolithic-architecture" class="table-of-contents__link toc-highlight">Monolithic Architecture</a></li><li><a href="#microservices-architecture" class="table-of-contents__link toc-highlight">Microservices Architecture</a></li><li><a href="#comparison-table" class="table-of-contents__link toc-highlight">Comparison Table</a></li></ul></li><li><a href="#-rest-vs-grpc-vs-graphql" class="table-of-contents__link toc-highlight">🌐 REST vs gRPC vs GraphQL</a><ul><li><a href="#rest-representational-state-transfer" class="table-of-contents__link toc-highlight">REST (Representational State Transfer)</a></li><li><a href="#grpc" class="table-of-contents__link toc-highlight">gRPC</a></li><li><a href="#graphql" class="table-of-contents__link toc-highlight">GraphQL</a></li></ul></li><li><a href="#-authentication--authorization" class="table-of-contents__link toc-highlight">🔐 Authentication &amp; Authorization</a><ul><li><a href="#jwt-vs-session-based-auth" class="table-of-contents__link toc-highlight">JWT vs Session-Based Auth</a></li><li><a href="#oauth-20-vs-saml" class="table-of-contents__link toc-highlight">OAuth 2.0 vs SAML</a></li><li><a href="#single-sign-on-sso" class="table-of-contents__link toc-highlight">Single Sign-On (SSO)</a></li></ul></li><li><a href="#-cap-theorem" class="table-of-contents__link toc-highlight">📊 CAP Theorem</a><ul><li><a href="#the-trade-off-triangle" class="table-of-contents__link toc-highlight">The Trade-Off Triangle</a></li><li><a href="#real-world-choices" class="table-of-contents__link toc-highlight">Real-World Choices</a></li></ul></li><li><a href="#-consistency-models" class="table-of-contents__link toc-highlight">🔍 Consistency Models</a><ul><li><a href="#strong-consistency" class="table-of-contents__link toc-highlight">Strong Consistency</a></li><li><a href="#eventual-consistency" class="table-of-contents__link toc-highlight">Eventual Consistency</a></li><li><a href="#causal-consistency" class="table-of-contents__link toc-highlight">Causal Consistency</a></li><li><a href="#read-your-writes-consistency" class="table-of-contents__link toc-highlight">Read-Your-Writes Consistency</a></li></ul></li><li><a href="#-common-design-patterns" class="table-of-contents__link toc-highlight">🎯 Common Design Patterns</a><ul><li><a href="#1-event-sourcing" class="table-of-contents__link toc-highlight">1. Event Sourcing</a></li><li><a href="#2-cqrs-command-query-responsibility-segregation" class="table-of-contents__link toc-highlight">2. CQRS (Command Query Responsibility Segregation)</a></li><li><a href="#3-saga-pattern" class="table-of-contents__link toc-highlight">3. Saga Pattern</a></li><li><a href="#4-circuit-breaker" class="table-of-contents__link toc-highlight">4. Circuit Breaker</a></li><li><a href="#5-bulkhead-pattern" class="table-of-contents__link toc-highlight">5. Bulkhead Pattern</a></li></ul></li><li><a href="#-additional-concepts" class="table-of-contents__link toc-highlight">📚 Additional Concepts</a><ul><li><a href="#idempotency" class="table-of-contents__link toc-highlight">Idempotency</a></li><li><a href="#distributed-tracing" class="table-of-contents__link toc-highlight">Distributed Tracing</a></li><li><a href="#service-mesh" class="table-of-contents__link toc-highlight">Service Mesh</a></li></ul></li><li><a href="#-related-resources" class="table-of-contents__link toc-highlight">🔗 Related Resources</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/intro">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/architecture-practices">Architecture Practices</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/features">Features</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Development</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/setup">Setup &amp; Installation</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/testing">Testing</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/deployment">Deployment</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub (Fullstack Dev)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Next.js for Production. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-frontend/performance-checklist" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.1">
+<title data-rh="true">Front-End Performance Checklist | Full-Stack Developer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://tamnk74.github.io/fullstack-dev/docs/frontend/performance-checklist"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Front-End Performance Checklist | Full-Stack Developer"><meta data-rh="true" name="description" content="The only Front-End Performance Checklist that runs faster than the others! An exhaustive list of elements you should check or be aware of as a Front-End developer."><meta data-rh="true" property="og:description" content="The only Front-End Performance Checklist that runs faster than the others! An exhaustive list of elements you should check or be aware of as a Front-End developer."><link data-rh="true" rel="icon" href="/fullstack-dev/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://tamnk74.github.io/fullstack-dev/docs/frontend/performance-checklist"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/frontend/performance-checklist" hreflang="en"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/frontend/performance-checklist" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Front-End Performance Checklist","item":"https://tamnk74.github.io/fullstack-dev/docs/frontend/performance-checklist"}]}</script><link rel="alternate" type="application/rss+xml" href="/fullstack-dev/blog/rss.xml" title="Full-Stack Developer RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/fullstack-dev/blog/atom.xml" title="Full-Stack Developer Atom Feed">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/fullstack-dev/assets/css/styles.8183a660.css">
+<script src="/fullstack-dev/assets/js/runtime~main.0444a14b.js" defer="defer"></script>
+<script src="/fullstack-dev/assets/js/main.c0bb4399.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/fullstack-dev/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_DozU" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/fullstack-dev/"><div class="navbar__logo"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent_dued themedComponent--light_Jgez"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent_dued themedComponent--dark_OEZ1"></div><b class="navbar__title text--truncate">Full-Stack Developer</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/fullstack-dev/docs/intro">Documentation</a><a class="navbar__item navbar__link" href="/fullstack-dev/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_SFyi"><div class="navbar__search searchBarContainer_kSpa" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_WXpg" value=""><div class="loadingRing_lBXj searchBarLoadingRing_AWbH"><div></div><div></div><div></div><div></div></div></div></div><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_WCEm colorModeToggle_eIxa"><button class="clean-btn toggleButton_nhoX toggleButtonDisabled_GPdO" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF lightToggleIcon_DH_d"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF darkToggleIcon_j7cc"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_BDuF systemToggleIcon_sRCC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_Inon"><div class="docsWrapper_vTcP"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_Kk4I" type="button"></button><div class="docRoot_oC9v"><aside class="theme-doc-sidebar-container docSidebarContainer_o76a"><div class="sidebarViewport_X9l3"><div class="sidebar_nRMc"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_QChV"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/intro"><span title="Introduction" class="linkLabel_ttjv">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/search-guide"><span title="Search Documentation" class="linkLabel_ttjv">Search Documentation</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/setup"><span title="Getting Started" class="categoryLinkLabel_K4TR">Getting Started</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fundermentals/concurrency"><span title="Fundamentals" class="categoryLinkLabel_K4TR">Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/how-web-works"><span title="Web Fundamentals" class="categoryLinkLabel_K4TR">Web Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/assessments/developer-assessment-with-development-plans"><span title="Career Development" class="categoryLinkLabel_K4TR">Career Development</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/security-practices/"><span title="Security Practices" class="categoryLinkLabel_K4TR">Security Practices</span></a><button aria-label="Expand sidebar category &#x27;Security Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/security-learning/"><span title="Security Learning (90 Days)" class="categoryLinkLabel_K4TR">Security Learning (90 Days)</span></a><button aria-label="Expand sidebar category &#x27;Security Learning (90 Days)&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/qa-practices/"><span title="QA Practices" class="categoryLinkLabel_K4TR">QA Practices</span></a><button aria-label="Expand sidebar category &#x27;QA Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/architecture-practices/"><span title="Architecture Practices" class="categoryLinkLabel_K4TR">Architecture Practices</span></a><button aria-label="Expand sidebar category &#x27;Architecture Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/non-functional-requirements/nfr-export"><span title="Non-Functional Requirements" class="categoryLinkLabel_K4TR">Non-Functional Requirements</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/coding-conventions/"><span title="Coding Conventions" class="categoryLinkLabel_K4TR">Coding Conventions</span></a><button aria-label="Expand sidebar category &#x27;Coding Conventions&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/system-design/"><span title="System Design" class="categoryLinkLabel_K4TR">System Design</span></a><button aria-label="Expand sidebar category &#x27;System Design&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/fullstack-dev/docs/frontend/checklist"><span title="Frontend" class="categoryLinkLabel_K4TR">Frontend</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/frontend/checklist"><span title="Front-End Checklist" class="linkLabel_ttjv">Front-End Checklist</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/fullstack-dev/docs/frontend/performance-checklist"><span title="Front-End Performance Checklist" class="linkLabel_ttjv">Front-End Performance Checklist</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/frontend/design-checklist"><span title="Front-End Design Checklist" class="linkLabel_ttjv">Front-End Design Checklist</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/backend/"><span title="Backend" class="categoryLinkLabel_K4TR">Backend</span></a><button aria-label="Expand sidebar category &#x27;Backend&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/ai-machine-learning/vertex-ai-gemini-guide"><span title="AI &amp; Machine Learning" class="categoryLinkLabel_K4TR">AI &amp; Machine Learning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/features"><span title="Features" class="categoryLinkLabel_K4TR">Features</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/devops/"><span title="DevOps" class="categoryLinkLabel_K4TR">DevOps</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/testing"><span title="Development" class="categoryLinkLabel_K4TR">Development</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/static-analysis"><span title="Code Quality &amp; Tools" class="categoryLinkLabel_K4TR">Code Quality &amp; Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/threat-modeling/"><span title="Threat Modeling" class="categoryLinkLabel_K4TR">Threat Modeling</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/api-reference"><span title="API Reference" class="categoryLinkLabel_K4TR">API Reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist" href="/fullstack-dev/docs/mobile/architecture-process/"><span title="Mobile Architecture" class="categoryLinkLabel_K4TR">Mobile Architecture</span></a><button aria-label="Expand sidebar category &#x27;Mobile Architecture&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-basics/create-a-document"><span title="Tutorial" class="categoryLinkLabel_K4TR">Tutorial</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_AYZa menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-extras/manage-docs-versions"><span title="Advanced" class="categoryLinkLabel_K4TR">Advanced</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_Go1O"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_tbb6"><div class="docItemContainer_loSK"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Lu9I" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/fullstack-dev/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_x1cF"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Frontend</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Front-End Performance Checklist</span></li></ul></nav><div class="tocCollapsible_e8zW theme-doc-toc-mobile tocMobile_QFGV"><button type="button" class="clean-btn tocCollapsibleButton_N02v">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>🎮 Front-End Performance Checklist</h1></header>
+<p>The only Front-End Performance Checklist that runs faster than the others!</p>
+<p>Performance is a huge subject, but it&#x27;s not always a &quot;back-end&quot; or an &quot;admin&quot; topic: it&#x27;s a Front-End responsibility too. The Front-End Performance Checklist is an exhaustive list of elements you should check or at least be aware of, as a Front-End developer and apply to your project (personal and professional).</p>
+<blockquote>
+<p>One simple rule: &quot;Design and code with performance in mind&quot;</p>
+</blockquote>
+<p><strong>Other Checklists:</strong></p>
+<ul>
+<li><a href="https://github.com/thedaviddias/Front-End-Checklist#front-end-checklist" target="_blank" rel="noopener noreferrer">🗂 Front-End Checklist</a></li>
+<li><a href="https://github.com/thedaviddias/Front-End-Design-Checklist#front-end-design-checklist" target="_blank" rel="noopener noreferrer">💎 Front-End Design Checklist</a></li>
+</ul>
+<div class="theme-admonition theme-admonition-tip admonition_T1De alert alert--success"><div class="admonitionHeading_xEWr"><span class="admonitionIcon_YzGy"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_FqsP"><p>⭐️ I&#x27;ve recently launched <a href="https://git.new/uxpatterns" target="_blank" rel="noopener noreferrer">UX Patterns for Devs</a> and a <a href="https://git.new/indiedevtoolkit" target="_blank" rel="noopener noreferrer">curated list for indie developers</a>, feel free to check it out! ⭐️</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="-table-of-contents">📚 Table of Contents<a href="#-table-of-contents" class="hash-link" aria-label="Direct link to 📚 Table of Contents" title="Direct link to 📚 Table of Contents" translate="no">​</a></h2>
+<ul>
+<li><a href="#how-to-use">How to use?</a></li>
+<li><a href="#html">HTML</a></li>
+<li><a href="#css">CSS</a></li>
+<li><a href="#fonts">Fonts</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#javascript">JavaScript</a></li>
+<li><a href="#performance-tools">Performance Tools</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="how-to-use">How to use?<a href="#how-to-use" class="hash-link" aria-label="Direct link to How to use?" title="Direct link to How to use?" translate="no">​</a></h2>
+<p>For each rule, you will have a paragraph explaining <em>why</em> this rule is important and <em>how</em> you can fix it. For more deep information, you should find links that will point to 🛠 tools, 📖 articles or 📹 medias that can complete the checklist.</p>
+<p>All items in the <strong>Front-End Performance Checklist</strong> are essentials to achieve the highest performance score but you would find an indicator to help you to eventually prioritised some rules amount others. There are 3 levels of priority:</p>
+<ul>
+<li><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/low.svg" alt="Low" class="img_ZXIf"> means that the item has a <strong>low</strong> priority.</li>
+<li><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="Medium" class="img_ZXIf"> means that the item has a <strong>medium</strong> priority. You shouldn&#x27;t avoid tackling that item.</li>
+<li><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="High" class="img_ZXIf"> means that the item has a <strong>high</strong> priority. You can&#x27;t avoid following that rule and implement the corrections recommended.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="performance-tools">Performance tools<a href="#performance-tools" class="hash-link" aria-label="Direct link to Performance tools" title="Direct link to Performance tools" translate="no">​</a></h3>
+<p>List of the tools you can use to test or monitor your website or application:</p>
+<ul>
+<li>🛠 <a href="https://www.webpagetest.org/" target="_blank" rel="noopener noreferrer">WebPagetest - Website Performance and Optimization Test</a></li>
+<li>🛠 ☆ <a href="https://www.dareboost.com/" target="_blank" rel="noopener noreferrer">Dareboost: Website Speed Test and Website Analysis</a> (use the coupon WPCDD20 for -20%)</li>
+<li>🛠 <a href="https://treo.sh/?ref=perfchecklist" target="_blank" rel="noopener noreferrer">Treo: Page Speed Monitoring</a></li>
+<li>🛠 <a href="https://gtmetrix.com/" target="_blank" rel="noopener noreferrer">GTmetrix | Website Speed and Performance Optimization</a></li>
+<li>🛠 <a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank" rel="noopener noreferrer">PageSpeed Insights</a></li>
+<li>🛠 <a href="https://web.dev/measure" target="_blank" rel="noopener noreferrer">Web.dev</a></li>
+<li>🛠 <a href="https://tools.pingdom.com" target="_blank" rel="noopener noreferrer">Pingdom Website Speed Test</a></li>
+<li>📖 <a href="https://developers.google.com/speed/" target="_blank" rel="noopener noreferrer">Make the Web Faster | Google Developers</a></li>
+<li>🛠 <a href="https://www.sitespeed.io/" target="_blank" rel="noopener noreferrer">Sitespeed.io - Welcome to the wonderful world of Web Performance</a></li>
+<li>🛠 <a href="https://calibreapp.com/" target="_blank" rel="noopener noreferrer">Calibre</a></li>
+<li>🛠 <a href="https://www.dotcom-tools.com/website-speed-test.aspx" target="_blank" rel="noopener noreferrer">Website Speed Test | Check Web Performance » Dotcom-Tools</a></li>
+<li>🛠 <a href="https://www.pingdom.com/product/uptime-monitoring/" target="_blank" rel="noopener noreferrer">Website and Server Uptime Monitoring - Pingdom</a> (<a href="https://www.pingdom.com/free" target="_blank" rel="noopener noreferrer">Free Signup Link</a>)</li>
+<li>🛠 <a href="https://uptimerobot.com" target="_blank" rel="noopener noreferrer">Uptime Robot</a></li>
+<li>🛠 <a href="https://speedcurve.com" target="_blank" rel="noopener noreferrer">SpeedCurve: Monitor front-end performance</a></li>
+<li>🛠 <a href="https://github.com/paulirish/pwmetrics" target="_blank" rel="noopener noreferrer">PWMetrics - CLI tool and lib to gather performance metrics</a></li>
+<li>🛠 <a href="https://developers.google.com/web/tools/lighthouse/#devtools" target="_blank" rel="noopener noreferrer">Lighthouse - Google</a></li>
+<li>🛠 <a href="https://www.checkbot.io/" target="_blank" rel="noopener noreferrer">Checkbot browser extension - Checks for web performance best practices</a></li>
+<li>🛠 <a href="https://yellowlab.tools/" target="_blank" rel="noopener noreferrer">Yellow Lab Tools | Online test to help speeding up heavy web pages</a></li>
+<li>🛠 <a href="https://speedrank.app/" target="_blank" rel="noopener noreferrer">Speedrank - Web Performance Monitoring</a></li>
+<li>🛠 <a href="https://www.debugbear.com/" target="_blank" rel="noopener noreferrer">DebugBear - Monitor website performance and Lighthouse scores</a></li>
+<li>🛠 <a href="https://gravity.ci/" target="_blank" rel="noopener noreferrer">Gravity CI - Check your build artifacts sizes on every pull request.</a></li>
+<li>🛠 <a href="https://github.com/treosh/exthouse" target="_blank" rel="noopener noreferrer">Exthouse - Analyze the impact of a browser extension on web performance</a></li>
+<li>🛠 <a href="https://logrocket.com" target="_blank" rel="noopener noreferrer">LogRocket - Measure front-end performance in production apps</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h3>
+<ul>
+<li>📖 <a href="https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4" target="_blank" rel="noopener noreferrer">The Cost Of JavaScript</a></li>
+<li><a href="https://addyosmani.com/blog/performance-budgets/" target="_blank" rel="noopener noreferrer">AddyOsmani.com - Start Performance Budgeting</a></li>
+<li>📖 <a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/" target="_blank" rel="noopener noreferrer">Get Started With Analyzing Runtime Performance | Google Developers</a></li>
+<li>📖 <a href="https://httparchive.org/reports/state-of-the-web?start=2018_01_01" target="_blank" rel="noopener noreferrer">State of the Web | 2018_01_01</a></li>
+<li>📖 <a href="https://www.speedshop.co/2015/11/05/page-weight-doesnt-matter.html" target="_blank" rel="noopener noreferrer">Page Weight Doesn&#x27;t Matter</a></li>
+<li>📖 <a href="https://www.smashingmagazine.com/2021/01/front-end-performance-2021-free-pdf-checklist/" target="_blank" rel="noopener noreferrer">Front-End Performance Checklist 2021 [PDF, Apple Pages, MS Word]</a></li>
+<li>📖 <a href="http://designingforperformance.com/index.html" target="_blank" rel="noopener noreferrer">Designing for Performance Weighing Aesthetics and Speed - By Lara Callender Hogan [eBook, Print]</a></li>
+<li>📖 <a href="https://github.com/fabkrum/web-performance-resources" target="_blank" rel="noopener noreferrer">fabkrum/web-performance-resources: Up to date collection of valuable web performance resources</a></li>
+<li>📖 <a href="https://www.checkbot.io/guide/speed/" target="_blank" rel="noopener noreferrer">Checkbot - Web Speed Best Practices</a></li>
+<li>🛠 <a href="https://progressivetooling.com/" target="_blank" rel="noopener noreferrer">Progressive Tooling - A list of community-built, third-party tools that can be used to improve page performance</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="html">HTML<a href="#html" class="hash-link" aria-label="Direct link to HTML" title="Direct link to HTML" translate="no">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/html.png" alt="html" class="img_ZXIf"></p>
+<ul class="contains-task-list containsTaskList_L7vm">
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Minified HTML:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> The HTML code is minified, comments, white spaces and new lines are removed from production files.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Removing all unnecessary spaces, comments and attributes will reduce the size of your HTML and speed up your site&#x27;s page load times and obviously lighten the download for your user.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Most of the frameworks have plugins to facilitate the minification of the webpages. You can use a bunch of NPM modules that can do the job for you automatically.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="http://minifycode.com/html-minifier/" target="_blank" rel="noopener noreferrer">HTML minifier | Minify Code</a></li>
+<li>🛠 <a href="http://refresh-sf.com" target="_blank" rel="noopener noreferrer">Online HTML Compressor</a></li>
+<li>📖 <a href="http://perfectionkills.com/experimenting-with-html-minifier/#use_short_doctype" target="_blank" rel="noopener noreferrer">Experimenting with HTML minifier — Perfection Kills</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Place CSS tags always before JavaScript tags:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Ensure that your CSS is always loaded before having JavaScript code.</p>
+<div class="language-html codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-html codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">&lt;!-- Not recommended --&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">script</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">src</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">jquery.js</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token script"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">script</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">script</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">src</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foo.js</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token script"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">script</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">stylesheet</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foo.css</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">&lt;!-- Recommended --&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">stylesheet</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foo.css</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">script</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">src</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">jquery.js</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token script"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">script</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">script</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">src</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foo.js</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token script"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">script</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Having your CSS tags before any JavaScript enables better, parallel download which speed up browser rendering time.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Ensure that <code>&lt;link&gt;</code> and <code>&lt;style&gt;</code> in your <code>&lt;head&gt;</code> are always before your <code>&lt;script&gt;</code>.</p>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Minimize the number of iframes:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Use iframes only if you don&#x27;t have any other technical possibility. Try to avoid iframes as much as you can.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Pre-load optimization with prefetch, dns-prefetch and prerender:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/low.svg" alt="low" class="img_ZXIf"> Popular browsers can use directive on <code>&lt;link&gt;</code> tag and &quot;rel&quot; attribute with certain keywords to pre-load specific URLs.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Prefetching allows a browser to silently fetch the necessary resources needed to display content that a user might access in the near future. The browser is able to store these resources in its cache and speed up the way web pages load when they are using different domains for page resources. When a web page has finished loading and the idle time has passed, the browser begins downloading other resources. When a user go in a particular link (already prefetched), the content will be instantly served.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Ensure that <code>&lt;link&gt;</code> is in your <code>&lt;head&gt;</code> section.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://www.keycdn.com/support/prefetching" target="_blank" rel="noopener noreferrer">What Is Prefetching and Why Use It</a></li>
+<li>📖 <a href="https://css-tricks.com/prefetching-preloading-prebrowsing/" target="_blank" rel="noopener noreferrer">Prefetching, preloading, prebrowsing</a></li>
+<li>📖 <a href="https://www.keycdn.com/blog/resource-hints" target="_blank" rel="noopener noreferrer">What is Preload, Prefetch, and Preconnect</a></li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="#-table-of-contents">⬆ back to top</a></strong></p>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="css">CSS<a href="#css" class="hash-link" aria-label="Direct link to CSS" title="Direct link to CSS" translate="no">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/css.png" alt="css" class="img_ZXIf"></p>
+<ul class="contains-task-list containsTaskList_L7vm">
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Minification:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> All CSS files are minified, comments, white spaces and new lines are removed from production files.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>When CSS files are minified, the content is loaded faster and less data is sent to the client. It&#x27;s important to always minify CSS files in production. It is beneficial for the user as it is for any business who wants to lower bandwidth costs and lower resource usage.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Use tools to minify your files automatically before or during your build or your deployment.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="https://cssnano.github.io/cssnano/" target="_blank" rel="noopener noreferrer">cssnano: A modular minifier based on the PostCSS ecosystem. - cssnano</a></li>
+<li>🛠 <a href="https://goonlinetools.com/css-minifier/" target="_blank" rel="noopener noreferrer">CSS minifier</a></li>
+<li>🛠 <a href="https://www.npmjs.com/package/@neutrinojs/style-minify" target="_blank" rel="noopener noreferrer">@neutrinojs/style-minify - npm</a></li>
+<li>🛠 <a href="http://refresh-sf.com" target="_blank" rel="noopener noreferrer">Online CSS Compressor</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Concatenation:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> CSS files are concatenated in a single file <em>(Not always valid for HTTP/2)</em>.</p>
+<div class="language-html codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-html codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">&lt;!-- Not recommended --&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">stylesheet</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foo.css</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">stylesheet</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">bar.css</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">&lt;!-- Recommended --&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">stylesheet</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foobar.css</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><br></span></code></pre></div></div>
+<p><em>Why:</em></p>
+<blockquote>
+<p>If you are still using HTTP/1, you may need to still concatenate your files, it&#x27;s less true if your server use HTTP/2 (tests should be made).</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Use online tool or any plugin before or during your build or your deployment to concatenate your files. <br>
+⁃ Ensure, of course, that concatenation does not break your project.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://hpbn.co/optimizing-application-delivery/#optimizing-for-http2" target="_blank" rel="noopener noreferrer">HTTP: Optimizing Application Delivery - High Performance Browser Networking (O&#x27;Reilly)</a></li>
+<li>📖 <a href="https://deliciousbrains.com/performance-best-practices-http2/" target="_blank" rel="noopener noreferrer">Performance Best Practices in the HTTP/2 Era</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Non-blocking:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> CSS files need to be non-blocking to prevent the DOM from taking time to load.</p>
+<div class="language-html codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-html codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">preload</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">global.min.css</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">as</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">style</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag special-attr attr-name" style="color:#00a4db">onload</span><span class="token tag special-attr attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag special-attr attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag special-attr attr-value value javascript language-javascript keyword" style="color:#00009f">this</span><span class="token tag special-attr attr-value value javascript language-javascript punctuation" style="color:#393A34">.</span><span class="token tag special-attr attr-value value javascript language-javascript property-access" style="color:#e3116c">rel</span><span class="token tag special-attr attr-value value javascript language-javascript operator" style="color:#393A34">=</span><span class="token tag special-attr attr-value value javascript language-javascript string" style="color:#e3116c">&#x27;stylesheet&#x27;</span><span class="token tag special-attr attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">noscript</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">stylesheet</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">global.min.css</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">noscript</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
+<p><em>Why:</em></p>
+<blockquote>
+<p>CSS files can block the page load and delay the rendering of your page. Using <code>preload</code> can actually load the CSS files before the browser starts showing the content of the page.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ You need to add the <code>rel</code> attribute with the <code>preload</code> value and add <code>as=&quot;style&quot;</code> on the <code>&lt;link&gt;</code> element.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="https://github.com/filamentgroup/loadCSS" target="_blank" rel="noopener noreferrer">loadCSS by filament group</a></li>
+<li>📖 <a href="https://gist.github.com/thedaviddias/c24763b82b9991e53928e66a0bafc9bf" target="_blank" rel="noopener noreferrer">Example of preload CSS using loadCSS</a></li>
+<li>📖 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content" target="_blank" rel="noopener noreferrer">Preloading content with rel=&quot;preload&quot;</a></li>
+<li>📖 <a href="https://www.smashingmagazine.com/2016/02/preload-what-is-it-good-for/" target="_blank" rel="noopener noreferrer">Preload: What Is It Good For? — Smashing Magazine</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Unused CSS:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Remove unused CSS selectors.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Removing unused CSS selectors can reduce the size of your files and then speed up the load of your assets.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ ⚠️ Always check if the framework CSS you want to use don&#x27;t already has a reset / normalize code included. Sometimes you may not need everything that is inside your reset / normalize file.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="https://uncss-online.com/" target="_blank" rel="noopener noreferrer">UnCSS Online</a></li>
+<li>🛠 <a href="https://github.com/purifycss/purifycss" target="_blank" rel="noopener noreferrer">PurifyCSS</a></li>
+<li>🛠 <a href="https://github.com/FullHuman/purgecss" target="_blank" rel="noopener noreferrer">PurgeCSS</a></li>
+<li>🛠 <a href="https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage" target="_blank" rel="noopener noreferrer">Chrome DevTools Coverage</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>CSS Critical:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> The CSS critical (or &quot;above the fold&quot;) collects all the CSS used to render the visible portion of the page. It is embedded before your principal CSS call and between <code>&lt;style&gt;&lt;/style&gt;</code> in a single line (minified if possible).</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Inlining critical CSS help to speed up the rendering of the web pages reducing the number of requests to the server.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Generate the CSS critical with online tools or using a plugin like the one that Addy Osmani developed.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://www.smashingmagazine.com/2015/08/understanding-critical-css/" target="_blank" rel="noopener noreferrer">Understanding Critical CSS</a></li>
+<li>🛠 <a href="https://github.com/addyosmani/critical" target="_blank" rel="noopener noreferrer">Critical by Addy Osmani on GitHub</a> automates this.</li>
+<li>📖 <a href="https://gomakethings.com/inlining-critical-css-for-better-web-performance/" target="_blank" rel="noopener noreferrer">Inlining critical CSS for better web performance | Go Make Things</a>
+<ul>
+<li>🛠 <a href="https://www.sitelocity.com/critical-path-css-generator" target="_blank" rel="noopener noreferrer">Critical Path CSS Generator - Prioritize above the fold content :: SiteLocity</a></li>
+<li>📖 <a href="https://developers.google.com/speed/docs/insights/PrioritizeVisibleContent" target="_blank" rel="noopener noreferrer">Reduce the size of the above-the-fold content</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Embedded or inline CSS:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Avoid using embed or inline CSS inside your <code>&lt;body&gt;</code> _(Not valid for HTTP/2)</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>One of the first reason it&#x27;s because it&#x27;s a good practice to <strong>separate content from design</strong>. It also helps you have a more maintainable code and keep your site accessible. But regarding performance, it&#x27;s simply because it decreases the file-size of your HTML pages and the load time.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Always use external stylesheets or embed CSS in your <code>&lt;head&gt;</code> (and follow the others CSS performance rules)</p>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Analyse stylesheets complexity:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Analyzing your stylesheets can help you to flag issues, redundancies and duplicate CSS selectors.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Sometimes you may have redundancies or validation errors in your CSS, analysing your CSS files and removed these complexities can help you to speed up your CSS files (because your browser will read them faster)</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Your CSS should be organized, using a CSS preprocessor can help you with that. Some online tools listed below can also help you analysing and correct your code.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="http://www.testmycss.com/" target="_blank" rel="noopener noreferrer">TestMyCSS | Optimize and Check CSS Performance</a></li>
+<li>🛠 <a href="https://cssstats.com/" target="_blank" rel="noopener noreferrer">CSS Stats</a></li>
+<li>🛠 <a href="https://github.com/macbre/analyze-css" target="_blank" rel="noopener noreferrer">macbre/analyze-css: CSS selectors complexity and performance analyzer</a></li>
+<li>🛠 <a href="https://www.projectwallace.com/" target="_blank" rel="noopener noreferrer">Project Wallace</a> is like CSS Stats but stores stats over time so you can track your changes</li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="#-table-of-contents">⬆ back to top</a></strong></p>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="fonts">Fonts<a href="#fonts" class="hash-link" aria-label="Direct link to Fonts" title="Direct link to Fonts" translate="no">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/fonts.png" alt="fonts" class="img_ZXIf"></p>
+<ul class="contains-task-list containsTaskList_L7vm">
+<li>
+<p>📖 <a href="https://abookapart.com/products/webfont-handbook" target="_blank" rel="noopener noreferrer">A Book Apart, Webfont Handbook</a></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Webfont formats:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> You are using WOFF2 on your web project or application.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>According to Google, the WOFF 2.0 Web Font compression format offers 30% average gain over WOFF 1.0. It&#x27;s then good to use WOFF 2.0, WOFF 1.0 as a fallback and TTF.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Check before buying your new font that the provider gives you the WOFF2 format. If you are using a free font, you can always use Font Squirrel to generate all the formats you need.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://gist.github.com/sergejmueller/cf6b4f2133bcb3e2f64a" target="_blank" rel="noopener noreferrer">WOFF 2.0 – Learn more about the next generation Web Font Format and convert TTF to WOFF2</a></li>
+<li>🛠 <a href="https://www.fontsquirrel.com/tools/webfont-generator" target="_blank" rel="noopener noreferrer">Create Your Own @font-face Kits » Font Squirrel</a></li>
+<li>🛠 <a href="https://icomoon.io/app/" target="_blank" rel="noopener noreferrer">IcoMoon App - Icon Font, SVG, PDF &amp; PNG Generator</a></li>
+<li>📖 <a href="https://css-tricks.com/snippets/css/using-font-face/?ref=frontendchecklist" target="_blank" rel="noopener noreferrer">Using @font-face | CSS-Tricks</a></li>
+<li>📖 <a href="https://caniuse.com/woff2" target="_blank" rel="noopener noreferrer">Can I use... WOFF2</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Use <code>preconnect</code> to load your fonts faster:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"></p>
+<div class="language-html codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-html codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">link</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">rel</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">preconnect</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">href</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">https://fonts.gstatic.com</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">crossorigin</span><span class="token tag" style="color:#00009f"> </span><span class="token tag punctuation" style="color:#393A34">/&gt;</span><br></span></code></pre></div></div>
+<p><em>Why:</em></p>
+<blockquote>
+<p>When you arrived on a website, your device needs to find out where your site lives and which server it needs to connect with. Your browser had to contact a DNS server and wait for the lookup complete before fetching the resource (fonts, CSS files...). Prefetches and preconnects allow the browser to lookup the DNS information and start establishing a TCP connection to the server hosting the font file. This provides a performance boost because by the time the browser gets around to parsing the css file with the font information and discovering it needs to request a font file from the server, it will already have pre-resolved the DNS information and have an open connection to the server ready in its connection pool.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Before prefetching your webfonts, use webpagetest to evaluate your website <br>
+⁃ Look for teal colored DNS lookups and note the host that are being requested <br>
+⁃ Prefetch your webfonts in your <code>&lt;head&gt;</code> and add eventually these hostnames that you should prefetch too</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://www.cdnplanet.com/blog/faster-google-webfonts-preconnect/" target="_blank" rel="noopener noreferrer">Faster Google Fonts with Preconnect - CDN Planet</a></li>
+<li>📖 <a href="https://www.viget.com/articles/make-your-site-faster-with-preconnect-hints/" target="_blank" rel="noopener noreferrer">Make Your Site Faster with Preconnect Hints | Viget</a></li>
+<li>📖 <a href="https://www.machmetrics.com/speed-blog/guide-to-browser-hints-preload-preconnect-prefetch/" target="_blank" rel="noopener noreferrer">Ultimate Guide to Browser Hints: Preload, Prefetch, and Preconnect - MachMetrics Speed Blog</a></li>
+<li>📖 <a href="https://www.zachleat.com/web/comprehensive-webfonts/#font-face" target="_blank" rel="noopener noreferrer">A Comprehensive Guide to Font Loading Strategies—zachleat.com</a></li>
+<li>🛠 <a href="https://github.com/typekit/webfontloader" target="_blank" rel="noopener noreferrer">typekit/webfontloader: Web Font Loader gives you added control when using linked fonts via @font-face.</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Webfont size:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Webfont sizes don&#x27;t exceed 300kb (all variants included)</p>
+</li>
+<li>
+<p>📖 <a href="https://httparchive.org/reports/page-weight#bytesFont" target="_blank" rel="noopener noreferrer">Font Bytes - Page Weight</a></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Prevent Flash or Invisible Text:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Avoid transparent text until the Webfont is loaded</p>
+</li>
+<li>
+<p>📖 <a href="https://css-tricks.com/font-display-masses/" target="_blank" rel="noopener noreferrer"><code>font-display</code> for the Masses</a></p>
+</li>
+<li>
+<p>📖 <a href="https://www.sitepoint.com/css-font-display-future-font-rendering-web/" target="_blank" rel="noopener noreferrer">CSS font-display: The Future of Font Rendering on the Web</a></p>
+</li>
+</ul>
+<p><strong><a href="#-table-of-contents">⬆ back to top</a></strong></p>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="images">Images<a href="#images" class="hash-link" aria-label="Direct link to Images" title="Direct link to Images" translate="no">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/images.png" alt="images" class="img_ZXIf"></p>
+<ul class="contains-task-list containsTaskList_L7vm">
+<li>
+<p>📖 <a href="https://httparchive.org/reports/page-weight#bytesImg" target="_blank" rel="noopener noreferrer">Image Bytes in 2018</a></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Images optimization:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Your images are optimized, compressed without direct impact to the end user.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Optimized images load faster in your browser and consume less data.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Try using CSS3 effects when it&#x27;s possible (instead of a small image) <br>
+⁃ When it&#x27;s possible, use fonts instead of text encoded in your images <br>
+⁃ Use SVG <br>
+⁃ Use a tool and specify a level compression under 85.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization" target="_blank" rel="noopener noreferrer">Image Optimization | Web Fundamentals | Google Developers</a></li>
+<li>📖 <a href="https://images.guide/" target="_blank" rel="noopener noreferrer">Essential Image Optimization - An eBook by Addy Osmani</a></li>
+<li>🛠 <a href="https://tinyjpg.com/" target="_blank" rel="noopener noreferrer">TinyJPG – Compress JPEG images intelligently</a></li>
+<li>🛠 <a href="https://kraken.io/web-interface" target="_blank" rel="noopener noreferrer">Kraken.io - Online Image Optimizer</a></li>
+<li>🛠 <a href="https://compressor.io/compress" target="_blank" rel="noopener noreferrer">Compressor.io - optimize and compress JPEG photos and PNG images</a></li>
+<li>🛠 <a href="https://webspeedtest.cloudinary.com" target="_blank" rel="noopener noreferrer">Cloudinary - Image Analysis Tool</a></li>
+<li>🛠 <a href="https://demo.imgeng.in" target="_blank" rel="noopener noreferrer">ImageEngine - Image Webpage Loading Test</a></li>
+<li>🛠 <a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="noopener noreferrer">SVGOMG - Optimize SVG vector graphics files</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Images format:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Choose your image format appropriately.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>To ensure that your images don&#x27;t slow your website, choose the format that will correspond to your image. If it&#x27;s a photo, JPEG is most of the time more appropriate than PNG or GIF. But don&#x27;t forget to look a the nex-gen formats which can reduce the size of your files. Each image format has pros and cons, it&#x27;s important to know these to make the best choice possible.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Use <a href="https://developers.google.com/web/tools/lighthouse/" target="_blank" rel="noopener noreferrer">Lighthouse</a> to identify which images can eventually use <strong>next-gen formats</strong> (like JPEG 2000m JPEG XR or WebP) <br>
+⁃ Compare different formats, sometimes using PNG8 is better than PNG16, sometimes it&#x27;s not.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://developers.google.com/web/tools/lighthouse/audits/webp" target="_blank" rel="noopener noreferrer">Serve Images in Next-Gen Formats | Tools for Web Developers | Google Developers</a></li>
+<li>📖 <a href="https://www.sitepoint.com/what-is-the-right-image-format-for-your-website/" target="_blank" rel="noopener noreferrer">What Is the Right Image Format for Your Website? — SitePoint</a></li>
+<li>📖 <a href="https://www.sitepoint.com/png8-the-clear-winner/" target="_blank" rel="noopener noreferrer">PNG8 - The Clear Winner — SitePoint</a></li>
+<li>📖 <a href="https://www.diyphotography.net/8-bit-vs-16-bit-color-depth-use-matters/" target="_blank" rel="noopener noreferrer">8-bit vs 16-bit - What Color Depth You Should Use And Why It Matters - DIY Photography</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Use vector image vs raster/bitmap:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Prefer using vector image rather than bitmap images (when possible).</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Vector images (SVG) tend to be smaller than images and SVG&#x27;s are responsive and scale perfectly. These images can be animated and modified by CSS.</p>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Images dimensions:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Set <code>width</code> and <code>height</code> attributes on <code>&lt;img&gt;</code> if the final rendered image size is known.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>If height and width are set, the space required for the image is reserved when the page is loaded. However, without these attributes, the browser does not know the size of the image, and cannot reserve the appropriate space to it. The effect will be that the page layout will change during loading (while the images load).</p>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Avoid using Base64 images:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> You could eventually convert tiny images to base64 but it&#x27;s actually not the best practice.</p>
+<ul>
+<li>📖 <a href="https://csswizardry.com/2017/02/base64-encoding-and-performance/" target="_blank" rel="noopener noreferrer">Base64 Encoding &amp; Performance, Part 1 and 2 by Harry Roberts</a></li>
+<li>📖 <a href="http://www.andygup.net/a-closer-look-at-base64-image-performance/" target="_blank" rel="noopener noreferrer">A closer look at Base64 image performance – The Page Not Found Blog</a></li>
+<li>📖 <a href="https://www.davidbcalhoun.com/2011/when-to-base64-encode-images-and-when-not-to/" target="_blank" rel="noopener noreferrer">When to base64 encode images (and when not to) | David Calhoun</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Lazy loading:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Offscreen images are loaded lazily (A noscript fallback is always provided).</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>It will improve the response time of the current page and then avoid loading unnecessary images that the user may not need.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Use <a href="https://developers.google.com/web/tools/lighthouse/" target="_blank" rel="noopener noreferrer">Lighthouse</a> to identify how many <strong>images are offscreen</strong>. <br>
+⁃ Use a JavaScript plugin like the following to lazyload your images. Make sure you target offscreen images only. <br>
+⁃ Also make sure to lazyload alternative images shown at mouseover or upon other user actions.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="https://github.com/verlok/lazyload" target="_blank" rel="noopener noreferrer">verlok/lazyload: GitHub</a></li>
+<li>🛠 <a href="https://github.com/aFarkas/lazysizes/" target="_blank" rel="noopener noreferrer">aFarkas/lazysizes: GitHub</a></li>
+<li>🛠 <a href="https://github.com/mfranzke/loading-attribute-polyfill/" target="_blank" rel="noopener noreferrer">mfranzke/loading-attribute-polyfill: GitHub</a></li>
+<li>📖 <a href="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/" target="_blank" rel="noopener noreferrer">Lazy Loading Images and Video | Web Fundamentals | Google Developers</a></li>
+<li>📖 <a href="http://blog.dynamicdrive.com/5-brilliant-ways-to-lazy-load-images-for-faster-page-loads/" target="_blank" rel="noopener noreferrer">5 Brilliant Ways to Lazy Load Images For Faster Page Loads - Dynamic Drive Blog</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Responsive images:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Ensure to serve images that are close to your display size.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Small devices don&#x27;t need images bigger than their viewport. It&#x27;s recommended to have multiple versions of one image on different sizes.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Create different image sizes for the devices you want to target. <br>
+⁃ Use <code>srcset</code> and <code>picture</code> to deliver multiple variants of each image.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images" target="_blank" rel="noopener noreferrer">Responsive images - Learn web development | MDN</a></li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="#-table-of-contents">⬆ back to top</a></strong></p>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="javascript">JavaScript<a href="#javascript" class="hash-link" aria-label="Direct link to JavaScript" title="Direct link to JavaScript" translate="no">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/javascript.png" alt="javascript" class="img_ZXIf"></p>
+<ul class="contains-task-list containsTaskList_L7vm">
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>JS Minification:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> All JavaScript files are minified, comments, white spaces and new lines are removed from production files <em>(still valid if using HTTP/2)</em>.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Removing all unnecessary spaces, comments and break will reduce the size of your JavaScript files and speed up your site&#x27;s page load times and obviously lighten the download for your user.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Use the tools suggested below to minify your files automatically before or during your build or your deployment.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="https://www.npmjs.com/package/uglify-js" target="_blank" rel="noopener noreferrer">uglify-js - npm</a></li>
+<li>🛠 <a href="http://refresh-sf.com" target="_blank" rel="noopener noreferrer">Online JavaScript Compressor</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>No JavaScript inside:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> <em>(Only valid for website)</em> Avoid having multiple JavaScript codes embedded in the middle of your body. Regroup your JavaScript code inside external files or eventually in the <code>&lt;head&gt;</code> or at the end of your page (before <code>&lt;/body&gt;</code>).</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Placing JavaScript embedded code directly in your <code>&lt;body&gt;</code> can slow down your page because it loads while the DOM is being built. The best option is to use external files with <code>async</code> or <code>defer</code> to avoid blocking the DOM. Another option is to place some scripts inside your <code>&lt;head&gt;</code>. Most of the time analytics code or small script that need to load before the DOM gets to main processing.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Ensure that all your files are loaded using <code>async</code> or <code>defer</code> and decide wisely the code that you will need to inject in your <code>&lt;head&gt;</code>.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://www.upwork.com/hiring/development/11-tips-to-optimize-javascript-and-improve-website-loading-speeds/" target="_blank" rel="noopener noreferrer">11 Tips to Optimize JavaScript and Improve Website Loading Speeds</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Non-blocking JavaScript:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> JavaScript files are loaded asynchronously using <code>async</code> or deferred using <code>defer</code> attribute.</p>
+<div class="language-html codeBlockContainer_SHfy theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_PqAM"><pre tabindex="0" class="prism-code language-html codeBlock_mdjV thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_rTdR"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">&lt;!-- Defer Attribute --&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">script</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">defer</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">src</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foo.js</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token script"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">script</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">&lt;!-- Async Attribute --&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token tag punctuation" style="color:#393A34">&lt;</span><span class="token tag" style="color:#00009f">script</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">async</span><span class="token tag" style="color:#00009f"> </span><span class="token tag attr-name" style="color:#00a4db">src</span><span class="token tag attr-value punctuation attr-equals" style="color:#393A34">=</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag attr-value" style="color:#e3116c">foo.js</span><span class="token tag attr-value punctuation" style="color:#393A34">&quot;</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><span class="token script"></span><span class="token tag punctuation" style="color:#393A34">&lt;/</span><span class="token tag" style="color:#00009f">script</span><span class="token tag punctuation" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
+<p><em>Why:</em></p>
+<blockquote>
+<p>JavaScript blocks the normal parsing of the HTML document, so when the parser reaches a <code>&lt;script&gt;</code> tag (particularly is inside the <code>&lt;head&gt;</code>), it stops to fetch and run it. Adding <code>async</code> or <code>defer</code> are highly recommended if your scripts are placed in the top of your page but less valuable if just before your <code>&lt;/body&gt;</code> tag. But it&#x27;s a good practice to always use these attributes to avoid any performance issue.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ Add <code>async</code> (if the script don&#x27;t rely on other scripts) or <code>defer</code> (if the script relies upon or relied upon by an async script) as an attribute to your script tag. <br>
+⁃ If you have small scripts, maybe use inline script place above async scripts.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://developers.google.com/speed/docs/insights/BlockingJS" target="_blank" rel="noopener noreferrer">Remove Render-Blocking JavaScript</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Optimized and updated JS libraries:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> All JavaScript libraries used in your project are necessary (prefer Vanilla JavaScript for simple functionalities), updated to their latest version and don&#x27;t overwhelm your JavaScript with unnecessary methods.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Most of the time, new versions come with optimization and security fix. You should use the most optimized code to speed up your project and ensure that you&#x27;ll not slow down your website or app without outdated plugin.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>If your project use NPM packages, <a href="https://www.npmjs.com/package/npm-check" target="_blank" rel="noopener noreferrer">npm-check</a> is a pretty interesting library to upgrade / update your libraries.
+<a href="https://greenkeeper.io/" target="_blank" rel="noopener noreferrer">Greenkeeper</a> can automatically look for your dependencies and suggest an update every time a new version is out.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="http://youmightnotneedjquery.com/" target="_blank" rel="noopener noreferrer">You may not need jQuery</a></li>
+<li>📖 <a href="https://plainjs.com/" target="_blank" rel="noopener noreferrer">Vanilla JavaScript for building powerful web applications</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Check dependencies size limit:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/low.svg" alt="low" class="img_ZXIf"> Ensure to use wisely external libraries, most of the time, you can use a lighter library for a same functionality.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>You may be tempted to use one of the 745 000 packages you can find on <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">npm</a>, but you need to choose the best package for your needs. For example, MomentJS is an awesome library but with a lot of methods you may never use, that&#x27;s why Day.js was created. It&#x27;s just 2kB vs 16.4kB gz for Moment.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Always compare and choose the best and lighter library for your needs. You can also use tools like <a href="http://www.npmtrends.com/" target="_blank" rel="noopener noreferrer">npm trends</a> to compare NPM package downloads counts or <a href="https://bundlephobia.com/" target="_blank" rel="noopener noreferrer">Bundlephobia</a> to know the size of your dependencies.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="https://github.com/ai/size-limit" target="_blank" rel="noopener noreferrer">ai/size-limit: Prevent JS libraries bloat. If you accidentally add a massive dependency, Size Limit will throw an error.</a></li>
+<li>🛠 <a href="https://www.npmjs.com/package/webpack-bundle-analyzer" target="_blank" rel="noopener noreferrer">webpack-bundle-analyzer - npm</a></li>
+<li>🛠 <a href="https://www.npmjs.com/package/js-dependency-viewer" target="_blank" rel="noopener noreferrer">js-dependency-viewer - npm</a></li>
+<li>📖 <a href="https://evilmartians.com/chronicles/size-limit-make-the-web-lighter" target="_blank" rel="noopener noreferrer">Size Limit: Make the Web lighter — Martian Chronicles, Evil Martians&#x27; team blog</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>JavaScript Profiling:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Check for performance problems in your JavaScript files (and CSS too).</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>JavaScript complexity can slow down runtime performance. Identifying these possible issues are essential to offer the smoothest user experience.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Use the Timeline tool in the Chrome Developer Tool to evaluate scripts events and found the one that may take too much time.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://developers.google.com/web/tools/chrome-devtools/rendering-tools/js-execution" target="_blank" rel="noopener noreferrer">Speed Up JavaScript Execution | Tools for Web Developers | Google Developers</a></li>
+<li>📖 <a href="https://www.smashingmagazine.com/2012/06/javascript-profiling-chrome-developer-tools/" target="_blank" rel="noopener noreferrer">JavaScript Profiling With The Chrome Developer Tools — Smashing Magazine</a></li>
+<li>📖 <a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/heap-snapshots" target="_blank" rel="noopener noreferrer">How to Record Heap Snapshots | Tools for Web Developers | Google Developers</a></li>
+<li>📖 <a href="https://blackfire.io/docs/book/22-frontend-profiling" target="_blank" rel="noopener noreferrer">Chapter 22 - Profiling the Frontend - Blackfire</a></li>
+<li>📖 <a href="http://www.monitis.com/blog/30-tips-to-improve-javascript-performance/" target="_blank" rel="noopener noreferrer">30 Tips To Improve Javascript Performance</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Use of Service Workers:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> You are using Service Workers in your PWA to cache data or execute possible heavy tasks without impacting the user experience of your application.</p>
+<ul>
+<li>📖 <a href="https://developers.google.com/web/fundamentals/primers/service-workers/" target="_blank" rel="noopener noreferrer">Service Workers: an Introduction | Web Fundamentals | Google Developers</a></li>
+<li>📖 <a href="https://developers.google.com/web/showcase/2016/service-worker-perf" target="_blank" rel="noopener noreferrer">Measuring the Real-world Performance Impact of Service Workers | Web | Google Developers</a></li>
+<li>📖 <a href="https://www.keycdn.com/blog/service-workers/" target="_blank" rel="noopener noreferrer">What Are Service Workers and How They Help Improve Performance</a></li>
+<li>📹 <a href="https://www.youtube.com/watch?v=__xAtWgfzvc" target="_blank" rel="noopener noreferrer">How does a service worker work? - YouTube</a></li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="#-table-of-contents">⬆ back to top</a></strong></p>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="server">Server<a href="#server" class="hash-link" aria-label="Direct link to Server" title="Direct link to Server" translate="no">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/server-side.png" alt="server-side" class="img_ZXIf"></p>
+<ul class="contains-task-list containsTaskList_L7vm">
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Your website is using HTTPS:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"></p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>HTTPS is not only for ecommerce websites, but for all websites that are exchanging data. Data shared by a user or data shared to an external entity. Modern browsers today limit functionalities for sites that are not secure. For example: geolocation, push notifications and service workers don&#x27;t work if your instance is not using HTTPS. And today is much more easy to setup a project with an SSL certificate than it was before (and for free, thanks to <a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Let&#x27;s Encrypt</a>).</p>
+</blockquote>
+</li>
+<li>
+<p>📖 <a href="https://www.cloudflare.com/learning/security/why-use-https/" target="_blank" rel="noopener noreferrer">Why Use HTTPS? | Cloudflare</a></p>
+</li>
+<li>
+<p>📖 <a href="https://moz.com/blog/enabling-https-without-sacrificing-web-performance" target="_blank" rel="noopener noreferrer">Enabling HTTPS Without Sacrificing Your Web Performance - Moz</a></p>
+</li>
+<li>
+<p>📖 <a href="https://wp-rocket.me/blog/https-affects-website-performance/" target="_blank" rel="noopener noreferrer">How HTTPS Affects Website Performance</a></p>
+</li>
+<li>
+<p>📖 <a href="https://www.tunetheweb.com/blog/http-versus-https-versus-http2/" target="_blank" rel="noopener noreferrer">HTTP versus HTTPS versus HTTP2 - The real story | Tune The Web</a></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Page weight &lt; 1500 KB (ideally &lt; 500 KB):</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Reduce the size of your page + resources as much as you can.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Ideally you should try to target &lt; 500 KB but the state of web shows that the median of Kilobytes is around 1500 KB (even on mobile). Depending on your target users, network connection, devices, it&#x27;s important to reduce as much as possible your total Kilobytes to have the best user experience possible.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>⁃ All the rules inside the Front-End Performance Checklist will help you to reduce as much as possible your resources and your code.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://httparchive.org/reports/page-weight#bytesTotal" target="_blank" rel="noopener noreferrer">Page Weight</a></li>
+<li>🛠 <a href="https://whatdoesmysitecost.com/" target="_blank" rel="noopener noreferrer">What Does My Site Cost?</a></li>
+<li>🛠 <a href="https://stackoverflow.com/questions/38239980/measure-full-page-size-in-chrome-devtools" target="_blank" rel="noopener noreferrer">web - Measure full page size in Chrome DevTools - Stack Overflow</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Page load times &lt; 3 seconds:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Reduce as much as possible your page load times to quickly deliver your content to your users.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Faster your website or app is, less you have probability of bounce increases, in other terms you have less chances to lose your user or future client. Enough researches on the subject prove that point.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Use online tools like <a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank" rel="noopener noreferrer">Page Speed Insight</a> or <a href="https://www.webpagetest.org/" target="_blank" rel="noopener noreferrer">WebPageTest</a> to analyze what could be slowing you down and use the Front-End Performance Checklist to improve your load times.</p>
+</blockquote>
+<ul>
+<li>🛠 <a href="https://www.thinkwithgoogle.com/feature/mobile/" target="_blank" rel="noopener noreferrer">Compare your mobile site speed</a></li>
+<li>🛠 <a href="https://testmysite.thinkwithgoogle.com/intl/en-us" target="_blank" rel="noopener noreferrer">Test Your Mobile Website Speed and Performance - Think With Google</a></li>
+<li>📖 <a href="https://www.machmetrics.com/speed-blog/average-page-load-times-websites-2018/" target="_blank" rel="noopener noreferrer">Average Page Load Times for 2018 - How does yours compare? - MachMetrics Speed Blog</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Time To First Byte &lt; 1.3 seconds:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Reduce as much as you can the time your browser waits before receiving data.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Cookie size:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> If you are using cookies, be sure each cookie doesn&#x27;t exceed 4096 bytes and your domain name doesn&#x27;t have more than 20 cookies.</p>
+<p><em>Why:</em></p>
+<blockquote>
+<p>Cookies are exchanged in the HTTP headers between web servers and browsers. It&#x27;s important to keep the size of cookies as low as possible to minimize the impact on the user&#x27;s response time.</p>
+</blockquote>
+<p><em>How:</em></p>
+<blockquote>
+<p>Eliminate unnecessary cookies.</p>
+</blockquote>
+<ul>
+<li>📖 <a href="https://tools.ietf.org/html/rfc6265" target="_blank" rel="noopener noreferrer">Cookie specification: RFC 6265</a></li>
+<li>📖 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies" target="_blank" rel="noopener noreferrer">Cookies</a></li>
+<li>🛠 <a href="http://browsercookielimits.squawky.net/" target="_blank" rel="noopener noreferrer">Browser Cookie Limits</a></li>
+<li>📖 <a href="http://www.monitis.com/blog/website-performance-cookies-dont-taste-so-good/" target="_blank" rel="noopener noreferrer">Website Performance: Cookies Don&#x27;t Taste So Good - Monitis Blog</a></li>
+<li>📖 <a href="https://www.globaldots.com/googles-web-performance-best-practices-3-minimize-request-overhead/" target="_blank" rel="noopener noreferrer">Google&#x27;s Web Performance Best Practices #3: Minimize Request Overhead - GlobalDots Blog</a></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Minimizing HTTP requests:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Always ensure that every file requested are essential for your website or application.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Use a CDN to deliver your assets:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/medium.svg" alt="medium" class="img_ZXIf"> Use a CDN to deliver faster your content over the world.</p>
+</li>
+<li>
+<p>📖 <a href="https://www.cdnplanet.com/blog/10-tips-optimize-cdn-performance/" target="_blank" rel="noopener noreferrer">10 Tips to Optimize CDN Performance - CDN Planet</a></p>
+</li>
+<li>
+<p>📖 <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching" target="_blank" rel="noopener noreferrer">HTTP Caching | Web Fundamentals | Google Developers</a></p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Serve files from the same protocol:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Avoid having your website serving files coming from source using HTTP on your website which is using HTTPS for example. If your website is using HTTPS, external files should come from the same protocol.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Serve reachable files:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Avoid requesting unreachable files (404).</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>Set HTTP cache headers properly:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Set HTTP headers to avoid expensive number of roundtrips between your browser and the server.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" disabled=""> <strong>GZIP / Brotli compression is enabled:</strong> <img decoding="async" loading="lazy" src="https://raw.githubusercontent.com/thedaviddias/Front-End-Performance-Checklist/refs/heads/main//images/priority/high.svg" alt="high" class="img_ZXIf"> Use a compression method such as Gzip or Brotli to reduce the size of your JavaScript files. With a smaller sizes file, users will be able to download the asset faster, resulting in improved performance.</p>
+</li>
+<li>
+<p>📖 <a href="https://www.brotli.pro/" target="_blank" rel="noopener noreferrer">Learn more about Brotli Compression</a></p>
+</li>
+<li>
+<p>📖 <a href="https://caniuse.com/brotli" target="_blank" rel="noopener noreferrer">Can I use... Brotli</a></p>
+</li>
+</ul>
+<p><strong><a href="#-table-of-contents">⬆ back to top</a></strong></p>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="performances-and-js-frameworks">Performances and JS Frameworks<a href="#performances-and-js-frameworks" class="hash-link" aria-label="Direct link to Performances and JS Frameworks" title="Direct link to Performances and JS Frameworks" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="angular">Angular<a href="#angular" class="hash-link" aria-label="Direct link to Angular" title="Direct link to Angular" translate="no">​</a></h3>
+<ul>
+<li>📖 <a href="https://github.com/mgechev/angular-performance-checklist" target="_blank" rel="noopener noreferrer">Angular Performance Checklist</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="react">React<a href="#react" class="hash-link" aria-label="Direct link to React" title="Direct link to React" translate="no">​</a></h3>
+<ul>
+<li>📖 <a href="https://reactjs.org/docs/optimizing-performance.html" target="_blank" rel="noopener noreferrer">Optimizing Performance - React</a></li>
+<li>📖 <a href="https://cloudinary.com/documentation/react_image_manipulation" target="_blank" rel="noopener noreferrer">React image manipulation | Cloudinary</a></li>
+<li>📖 <a href="https://building.calibreapp.com/debugging-react-performance-with-react-16-and-chrome-devtools-c90698a522ad" target="_blank" rel="noopener noreferrer">Debugging React performance with React 16 and Chrome Devtools.</a></li>
+<li>📖 <a href="https://web.dev/react/" target="_blank" rel="noopener noreferrer">Build Performant - React</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="vue">Vue<a href="#vue" class="hash-link" aria-label="Direct link to Vue" title="Direct link to Vue" translate="no">​</a></h3>
+<ul>
+<li>📖 <a href="https://learn-vuejs.github.io/vue-patterns/useful-links/" target="_blank" rel="noopener noreferrer">Vue - Useful Links|Style Guide and Performance</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="performances-and-cms">Performances and CMS<a href="#performances-and-cms" class="hash-link" aria-label="Direct link to Performances and CMS" title="Direct link to Performances and CMS" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_vU8F" id="wordpress">WordPress<a href="#wordpress" class="hash-link" aria-label="Direct link to WordPress" title="Direct link to WordPress" translate="no">​</a></h3>
+<ul>
+<li>🛠 <a href="https://wpengine.com/speed-tool/" target="_blank" rel="noopener noreferrer">Test Your Website Speed | WordPress Hosting by @WPEngine</a></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="articles">Articles<a href="#articles" class="hash-link" aria-label="Direct link to Articles" title="Direct link to Articles" translate="no">​</a></h4>
+<ul>
+<li>📖 <a href="https://www.wpbeginner.com/wordpress-performance-speed/" target="_blank" rel="noopener noreferrer">19 Tips to Speed Up WordPress Performance (Updated)</a></li>
+<li>📖 <a href="https://www.wpbeginner.com/beginners-guide/speed-wordpress-save-images-optimized-web/" target="_blank" rel="noopener noreferrer">Speed Up Your WordPress - How to Save Images Optimized for Web</a></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_vU8F" id="plugins-recommended">Plugins recommended<a href="#plugins-recommended" class="hash-link" aria-label="Direct link to Plugins recommended" title="Direct link to Plugins recommended" translate="no">​</a></h4>
+<ul>
+<li>🛠 <a href="https://wp-rocket.me/" target="_blank" rel="noopener noreferrer">Caching Plugin for WordPress - Speed up your website with WP Rocket</a></li>
+<li>🛠 <a href="https://wordpress.org/plugins/wp-sweep/" target="_blank" rel="noopener noreferrer">WP-Sweep | WordPress.org</a></li>
+<li>🛠 <a href="https://wordpress.org/plugins/imagify/" target="_blank" rel="noopener noreferrer">Imagify Image Optimizer | WordPress.org</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_vU8F" id="license">License<a href="#license" class="hash-link" aria-label="Direct link to License" title="Direct link to License" translate="no">​</a></h2>
+<p><a href="https://github.com/thedaviddias/Front-End-Performance-Checklist/tree/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/tamnk74/fullstack-dev/tree/main/docs-site/docs/frontend/performance-checklist.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_oUsg" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_nFFz"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/fullstack-dev/docs/frontend/checklist"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Front-End Checklist</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/fullstack-dev/docs/frontend/design-checklist"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Front-End Design Checklist</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_dfCb thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#-table-of-contents" class="table-of-contents__link toc-highlight">📚 Table of Contents</a></li><li><a href="#how-to-use" class="table-of-contents__link toc-highlight">How to use?</a><ul><li><a href="#performance-tools" class="table-of-contents__link toc-highlight">Performance tools</a></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li></ul></li><li><a href="#html" class="table-of-contents__link toc-highlight">HTML</a></li><li><a href="#css" class="table-of-contents__link toc-highlight">CSS</a></li><li><a href="#fonts" class="table-of-contents__link toc-highlight">Fonts</a></li><li><a href="#images" class="table-of-contents__link toc-highlight">Images</a></li><li><a href="#javascript" class="table-of-contents__link toc-highlight">JavaScript</a></li><li><a href="#server" class="table-of-contents__link toc-highlight">Server</a></li><li><a href="#performances-and-js-frameworks" class="table-of-contents__link toc-highlight">Performances and JS Frameworks</a><ul><li><a href="#angular" class="table-of-contents__link toc-highlight">Angular</a></li><li><a href="#react" class="table-of-contents__link toc-highlight">React</a></li><li><a href="#vue" class="table-of-contents__link toc-highlight">Vue</a></li></ul></li><li><a href="#performances-and-cms" class="table-of-contents__link toc-highlight">Performances and CMS</a><ul><li><a href="#wordpress" class="table-of-contents__link toc-highlight">WordPress</a></li></ul></li><li><a href="#license" class="table-of-contents__link toc-highlight">License</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/intro">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/architecture-practices">Architecture Practices</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/features">Features</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Development</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/setup">Setup &amp; Installation</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/testing">Testing</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/deployment">Deployment</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub (Fullstack Dev)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_PqB4"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Next.js for Production. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
