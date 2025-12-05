@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_site=self.webpackChunkdocs_site||[]).push([[14320],{74546:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/fullstack-dev/blog/page/2","page":2,"postsPerPage":10,"totalPages":3,"totalCount":28,"previousPage":"/fullstack-dev/blog","nextPage":"/fullstack-dev/blog/page/3","blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
