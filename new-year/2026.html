@@ -195,7 +195,7 @@
     </div>
 
     <!-- Happy New Year Song -->
-    <audio id="fireworkSound" loop>
+    <audio id="fireworkSound" loop autoplay="true" allow="autoplay">
       <source src="../static/media/happy_new_year.mp3" type="audio/mpeg" />
       <!-- Celebratory music for New Year -->
       Your browser does not support the audio element.
@@ -525,7 +525,7 @@
 
       // Countdown Timer
       const countdown = () => {
-        const newYear = new Date('December 31, 2025 18:10:00').getTime();
+        const newYear = new Date('Jan 1, 2026 00:00:00').getTime();
         const now = new Date().getTime();
         const gap = newYear - now;
 
