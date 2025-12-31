@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy New Year 2026! 🎉</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Custom background image with dark overlay for better text contrast */
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          /* Dark overlay */
+            url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?q=80&w=2069&auto=format&fit=crop')
+            /* New Year city skyline */;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #fireworks-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?q=80&w=2069&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: 0;
+      }
+
+      #tsparticles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .container {
+        text-align: center;
+        z-index: 10;
+        position: relative;
+      }
+
+      h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+        to {
+          text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      #countdown {
+        font-size: 5rem;
+        font-weight: bold;
+        margin: 30px 0;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .time-unit {
+        display: inline-block;
+        margin: 0 15px;
+        min-width: 120px;
+      }
+
+      .time-value {
+        display: block;
+        font-size: 6rem;
+        font-weight: bold;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      }
+
+      .time-label {
+        display: block;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        margin-top: 10px;
+        opacity: 0.9;
+      }
+
+      #message {
+        font-size: 3rem;
+        margin-top: 40px;
+        display: none;
+        animation: bounceIn 1s;
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .year {
+        font-size: 8rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, #ffd700, #ffa500, #ffd700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s infinite;
+        display: none;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+        .time-unit {
+          margin: 0 5px;
+          min-width: 70px;
+        }
+        .time-value {
+          font-size: 3rem;
+        }
+        .time-label {
+          font-size: 0.8rem;
+        }
+        #message {
+          font-size: 1.5rem;
+        }
+        .year {
+          font-size: 4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="fireworks-background"></div>
+    <div id="tsparticles"></div>
+
+    <div class="container">
+      <h1>🎊 New Year Countdown 🎊</h1>
+      <div id="countdown">
+        <div class="time-unit">
+          <span class="time-value" id="days">00</span>
+          <span class="time-label">Days</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="minutes">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="seconds">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+      <div id="message">🎉 Happy New Year! 🎉</div>
+      <div class="year" id="year">2026</div>
+    </div>
+
+    <!-- Happy New Year Song -->
+    <audio id="fireworkSound" loop>
+      <source src="../static/media/happy_new_year.mp3" type="audio/mpeg" />
+      <!-- Celebratory music for New Year -->
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- tsParticles Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-fireworks@3/tsparticles.preset.fireworks.bundle.min.js"></script>
+
+    <script>
+      let isFireworksShown = false;
+      let countdownInterval;
+      // Fireworks using confetti
+      function startFireworks() {
+        console.log('Starting fireworks!');
+        isFireworksShown = true;
+        document.getElementById('message').style.display = 'none';
+        document.getElementById('year').style.display = 'none';
+        document.querySelector('h1').textContent = '🎉 Happy New Year 2026! 🎉  ';
+
+        // Play firework sound
+        const audio = document.getElementById('fireworkSound');
+        audio.volume = 0.8; // Set volume to 30% for pleasant background sound
+        audio.play().catch((err) => console.log('Audio play failed:', err));
+        (async () => {
+          await loadFireworksPreset(tsParticles);
+
+          await tsParticles.load({
+            id: 'tsparticles',
+            options: {
+              preset: 'fireworks',
+              detectRetina: true,
+              background: {
+                color: 'transparent',
+              },
+              fpsLimit: 120,
+              emitters: [
+                {
+                  direction: 'top',
+                  rate: {
+                    delay: 0.4, // Increased delay for less frequency
+                    quantity: 1, // Reduced quantity
+                  },
+                  position: {
+                    x: 10,
+                    y: 100,
+                  },
+                  size: {
+                    width: 0,
+                    height: 0,
+                  },
+                },
+                {
+                  direction: 'top',
+                  rate: {
+                    delay: 0.3, // Increased delay for less frequency
+                    quantity: 2, // Reduced quantity
+                  },
+                  position: {
+                    x: 30,
+                    y: 100,
+                  },
+                  size: {
+                    width: 0,
+                    height: 0,
+                  },
+                },
+                {
+                  direction: 'top',
+                  rate: {
+                    delay: 0.2, // Increased delay for less frequency
+                    quantity: 4, // Reduced quantity (still slightly more for center)
+                  },
+                  position: {
+                    x: 50,
+                    y: 100,
+                  },
+                  size: {
+                    width: 0,
+                    height: 0,
+                  },
+                },
+                {
+                  direction: 'top',
+                  rate: {
+                    delay: 0.3, // Increased delay for less frequency
+                    quantity: 2, // Reduced quantity
+                  },
+                  position: {
+                    x: 70,
+                    y: 100,
+                  },
+                  size: {
+                    width: 0,
+                    height: 0,
+                  },
+                },
+                {
+                  direction: 'top',
+                  rate: {
+                    delay: 0.4, // Increased delay for less frequency
+                    quantity: 1, // Reduced quantity
+                  },
+                  position: {
+                    x: 90,
+                    y: 100,
+                  },
+                  size: {
+                    width: 0,
+                    height: 0,
+                  },
+                },
+              ],
+              particles: {
+                number: {
+                  value: 0,
+                },
+                destroy: {
+                  bounds: {
+                    top: 30,
+                  },
+                  mode: 'split',
+                  split: {
+                    count: 1,
+                    factor: {
+                      value: 0.333333,
+                    },
+                    rate: {
+                      value: 100,
+                    },
+                    particles: {
+                      stroke: {
+                        width: 0,
+                      },
+                      color: {
+                        value: [
+                          '#ff1744',
+                          '#f50057',
+                          '#d500f9',
+                          '#651fff',
+                          '#3d5afe',
+                          '#2979ff',
+                          '#00b0ff',
+                          '#00e5ff',
+                          '#1de9b6',
+                          '#00e676',
+                          '#76ff03',
+                          '#c6ff00',
+                          '#ffea00',
+                          '#ffc400',
+                          '#ff9100',
+                          '#ff3d00',
+                        ],
+                      },
+                      number: {
+                        value: 0,
+                      },
+                      collisions: {
+                        enable: false,
+                      },
+                      opacity: {
+                        value: {
+                          min: 0.1,
+                          max: 1,
+                        },
+                        animation: {
+                          enable: true,
+                          speed: 0.7,
+                          sync: false,
+                          startValue: 'max',
+                          destroy: 'min',
+                        },
+                      },
+                      shape: {
+                        type: ['circle', 'square', 'triangle', 'polygon'],
+                        options: {
+                          polygon: [
+                            {
+                              sides: 5,
+                            },
+                            {
+                              sides: 6,
+                            },
+                          ],
+                        },
+                      },
+                      size: {
+                        value: {
+                          min: 1,
+                          max: 2,
+                        },
+                        animation: {
+                          enable: false,
+                        },
+                      },
+                      life: {
+                        count: 1,
+                        duration: {
+                          value: {
+                            min: 1,
+                            max: 2,
+                          },
+                        },
+                      },
+                      move: {
+                        enable: true,
+                        gravity: {
+                          enable: true,
+                          acceleration: 9.81,
+                          inverse: false,
+                        },
+                        speed: {
+                          min: 10,
+                          max: 20,
+                        },
+                        decay: 0.1,
+                        direction: 'none',
+                        straight: false,
+                        outModes: {
+                          default: 'destroy',
+                          top: 'none',
+                        },
+                      },
+                      rotate: {
+                        value: {
+                          min: 0,
+                          max: 360,
+                        },
+                        direction: 'random',
+                        move: true,
+                        animation: {
+                          enable: true,
+                          speed: 60,
+                        },
+                      },
+                      tilt: {
+                        direction: 'random',
+                        enable: true,
+                        move: true,
+                        value: {
+                          min: 0,
+                          max: 360,
+                        },
+                        animation: {
+                          enable: true,
+                          speed: 60,
+                        },
+                      },
+                      roll: {
+                        darken: {
+                          enable: true,
+                          value: 25,
+                        },
+                        enable: true,
+                        speed: {
+                          min: 15,
+                          max: 25,
+                        },
+                      },
+                      wobble: {
+                        distance: 30,
+                        enable: true,
+                        move: true,
+                        speed: {
+                          min: -15,
+                          max: 15,
+                        },
+                      },
+                    },
+                  },
+                },
+                life: {
+                  count: 1,
+                },
+                shape: {
+                  type: 'line',
+                },
+                size: {
+                  value: {
+                    min: 0.1,
+                    max: 50,
+                  },
+                  animation: {
+                    enable: true,
+                    sync: true,
+                    speed: 90,
+                    startValue: 'max',
+                    destroy: 'min',
+                  },
+                },
+                stroke: {
+                  color: {
+                    value: '#ffffff',
+                  },
+                  width: 1,
+                },
+                rotate: {
+                  path: true,
+                },
+                move: {
+                  enable: true,
+                  gravity: {
+                    acceleration: 15,
+                    enable: true,
+                    inverse: true,
+                    maxSpeed: 100,
+                  },
+                  speed: {
+                    min: 10,
+                    max: 20,
+                  },
+                  outModes: {
+                    default: 'destroy',
+                    top: 'none',
+                  },
+                  trail: {
+                    fillColor: 'rgba(0, 0, 0, 0)',
+                    enable: true,
+                    length: 10,
+                  },
+                },
+              },
+            },
+          });
+        })();
+        clearInterval(countdownInterval);
+      }
+
+      // Countdown Timer
+      const countdown = () => {
+        const newYear = new Date('December 31, 2025 18:00:00').getTime();
+        const now = new Date().getTime();
+        const gap = newYear - now;
+
+        if (gap <= 0) {
+          document.getElementById('countdown').style.display = 'none';
+          document.getElementById('message').style.display = 'block';
+          document.getElementById('year').style.display = 'block';
+          document.querySelector('h1').textContent = '🎊 Happy New Year! 🎊';
+          startFireworks();
+          return;
+        }
+
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const days = Math.floor(gap / day);
+        const hours = Math.floor((gap % day) / hour);
+        const minutes = Math.floor((gap % hour) / minute);
+        const seconds = Math.floor((gap % minute) / second);
+
+        document.getElementById('days').innerText = String(days).padStart(2, '0');
+        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+      };
+
+      countdownInterval = setInterval(countdown, 1000);
+      countdown();
+
+      // For testing: uncomment to start fireworks immediately
+      //   setTimeout(startFireworks, 1000);
+    </script>
+  </body>
+</html>
