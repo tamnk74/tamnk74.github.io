@@ -215,7 +215,7 @@
       #nextButton {
         position: fixed;
         bottom: 30px;
-        left: 140px;
+        left: 80px;
         padding: 12px 18px;
         font-size: 1.1rem;
         background: linear-gradient(45deg, #ffd700, #ff0000);
@@ -256,7 +256,7 @@
       .music-info {
         position: fixed;
         bottom: 30px;
-        left: 250px;
+        left: 150px;
         padding: 15px 20px;
         background: rgba(139, 0, 0, 0.9);
         border: 2px solid #ffd700;
@@ -387,7 +387,7 @@
     </button>
 
     <!-- Next Song Button -->
-    <button id="nextButton">⏭️ Next</button>
+    <button id="nextButton">⏭️</button>
 
     <!-- Music Info Display -->
     <div class="music-info" id="musicInfo">
@@ -760,7 +760,7 @@
         document.getElementById('message').style.display = 'none';
         document.getElementById('year').style.display = 'none';
         document.getElementById('zodiac').style.display = 'none';
-        document.querySelector('h1').textContent = '🎉 Happy Lunar New Year 2026! 🐴🧧';
+        document.querySelector('h1').textContent = '🧧 Happy Lunar New Year 2026! 🐴🧧';
 
         // Play celebration sound
         const audio = document.getElementById('newyearSound');
@@ -873,14 +873,14 @@
           isMusicPlaying = true;
           musicButton.classList.add('playing');
           musicIcon.textContent = '⏸️';
-          musicText.textContent = 'Pause';
+          musicText.textContent = '';
           nextButton.classList.add('show');
         } else {
           musicPlayer.pause();
           isMusicPlaying = false;
           musicButton.classList.remove('playing');
           musicIcon.textContent = '🎵';
-          musicText.textContent = 'Play Music';
+          musicText.textContent = '';
           nextButton.classList.remove('show');
           
           // Resume background sound if fireworks are showing
@@ -912,6 +912,11 @@
       // Test button event listener
       document.getElementById('testButton').addEventListener('click', function () {
         console.log('Test fireworks triggered!');
+        document.getElementById('countdown').style.display = 'none';
+          document.getElementById('message').style.display = 'block';
+          document.getElementById('year').style.display = 'block';
+          document.getElementById('zodiac').style.display = 'block';
+          document.querySelector('h1').textContent = '🧧 Happy Lunar New Year! 🧧';
         startFireworks();
         // Hide the test button after triggering
         this.style.display = 'none';
