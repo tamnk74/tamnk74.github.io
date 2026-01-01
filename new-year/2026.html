@@ -41,12 +41,20 @@
       }
 
       #tsparticles {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../static/media/new_year_bg.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         z-index: 1;
+      }
+
+      #tsparticles canvas {
+        background: transparent !important;
       }
 
       .container {
@@ -195,7 +203,7 @@
     </div>
 
     <!-- Happy New Year Song -->
-    <audio id="fireworkSound" loop autoplay="true" allow="autoplay">
+    <audio id="fireworkSound" loop>
       <source src="../static/media/happy_new_year.mp3" type="audio/mpeg" />
       <!-- Celebratory music for New Year -->
       Your browser does not support the audio element.
@@ -207,6 +215,12 @@
     <script>
       let isFireworksShown = false;
       let countdownInterval;
+
+      function playAudio() {
+        const audio = document.getElementById('fireworkSound');
+        audio.volume = 0.8; // Set volume to 30% for pleasant background sound
+        audio.play().catch((err) => console.log('Audio play failed:', err));
+      }
       // Fireworks using confetti
       function startFireworks() {
         console.log('Starting fireworks!');
@@ -214,11 +228,9 @@
         document.getElementById('message').style.display = 'none';
         document.getElementById('year').style.display = 'none';
         document.querySelector('h1').textContent = '🎉 Happy New Year 2026! 🎉  ';
+        playAudio();
 
         // Play firework sound
-        const audio = document.getElementById('fireworkSound');
-        audio.volume = 0.8; // Set volume to 30% for pleasant background sound
-        audio.play().catch((err) => console.log('Audio play failed:', err));
         (async () => {
           await loadFireworksPreset(tsParticles);
 
@@ -525,7 +537,8 @@
 
       // Countdown Timer
       const countdown = () => {
-        const newYear = new Date('Jan 1, 2026 00:00:00').getTime();
+        // const newYear = new Date('Jan 1, 2026 00:00:00').getTime();
+        const newYear = new Date('December 31 2025 23:25:00').getTime();
         const now = new Date().getTime();
         const gap = newYear - now;
 
@@ -556,6 +569,11 @@
 
       countdownInterval = setInterval(countdown, 1000);
       countdown();
+
+      // Add click event to start button
+      document.addEventListener('click', () => {
+        playAudio();
+      });
 
       // For testing: uncomment to start fireworks immediately
       //   setTimeout(startFireworks, 1000);

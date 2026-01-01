@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Lunar New Year 2026! 🐴🧧</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(rgba(139, 0, 0, 0.3), rgba(139, 0, 0, 0.3)), url('../static/media/new_year_bg.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #ffd700;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #fireworks-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(139, 0, 0, 0.3), rgba(139, 0, 0, 0.3)), url('../static/media/new_year_bg.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: 0;
+      }
+
+      #fireworkCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .container {
+        text-align: center;
+        z-index: 10;
+        position: fixed;
+      }
+
+      h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.5);
+        animation: glow 2s ease-in-out infinite alternate;
+        color: #ffd700;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+        to {
+          text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 0, 0, 0.8);
+        }
+      }
+
+      #countdown {
+        font-size: 5rem;
+        font-weight: bold;
+        margin: 30px 0;
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+      }
+
+      .time-unit {
+        display: inline-block;
+        margin: 0 15px;
+        min-width: 120px;
+      }
+
+      .time-value {
+        display: block;
+        font-size: 6rem;
+        font-weight: bold;
+        color: #ff0000;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+      }
+
+      .time-label {
+        display: block;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        margin-top: 10px;
+        opacity: 0.9;
+        color: #ffd700;
+      }
+
+      #message {
+        font-size: 3rem;
+        margin-top: 40px;
+        display: none;
+        animation: bounceIn 1s;
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .year {
+        font-size: 8rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, #ff0000, #ffd700, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s infinite;
+        background-size: 200% 200%;
+        display: none;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .zodiac {
+        font-size: 4rem;
+        margin-top: 20px;
+        display: none;
+        animation: bounceIn 1.5s;
+      }
+
+      #testButton {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        padding: 0px 0px;
+        font-size: 1.2rem;
+        background: linear-gradient(45deg, #ff0000, #ffd700);
+        border: 2px solid #ffd700;
+        border-radius: 50px;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        transition: all 0.3s ease;
+      }
+
+      #testButton:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+      }
+
+      #testButton:active {
+        transform: scale(0.95);
+      }
+
+      #musicButton {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        padding: 10px;
+        font-size: 1.2rem;
+        background: linear-gradient(45deg, #ff0000, #ffd700);
+        border: 2px solid #ffd700;
+        border-radius: 50px;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 1px;
+      }
+
+      #musicButton:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+      }
+
+      #musicButton:active {
+        transform: scale(0.95);
+      }
+
+      #musicButton.playing {
+        animation: pulse 2s infinite;
+      }
+
+      #nextButton {
+        position: fixed;
+        bottom: 30px;
+        left: 140px;
+        padding: 12px 18px;
+        font-size: 1.1rem;
+        background: linear-gradient(45deg, #ffd700, #ff0000);
+        border: 2px solid #ffd700;
+        border-radius: 50px;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        transition: all 0.3s ease;
+        display: none;
+      }
+
+      #nextButton.show {
+        display: block;
+      }
+
+      #nextButton:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+      }
+
+      #nextButton:active {
+        transform: scale(0.95);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(255, 215, 0, 1);
+        }
+      }
+
+      .music-info {
+        position: fixed;
+        bottom: 30px;
+        left: 250px;
+        padding: 15px 20px;
+        background: rgba(139, 0, 0, 0.9);
+        border: 2px solid #ffd700;
+        border-radius: 15px;
+        color: #ffd700;
+        font-weight: bold;
+        z-index: 1000;
+        max-width: 80%;
+        display: none;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      }
+
+      .music-info.show {
+        display: block;
+        animation: slideIn 0.5s;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .wishes-slider {
+        margin-top: 50px;
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .wish-item {
+        position: absolute;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        color: #ffd700;
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        max-width: 90%;
+        padding: 20px;
+        background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 215, 0, 0.1));
+        border-radius: 20px;
+        border: 2px solid rgba(255, 215, 0, 0.3);
+      }
+
+      .wish-item.active {
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .wishes-slider {
+          margin-top: 30px;
+          min-height: 100px;
+        }
+        .wish-item {
+          font-size: 1.5rem;
+          padding: 15px;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        .time-unit {
+          margin: 0 5px;
+          min-width: 70px;
+        }
+        .time-value {
+          font-size: 3rem;
+        }
+        .time-label {
+          font-size: 0.8rem;
+        }
+        #message {
+          font-size: 1.5rem;
+        }
+        .year {
+          font-size: 4rem;
+        }
+        .zodiac {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="fireworks-background"></div>
+    <canvas id="fireworkCanvas"></canvas>
+
+    <div class="container">
+      <h1>🧧 Lunar New Year Countdown 🧧</h1>
+      <div id="countdown">
+        <div class="time-unit">
+          <span class="time-value" id="days">00</span>
+          <span class="time-label">Days</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="minutes">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="seconds">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+      <div id="message">🎉 Happy Lunar New Year! 🎉</div>
+      <div class="year" id="year">2026</div>
+      <div class="zodiac" id="zodiac">🐴 Year of the Horse 🐴</div>
+    </div>
+
+    <!-- Test Firework Button -->
+    <button id="testButton">🎆</button>
+
+    <!-- Music Player Button -->
+    <button id="musicButton">
+      <span id="musicIcon">🎵</span>
+      <span id="musicText">Play Music</span>
+    </button>
+
+    <!-- Next Song Button -->
+    <button id="nextButton">⏭️ Next</button>
+
+    <!-- Music Info Display -->
+    <div class="music-info" id="musicInfo">
+      <div id="currentSong">No song playing</div>
+    </div>
+
+    <!-- Lunar New Year Song (background) -->
+    <audio id="newyearSound" loop>
+      <source src="../static/media/happy_new_year.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Player Audio Element -->
+    <audio id="musicPlayer">
+      <source src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+      // Canvas setup
+      const canvas = document.getElementById('fireworkCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      // Load background image
+      const bgImage = new Image();
+      bgImage.src = '/static/media/new_year_bg.jpeg';
+
+      // Wishes slider data
+      const wishes = [
+        '🎊 May prosperity and good fortune be with you! 🎊',
+        '🧧 Wishing you happiness and wealth! 🧧',
+        '🐴 Gallop into success in the Year of the Horse! 🐴',
+        '🌟 May all your dreams come true! 🌟',
+        '💰 Prosperity and abundance in the new year! 💰',
+        '🏮 Bright future and endless joy! 🏮',
+        '❤️ Health, happiness, and harmony! ❤️',
+        '🎆 Celebrate with family and loved ones! 🎆',
+      ];
+      let currentWishIndex = 0;
+      let lastWishChangeTime = Date.now();
+      const wishChangeInterval = 4000; // 4 seconds
+      let wishAlpha = 1; // For fade effect
+      let wishFading = false;
+
+      // Web Audio API for firework sounds
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+      function playExplosionSound() {
+        try {
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          const filter = audioContext.createBiquadFilter();
+
+          oscillator.connect(filter);
+          filter.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+
+          // Explosion sound parameters
+          oscillator.type = 'sawtooth';
+          oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.1);
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(2000, audioContext.currentTime);
+          filter.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.1);
+
+          gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 0.3);
+        } catch (e) {
+          console.log('Audio context error:', e);
+        }
+      }
+
+      function playLaunchSound() {
+        try {
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
+          oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.2);
+
+          gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 0.2);
+        } catch (e) {
+          console.log('Audio context error:', e);
+        }
+      }
+
+      // Lunar New Year colors (red and gold theme)
+      const colors = ['#ff0000', '#ffd700', '#ff4500', '#ff6347', '#ffff00', '#ffa500', '#ff1744', '#ffc400'];
+
+      // Particle class for explosion particles
+      class Particle {
+        constructor(x, y, color) {
+          this.x = x;
+          this.y = y;
+          this.color = color;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 6 + 2;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.gravity = 0.15;
+          this.friction = 0.98;
+          this.alpha = 1;
+          this.decay = Math.random() * 0.02 + 0.01;
+          this.size = Math.random() * 3 + 1;
+        }
+
+        update() {
+          this.vx *= this.friction;
+          this.vy *= this.friction;
+          this.vy += this.gravity;
+          this.x += this.vx;
+          this.y += this.vy;
+          this.alpha -= this.decay;
+        }
+
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      // Firework rocket class
+      class Firework {
+        constructor(x, targetY) {
+          this.x = x;
+          this.y = canvas.height;
+          this.targetY = targetY;
+          this.vx = (Math.random() - 0.5) * 2;
+          this.vy = -Math.random() * 8 - 10;
+          this.exploded = false;
+          this.particles = [];
+          this.trailParticles = [];
+        }
+
+        update() {
+          if (!this.exploded) {
+            this.vy += 0.2;
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Create trail
+            this.trailParticles.push({
+              x: this.x,
+              y: this.y,
+              alpha: 1,
+            });
+
+            // Explode when reaching target height or starting to fall
+            if (this.y <= this.targetY || this.vy > 0) {
+              this.explode();
+            }
+          }
+
+          // Update trail
+          this.trailParticles = this.trailParticles.filter((trail) => {
+            trail.alpha -= 0.05;
+            return trail.alpha > 0;
+          });
+
+          // Update explosion particles
+          this.particles = this.particles.filter((particle) => {
+            particle.update();
+            return particle.alpha > 0;
+          });
+        }
+
+        explode() {
+          this.exploded = true;
+          const particleCount = Math.random() * 100 + 100;
+          const color1 = colors[Math.floor(Math.random() * colors.length)];
+          const color2 = colors[Math.floor(Math.random() * colors.length)];
+          const useMultiColor = Math.random() > 0.5;
+
+          // Play explosion sound
+          playExplosionSound();
+
+          // Main explosion
+          for (let i = 0; i < particleCount; i++) {
+            const color = useMultiColor && i % 2 === 0 ? color2 : color1;
+            this.particles.push(new Particle(this.x, this.y, color));
+          }
+
+          // Add ring effect for some fireworks
+          if (Math.random() > 0.5) {
+            const ringParticles = 30;
+            for (let i = 0; i < ringParticles; i++) {
+              const angle = (Math.PI * 2 * i) / ringParticles;
+              const speed = 4;
+              const particle = new Particle(this.x, this.y, color1);
+              particle.vx = Math.cos(angle) * speed;
+              particle.vy = Math.sin(angle) * speed;
+              this.particles.push(particle);
+            }
+          }
+        }
+
+        draw() {
+          if (!this.exploded) {
+            // Draw rocket trail
+            this.trailParticles.forEach((trail) => {
+              ctx.save();
+              ctx.globalAlpha = trail.alpha;
+              ctx.fillStyle = '#ffd700';
+              ctx.beginPath();
+              ctx.arc(trail.x, trail.y, 2, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
+            });
+
+            // Draw rocket
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Draw explosion particles
+          this.particles.forEach((particle) => particle.draw());
+        }
+
+        isFinished() {
+          return this.exploded && this.particles.length === 0;
+        }
+      }
+
+      // Fireworks manager
+      let fireworks = [];
+      let animationId = null;
+      let launchInterval = null;
+      let isFireworksShown = false;
+      let countdownInterval;
+
+      function launchFirework() {
+        const x = Math.random() * canvas.width;
+        const targetY = Math.random() * (canvas.height * 0.3) + canvas.height * 0.1;
+        fireworks.push(new Firework(x, targetY));
+        playLaunchSound();
+      }
+
+      function animate() {
+        // Draw background image
+        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+
+        // Use very transparent overlay for trail effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        fireworks = fireworks.filter((firework) => {
+          firework.update();
+          firework.draw();
+          return !firework.isFinished();
+        });
+
+        // Auto-rotate wishes
+        const currentTime = Date.now();
+        if (currentTime - lastWishChangeTime > wishChangeInterval) {
+          if (!wishFading) {
+            wishFading = true;
+          }
+        }
+
+        // Handle fade out/in
+        if (wishFading) {
+          wishAlpha -= 0.02;
+          if (wishAlpha <= 0) {
+            wishAlpha = 0;
+            currentWishIndex = (currentWishIndex + 1) % wishes.length;
+            wishFading = false;
+            lastWishChangeTime = currentTime;
+          }
+        } else if (wishAlpha < 1) {
+          wishAlpha += 0.02;
+          if (wishAlpha >= 1) wishAlpha = 1;
+        }
+
+        // Render wishes slider on canvas
+        if (isFireworksShown) {
+          ctx.save();
+          ctx.globalAlpha = wishAlpha;
+
+          // Setup text styling
+          const fontSize = canvas.width < 768 ? 24 : 40;
+          ctx.font = `bold ${fontSize}px 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          const centerX = canvas.width / 2;
+          const centerY = canvas.height - 150;
+          const maxWidth = canvas.width * 0.9;
+
+          // Draw background box
+          const padding = 20;
+          const metrics = ctx.measureText(wishes[currentWishIndex]);
+          const textWidth = Math.min(metrics.width, maxWidth);
+          const textHeight = fontSize + padding * 2;
+
+          // Box with gradient
+          const gradient = ctx.createLinearGradient(
+            centerX - textWidth / 2 - padding,
+            centerY - textHeight / 2,
+            centerX + textWidth / 2 + padding,
+            centerY + textHeight / 2,
+          );
+          gradient.addColorStop(0, 'rgba(255, 0, 0, 0.3)');
+          gradient.addColorStop(1, 'rgba(255, 215, 0, 0.3)');
+
+          ctx.fillStyle = gradient;
+          ctx.strokeStyle = 'rgba(255, 215, 0, 0.5)';
+          ctx.lineWidth = 3;
+
+          const boxX = centerX - textWidth / 2 - padding;
+          const boxY = centerY - textHeight / 2;
+          const boxWidth = textWidth + padding * 2;
+          const boxHeight = textHeight;
+          const borderRadius = 20;
+
+          ctx.beginPath();
+          ctx.moveTo(boxX + borderRadius, boxY);
+          ctx.lineTo(boxX + boxWidth - borderRadius, boxY);
+          ctx.quadraticCurveTo(boxX + boxWidth, boxY, boxX + boxWidth, boxY + borderRadius);
+          ctx.lineTo(boxX + boxWidth, boxY + boxHeight - borderRadius);
+          ctx.quadraticCurveTo(boxX + boxWidth, boxY + boxHeight, boxX + boxWidth - borderRadius, boxY + boxHeight);
+          ctx.lineTo(boxX + borderRadius, boxY + boxHeight);
+          ctx.quadraticCurveTo(boxX, boxY + boxHeight, boxX, boxY + boxHeight - borderRadius);
+          ctx.lineTo(boxX, boxY + borderRadius);
+          ctx.quadraticCurveTo(boxX, boxY, boxX + borderRadius, boxY);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          // Draw text with glow
+          ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
+          ctx.shadowBlur = 20;
+          ctx.fillStyle = '#ffd700';
+          ctx.fillText(wishes[currentWishIndex], centerX, centerY, maxWidth);
+
+          ctx.restore();
+        }
+
+        animationId = requestAnimationFrame(animate);
+      }
+
+      function startFireworks() {
+        console.log('Starting fireworks!');
+        isFireworksShown = true;
+        document.getElementById('message').style.display = 'none';
+        document.getElementById('year').style.display = 'none';
+        document.getElementById('zodiac').style.display = 'none';
+        document.querySelector('h1').textContent = '🎉 Happy Lunar New Year 2026! 🐴🧧';
+
+        // Play celebration sound
+        const audio = document.getElementById('newyearSound');
+        audio.volume = 0.8;
+        audio.play().catch((err) => console.log('Audio play failed:', err));
+
+        // Start animation
+        animate();
+
+        // Launch fireworks at intervals
+        launchInterval = setInterval(() => {
+          const count = Math.floor(Math.random() * 5) + 2;
+          for (let i = 0; i < count; i++) {
+            setTimeout(() => launchFirework(), i * 150);
+          }
+        }, 600);
+
+        clearInterval(countdownInterval);
+      }
+
+      function stopFireworks() {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+        if (launchInterval) {
+          clearInterval(launchInterval);
+          launchInterval = null;
+        }
+        fireworks = [];
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      // Countdown Timer
+      const countdown = () => {
+        // Lunar New Year 2026 is on January 29, 2026
+        const lunarNewYear = new Date('January 29, 2026 00:00:00').getTime();
+        const now = new Date().getTime();
+        const gap = lunarNewYear - now;
+
+        if (gap <= 0) {
+          document.getElementById('countdown').style.display = 'none';
+          document.getElementById('message').style.display = 'block';
+          document.getElementById('year').style.display = 'block';
+          document.getElementById('zodiac').style.display = 'block';
+          document.querySelector('h1').textContent = '🧧 Happy Lunar New Year! 🧧';
+          startFireworks();
+          return;
+        }
+
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const days = Math.floor(gap / day);
+        const hours = Math.floor((gap % day) / hour);
+        const minutes = Math.floor((gap % hour) / minute);
+        const seconds = Math.floor((gap % minute) / second);
+
+        document.getElementById('days').innerText = String(days).padStart(2, '0');
+        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+      };
+
+      countdownInterval = setInterval(countdown, 1000);
+      countdown();
+
+      // Music Player Playlist
+      const playlist = [
+        'Bài Ca Tết Cho Em.mp3',
+        'Lắng Nghe Mùa Xuân Về.mp3',
+        'Năm Qua Đã Làm Gì.mp3',
+        'Ngày Tết Quê Em (Gala Nhạc Việt 1).mp3',
+        'Nụ Cười Xuân  (Remix).mp3',
+        'Tết Bình An.mp3',
+        'Tết Là Tết.mp3',
+        'Tết Nguyên Đán (Gala Nhạc Việt 1).mp3',
+        'Thì Thầm Mùa Xuân.mp3',
+        'Ước Nguyện Đầu Xuân (Lofi).mp3',
+      ];
+      let currentSongIndex = 0;
+      let isMusicPlaying = false;
+
+      const musicPlayer = document.getElementById('musicPlayer');
+      const musicButton = document.getElementById('musicButton');
+      const musicIcon = document.getElementById('musicIcon');
+      const musicText = document.getElementById('musicText');
+      const musicInfo = document.getElementById('musicInfo');
+      const currentSongDisplay = document.getElementById('currentSong');
+      const nextButton = document.getElementById('nextButton');
+      const newyearSound = document.getElementById('newyearSound');
+
+      function loadSong(index) {
+        const songPath = `/static/musics/lunar-new-year/${encodeURIComponent(playlist[index])}`;
+        musicPlayer.src = songPath;
+        const songName = playlist[index].replace('.mp3', '');
+        currentSongDisplay.textContent = `Now Playing: ${songName}`;
+        musicInfo.classList.add('show');
+      }
+
+      function playMusic() {
+        if (!isMusicPlaying) {
+          // Pause background sound when playlist starts
+          newyearSound.pause();
+          
+          loadSong(currentSongIndex);
+          musicPlayer.play().catch((err) => console.log('Music play failed:', err));
+          isMusicPlaying = true;
+          musicButton.classList.add('playing');
+          musicIcon.textContent = '⏸️';
+          musicText.textContent = 'Pause';
+          nextButton.classList.add('show');
+        } else {
+          musicPlayer.pause();
+          isMusicPlaying = false;
+          musicButton.classList.remove('playing');
+          musicIcon.textContent = '🎵';
+          musicText.textContent = 'Play Music';
+          nextButton.classList.remove('show');
+          
+          // Resume background sound if fireworks are showing
+          if (isFireworksShown) {
+            newyearSound.play().catch((err) => console.log('Audio play failed:', err));
+          }
+        }
+      }
+
+      function nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % playlist.length;
+        loadSong(currentSongIndex);
+        if (isMusicPlaying) {
+          musicPlayer.play().catch((err) => console.log('Music play failed:', err));
+        }
+      }
+
+      // Auto-play next song when current song ends
+      musicPlayer.addEventListener('ended', () => {
+        nextSong();
+      });
+
+      // Music button event listener
+      musicButton.addEventListener('click', playMusic);
+
+      // Next button event listener
+      nextButton.addEventListener('click', nextSong);
+
+      // Test button event listener
+      document.getElementById('testButton').addEventListener('click', function () {
+        console.log('Test fireworks triggered!');
+        startFireworks();
+        // Hide the test button after triggering
+        this.style.display = 'none';
+      });
+    </script>
+  </head>
+  </body>
+</html>
