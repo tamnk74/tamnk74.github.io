@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-backend/database/index" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.1">
+<title data-rh="true">Database Overview | Full-Stack Developer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://tamnk74.github.io/fullstack-dev/docs/backend/database/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Database Overview | Full-Stack Developer"><meta data-rh="true" name="description" content="A comprehensive guide to understanding different database types, their use cases, advantages, and limitations."><meta data-rh="true" property="og:description" content="A comprehensive guide to understanding different database types, their use cases, advantages, and limitations."><link data-rh="true" rel="icon" href="/fullstack-dev/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://tamnk74.github.io/fullstack-dev/docs/backend/database/"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/backend/database/" hreflang="en"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/backend/database/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"⚙️ Backend","item":"https://tamnk74.github.io/fullstack-dev/docs/backend/"},{"@type":"ListItem","position":2,"name":"Database","item":"https://tamnk74.github.io/fullstack-dev/docs/backend/database/"}]}</script><link rel="alternate" type="application/rss+xml" href="/fullstack-dev/blog/rss.xml" title="Full-Stack Developer RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/fullstack-dev/blog/atom.xml" title="Full-Stack Developer Atom Feed">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/fullstack-dev/assets/css/styles.72d9001f.css">
+<script src="/fullstack-dev/assets/js/runtime~main.a718dd32.js" defer="defer"></script>
+<script src="/fullstack-dev/assets/js/main.4ccdf994.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/fullstack-dev/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/fullstack-dev/"><div class="navbar__logo"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent__dKv themedComponent--light_rzkv"><img src="/fullstack-dev/img/logo.svg" alt="Full-Stack Developer Logo" class="themedComponent__dKv themedComponent--dark_mMAk"></div><b class="navbar__title text--truncate">Full-Stack Developer</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/fullstack-dev/docs/intro">Documentation</a><a class="navbar__item navbar__link" href="/fullstack-dev/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/search-guide"><span title="Search Documentation" class="linkLabel_WmDU">Search Documentation</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/fullstack-dev/docs/setup"><span title="🚀 Getting Started" class="categoryLinkLabel_W154">🚀 Getting Started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/setup"><span title="Setup &amp; Installation" class="linkLabel_WmDU">Setup &amp; Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/how-web-works"><span title="How Web Works" class="linkLabel_WmDU">How Web Works</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fundermentals/concurrency"><span title="📚 Fundamentals" class="categoryLinkLabel_W154">📚 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/assessments/developer-assessment-with-development-plans"><span title="💼 Career &amp; Assessments" class="categoryLinkLabel_W154">💼 Career &amp; Assessments</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/security-practices/"><span title="🔐 Security Practices" class="categoryLinkLabel_W154">🔐 Security Practices</span></a><button aria-label="Expand sidebar category &#x27;🔐 Security Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/security-learning/"><span title="📖 Security Learning (90 Days)" class="categoryLinkLabel_W154">📖 Security Learning (90 Days)</span></a><button aria-label="Expand sidebar category &#x27;📖 Security Learning (90 Days)&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/coding-conventions/"><span title="👨‍💻 Coding Conventions" class="categoryLinkLabel_W154">👨‍💻 Coding Conventions</span></a><button aria-label="Expand sidebar category &#x27;👨‍💻 Coding Conventions&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/design-patterns/"><span title="📐 Design Patterns" class="categoryLinkLabel_W154">📐 Design Patterns</span></a><button aria-label="Expand sidebar category &#x27;📐 Design Patterns&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/system-design/"><span title="🏗️ System Design &amp; Architecture" class="categoryLinkLabel_W154">🏗️ System Design &amp; Architecture</span></a><button aria-label="Expand sidebar category &#x27;🏗️ System Design &amp; Architecture&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/frontend/checklist"><span title="🎨 Frontend" class="categoryLinkLabel_W154">🎨 Frontend</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fullstack/http-caching-headers-guide"><span title="🔄 Fullstack" class="categoryLinkLabel_W154">🔄 Fullstack</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/analytics/google-analytics-comparison"><span title="📊 Analytics &amp; Tracking" class="categoryLinkLabel_W154">📊 Analytics &amp; Tracking</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/marketing/generative-engine-optimization"><span title="📢 Marketing &amp; SEO" class="categoryLinkLabel_W154">📢 Marketing &amp; SEO</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/fullstack-dev/docs/backend/"><span title="⚙️ Backend" class="categoryLinkLabel_W154">⚙️ Backend</span></a><button aria-label="Collapse sidebar category &#x27;⚙️ Backend&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/nodejs-best-practices"><span title="Best Practices" class="categoryLinkLabel_W154">Best Practices</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/non-production-environment-protection"><span title="Security &amp; Infrastructure" class="categoryLinkLabel_W154">Security &amp; Infrastructure</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/kafka-implementation"><span title="Message Queues &amp; Event Streaming" class="categoryLinkLabel_W154">Message Queues &amp; Event Streaming</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible menu__list-item-collapsible--active"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" aria-current="page" tabindex="0" href="/fullstack-dev/docs/backend/database/"><span title="Database" class="categoryLinkLabel_W154">Database</span></a><button aria-label="Collapse sidebar category &#x27;Database&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/backend/database/postgresql-architecture"><span title="PostgreSQL Architecture" class="linkLabel_WmDU">PostgreSQL Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/backend/database/postgresql-indexes"><span title="PostgreSQL Indexes Guide" class="linkLabel_WmDU">PostgreSQL Indexes Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/backend/database/redis-guide"><span title="Redis as a Database" class="linkLabel_WmDU">Redis as a Database</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/backend/database/acid-properties"><span title="ACID Properties in Databases" class="linkLabel_WmDU">ACID Properties in Databases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/backend/database/base-properties"><span title="BASE Properties in Distributed Systems" class="linkLabel_WmDU">BASE Properties in Distributed Systems</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/redis-comprehensive-guide"><span title="Caching &amp; Data Stores" class="categoryLinkLabel_W154">Caching &amp; Data Stores</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/hadoop-spark-guide"><span title="Big Data &amp; Processing" class="categoryLinkLabel_W154">Big Data &amp; Processing</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/server-sent-events-notifications"><span title="Real-time Communication" class="categoryLinkLabel_W154">Real-time Communication</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/circuit-breakers-rate-limiting"><span title="Distributed Systems" class="categoryLinkLabel_W154">Distributed Systems</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/schema-contract-versioning"><span title="API Design &amp; Versioning" class="categoryLinkLabel_W154">API Design &amp; Versioning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/fullstack-dev/docs/backend/observability-stack"><span title="Observability &amp; Monitoring" class="categoryLinkLabel_W154">Observability &amp; Monitoring</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/backend/traefik"><span title="Applying Traefik as an Ingress Controller for E-commerce Microservices" class="linkLabel_WmDU">Applying Traefik as an Ingress Controller for E-commerce Microservices</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/ai-machine-learning/vertex-ai-gemini-guide"><span title="🤖 AI &amp; Machine Learning" class="categoryLinkLabel_W154">🤖 AI &amp; Machine Learning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/features"><span title="✨ Features" class="categoryLinkLabel_W154">✨ Features</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/devops/"><span title="☁️ DevOps" class="categoryLinkLabel_W154">☁️ DevOps</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/architecture-practices/"><span title="🏢 Architecture Practices" class="categoryLinkLabel_W154">🏢 Architecture Practices</span></a><button aria-label="Expand sidebar category &#x27;🏢 Architecture Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/qa-practices/"><span title="🧪 QA Practices" class="categoryLinkLabel_W154">🧪 QA Practices</span></a><button aria-label="Expand sidebar category &#x27;🧪 QA Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/non-functional-requirements/nfr-export"><span title="📋 Non-Functional Requirements" class="categoryLinkLabel_W154">📋 Non-Functional Requirements</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/testing"><span title="🛠️ Development" class="categoryLinkLabel_W154">🛠️ Development</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/static-analysis"><span title="🔍 Code Quality &amp; Tools" class="categoryLinkLabel_W154">🔍 Code Quality &amp; Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/threat-modeling/"><span title="🛡️ Threat Modeling" class="categoryLinkLabel_W154">🛡️ Threat Modeling</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/mobile/architecture-process/"><span title="📱 Mobile Architecture" class="categoryLinkLabel_W154">📱 Mobile Architecture</span></a><button aria-label="Expand sidebar category &#x27;📱 Mobile Architecture&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/api-reference"><span title="📚 API Reference" class="categoryLinkLabel_W154">📚 API Reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-basics/create-a-document"><span title="🎓 Tutorial" class="categoryLinkLabel_W154">🎓 Tutorial</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-extras/manage-docs-versions"><span title="🚀 Advanced" class="categoryLinkLabel_W154">🚀 Advanced</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/fullstack-dev/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/fullstack-dev/docs/backend/"><span>⚙️ Backend</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Database</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Database Overview</h1></header>
+<p>A comprehensive guide to understanding different database types, their use cases, advantages, and limitations.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-a-database">What is a Database?<a href="#what-is-a-database" class="hash-link" aria-label="Direct link to What is a Database?" title="Direct link to What is a Database?" translate="no">​</a></h2>
+<p>A database is an organized collection of structured information or data, typically stored electronically in a computer system. Databases are managed by Database Management Systems (DBMS), which provide interfaces for users and applications to interact with the data.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-database-concepts">Key Database Concepts<a href="#key-database-concepts" class="hash-link" aria-label="Direct link to Key Database Concepts" title="Direct link to Key Database Concepts" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="acid-properties">ACID Properties<a href="#acid-properties" class="hash-link" aria-label="Direct link to ACID Properties" title="Direct link to ACID Properties" translate="no">​</a></h3>
+<p><strong>ACID</strong> ensures reliable transaction processing in databases:</p>
+<ul>
+<li><strong>Atomicity</strong>: Transactions are all-or-nothing operations</li>
+<li><strong>Consistency</strong>: Transactions maintain database integrity constraints</li>
+<li><strong>Isolation</strong>: Concurrent transactions don&#x27;t interfere with each other</li>
+<li><strong>Durability</strong>: Committed transactions persist even after system failures</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="base-properties">BASE Properties<a href="#base-properties" class="hash-link" aria-label="Direct link to BASE Properties" title="Direct link to BASE Properties" translate="no">​</a></h3>
+<p><strong>BASE</strong> is an alternative to ACID, commonly used in distributed systems:</p>
+<ul>
+<li><strong>Basically Available</strong>: System guarantees availability</li>
+<li><strong>Soft state</strong>: State may change over time, even without input</li>
+<li><strong>Eventual consistency</strong>: System will become consistent over time</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cap-theorem">CAP Theorem<a href="#cap-theorem" class="hash-link" aria-label="Direct link to CAP Theorem" title="Direct link to CAP Theorem" translate="no">​</a></h3>
+<p>According to the CAP theorem, distributed databases can only guarantee two of three properties:</p>
+<ul>
+<li><strong>Consistency</strong>: All nodes see the same data at the same time</li>
+<li><strong>Availability</strong>: Every request receives a response</li>
+<li><strong>Partition Tolerance</strong>: System continues operating despite network partitions</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="database-types">Database Types<a href="#database-types" class="hash-link" aria-label="Direct link to Database Types" title="Direct link to Database Types" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-relational-databases-sql">1. Relational Databases (SQL)<a href="#1-relational-databases-sql" class="hash-link" aria-label="Direct link to 1. Relational Databases (SQL)" title="Direct link to 1. Relational Databases (SQL)" translate="no">​</a></h3>
+<p>Relational databases store data in tables with predefined schemas and relationships between tables.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems">Popular Systems<a href="#popular-systems" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>PostgreSQL</strong> - Advanced open-source RDBMS</li>
+<li><strong>MySQL</strong> - Popular open-source database</li>
+<li><strong>Oracle Database</strong> - Enterprise-grade commercial database</li>
+<li><strong>Microsoft SQL Server</strong> - Microsoft&#x27;s enterprise database</li>
+<li><strong>SQLite</strong> - Lightweight embedded database</li>
+<li><strong>MariaDB</strong> - MySQL fork with additional features</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases">Use Cases<a href="#use-cases" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Financial systems</strong> - Banking, accounting (ACID compliance crucial)</li>
+<li><strong>Enterprise applications</strong> - ERP, CRM systems</li>
+<li><strong>E-commerce platforms</strong> - Order management, inventory</li>
+<li><strong>Content management systems</strong> - WordPress, Drupal</li>
+<li><strong>Traditional web applications</strong> - User management, structured data</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros">Pros<a href="#pros" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Strong consistency</strong> - ACID guarantees ensure data integrity<br>
+<!-- -->✅ <strong>Mature technology</strong> - Decades of development and optimization<br>
+<!-- -->✅ <strong>Rich query language</strong> - SQL is powerful and standardized<br>
+<!-- -->✅ <strong>Data integrity</strong> - Foreign keys, constraints, and triggers<br>
+<!-- -->✅ <strong>Transaction support</strong> - Complex multi-step operations<br>
+<!-- -->✅ <strong>Great tooling</strong> - Extensive ecosystem of tools and ORMs<br>
+<!-- -->✅ <strong>Strong community</strong> - Large developer communities and resources</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons">Cons<a href="#cons" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Rigid schema</strong> - Schema changes can be difficult and costly<br>
+<!-- -->❌ <strong>Vertical scaling limitations</strong> - Challenging to scale horizontally<br>
+<!-- -->❌ <strong>Performance bottlenecks</strong> - Complex joins can be slow on large datasets<br>
+<!-- -->❌ <strong>Not ideal for unstructured data</strong> - Requires predefined schema<br>
+<!-- -->❌ <strong>Impedance mismatch</strong> - Object-relational mapping can be complex</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-document-databases-nosql">2. Document Databases (NoSQL)<a href="#2-document-databases-nosql" class="hash-link" aria-label="Direct link to 2. Document Databases (NoSQL)" title="Direct link to 2. Document Databases (NoSQL)" translate="no">​</a></h3>
+<p>Document databases store data as JSON-like documents with flexible schemas.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-1">Popular Systems<a href="#popular-systems-1" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>MongoDB</strong> - Most popular document database</li>
+<li><strong>CouchDB</strong> - Apache&#x27;s document database</li>
+<li><strong>Amazon DocumentDB</strong> - MongoDB-compatible AWS service</li>
+<li><strong>RavenDB</strong> - .NET-focused document database</li>
+<li><strong>Couchbase</strong> - Document database with caching capabilities</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-1">Use Cases<a href="#use-cases-1" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Content management</strong> - Blogs, articles with varying structures</li>
+<li><strong>User profiles</strong> - Flexible user data with different attributes</li>
+<li><strong>Real-time analytics</strong> - Event logging and analysis</li>
+<li><strong>Product catalogs</strong> - E-commerce with varied product attributes</li>
+<li><strong>Mobile applications</strong> - Offline-first apps with sync capabilities</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-1">Pros<a href="#pros-1" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Flexible schema</strong> - Easy to evolve data models<br>
+<!-- -->✅ <strong>Natural data representation</strong> - Maps well to objects in code<br>
+<!-- -->✅ <strong>Horizontal scalability</strong> - Easy to distribute across servers<br>
+<!-- -->✅ <strong>Developer-friendly</strong> - JSON/BSON formats are intuitive<br>
+<!-- -->✅ <strong>Performance</strong> - Fast reads and writes for document operations<br>
+<!-- -->✅ <strong>Agile development</strong> - Quick iterations without schema migrations</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-1">Cons<a href="#cons-1" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Limited transaction support</strong> - Multi-document ACID can be limited<br>
+<!-- -->❌ <strong>Data redundancy</strong> - Denormalization can lead to duplicate data<br>
+<!-- -->❌ <strong>Complex queries</strong> - Joins and aggregations less efficient<br>
+<!-- -->❌ <strong>Memory usage</strong> - Document overhead can increase storage needs<br>
+<!-- -->❌ <strong>Eventual consistency</strong> - Default consistency model may not suit all cases</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-key-value-stores-nosql">3. Key-Value Stores (NoSQL)<a href="#3-key-value-stores-nosql" class="hash-link" aria-label="Direct link to 3. Key-Value Stores (NoSQL)" title="Direct link to 3. Key-Value Stores (NoSQL)" translate="no">​</a></h3>
+<p>Key-value databases store data as simple key-value pairs, offering extreme simplicity and performance.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-2">Popular Systems<a href="#popular-systems-2" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>Redis</strong> - In-memory data structure store</li>
+<li><strong>Amazon DynamoDB</strong> - Fully managed NoSQL service</li>
+<li><strong>Memcached</strong> - High-performance distributed memory caching</li>
+<li><strong>etcd</strong> - Distributed key-value store for configuration</li>
+<li><strong>Riak</strong> - Distributed key-value database</li>
+<li><strong>Azure Cosmos DB</strong> - Multi-model database including key-value</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-2">Use Cases<a href="#use-cases-2" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Caching layers</strong> - Session storage, API responses</li>
+<li><strong>Real-time recommendations</strong> - User preferences, product suggestions</li>
+<li><strong>Session management</strong> - Web application sessions</li>
+<li><strong>Queue systems</strong> - Message queues, task queues</li>
+<li><strong>Real-time analytics</strong> - Counters, leaderboards</li>
+<li><strong>Configuration management</strong> - Application settings</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-2">Pros<a href="#pros-2" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Extreme performance</strong> - Sub-millisecond latency possible<br>
+<!-- -->✅ <strong>Simple model</strong> - Easy to understand and use<br>
+<!-- -->✅ <strong>Highly scalable</strong> - Linear horizontal scaling<br>
+<!-- -->✅ <strong>Low latency</strong> - Often in-memory operation<br>
+<!-- -->✅ <strong>Partition tolerance</strong> - Excellent for distributed systems<br>
+<!-- -->✅ <strong>Cost-effective</strong> - Simple infrastructure requirements</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-2">Cons<a href="#cons-2" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Limited query capabilities</strong> - Only key-based lookups<br>
+<!-- -->❌ <strong>No relationships</strong> - Cannot model complex data relationships<br>
+<!-- -->❌ <strong>No complex operations</strong> - Limited aggregation and filtering<br>
+<!-- -->❌ <strong>Memory constraints</strong> - In-memory stores limited by RAM<br>
+<!-- -->❌ <strong>Data modeling challenges</strong> - Requires careful key design</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-column-family-databases-nosql">4. Column-Family Databases (NoSQL)<a href="#4-column-family-databases-nosql" class="hash-link" aria-label="Direct link to 4. Column-Family Databases (NoSQL)" title="Direct link to 4. Column-Family Databases (NoSQL)" translate="no">​</a></h3>
+<p>Column-family databases store data in columns rather than rows, optimized for queries over large datasets.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-3">Popular Systems<a href="#popular-systems-3" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>Apache Cassandra</strong> - Highly scalable distributed database</li>
+<li><strong>Apache HBase</strong> - Hadoop-based wide column store</li>
+<li><strong>Google Bigtable</strong> - Google&#x27;s proprietary column database</li>
+<li><strong>ScyllaDB</strong> - High-performance Cassandra-compatible database</li>
+<li><strong>Azure Cosmos DB</strong> - Supports column-family model</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-3">Use Cases<a href="#use-cases-3" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Time-series data</strong> - IoT sensors, monitoring metrics</li>
+<li><strong>Event logging</strong> - Application logs, user activity</li>
+<li><strong>Recommendation engines</strong> - User behavior analysis</li>
+<li><strong>Financial data</strong> - Market data, trading history</li>
+<li><strong>Real-time analytics</strong> - Large-scale data analysis</li>
+<li><strong>Content management</strong> - Media metadata at scale</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-3">Pros<a href="#pros-3" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Excellent for time-series</strong> - Optimized for temporal data<br>
+<!-- -->✅ <strong>Massive scalability</strong> - Handles petabytes of data<br>
+<!-- -->✅ <strong>High write throughput</strong> - Designed for write-heavy workloads<br>
+<!-- -->✅ <strong>Compression</strong> - Efficient column-based compression<br>
+<!-- -->✅ <strong>Fault tolerance</strong> - Built-in replication and resilience<br>
+<!-- -->✅ <strong>Flexible schema</strong> - Can add columns without downtime</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-3">Cons<a href="#cons-3" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Complex architecture</strong> - Steep learning curve<br>
+<!-- -->❌ <strong>Eventual consistency</strong> - May not suit all consistency requirements<br>
+<!-- -->❌ <strong>Limited query flexibility</strong> - Not ideal for ad-hoc queries<br>
+<!-- -->❌ <strong>Operational complexity</strong> - Requires expertise to manage<br>
+<!-- -->❌ <strong>Memory intensive</strong> - Large memory requirements for performance</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="5-graph-databases-nosql">5. Graph Databases (NoSQL)<a href="#5-graph-databases-nosql" class="hash-link" aria-label="Direct link to 5. Graph Databases (NoSQL)" title="Direct link to 5. Graph Databases (NoSQL)" translate="no">​</a></h3>
+<p>Graph databases use graph structures with nodes, edges, and properties to represent and store data.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-4">Popular Systems<a href="#popular-systems-4" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>Neo4j</strong> - Leading graph database platform</li>
+<li><strong>Amazon Neptune</strong> - Fully managed graph database</li>
+<li><strong>ArangoDB</strong> - Multi-model database with graph support</li>
+<li><strong>JanusGraph</strong> - Distributed graph database</li>
+<li><strong>OrientDB</strong> - Multi-model database with graph capabilities</li>
+<li><strong>TigerGraph</strong> - Analytics-focused graph database</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-4">Use Cases<a href="#use-cases-4" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Social networks</strong> - Friend connections, followers</li>
+<li><strong>Fraud detection</strong> - Pattern recognition in transactions</li>
+<li><strong>Recommendation engines</strong> - Personalized suggestions</li>
+<li><strong>Knowledge graphs</strong> - Semantic data relationships</li>
+<li><strong>Network topology</strong> - IT infrastructure mapping</li>
+<li><strong>Supply chain management</strong> - Complex relationship tracking</li>
+<li><strong>Identity and access management</strong> - Permission hierarchies</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-4">Pros<a href="#pros-4" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Relationship performance</strong> - Extremely fast for connected data<br>
+<!-- -->✅ <strong>Intuitive modeling</strong> - Natural representation of relationships<br>
+<!-- -->✅ <strong>Flexible queries</strong> - Complex relationship traversals<br>
+<!-- -->✅ <strong>Pattern matching</strong> - Powerful graph algorithms<br>
+<!-- -->✅ <strong>Real-time insights</strong> - Fast analysis of complex relationships<br>
+<!-- -->✅ <strong>Adaptable schema</strong> - Easy to evolve relationships</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-4">Cons<a href="#cons-4" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Learning curve</strong> - Requires understanding graph theory<br>
+<!-- -->❌ <strong>Scaling challenges</strong> - Horizontal scaling more complex<br>
+<!-- -->❌ <strong>Limited ecosystems</strong> - Fewer tools compared to SQL<br>
+<!-- -->❌ <strong>Poor for bulk operations</strong> - Not ideal for large-scale aggregations<br>
+<!-- -->❌ <strong>Memory intensive</strong> - Graph traversal requires significant memory</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="6-time-series-databases">6. Time-Series Databases<a href="#6-time-series-databases" class="hash-link" aria-label="Direct link to 6. Time-Series Databases" title="Direct link to 6. Time-Series Databases" translate="no">​</a></h3>
+<p>Specialized databases optimized for time-stamped or time-series data.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-5">Popular Systems<a href="#popular-systems-5" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>InfluxDB</strong> - Popular open-source time-series database</li>
+<li><strong>TimescaleDB</strong> - PostgreSQL extension for time-series</li>
+<li><strong>Prometheus</strong> - Monitoring and alerting system</li>
+<li><strong>OpenTSDB</strong> - Time-series database on HBase</li>
+<li><strong>Graphite</strong> - Time-series monitoring tool</li>
+<li><strong>QuestDB</strong> - High-performance time-series database</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-5">Use Cases<a href="#use-cases-5" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>IoT sensor data</strong> - Temperature, pressure, location tracking</li>
+<li><strong>Application monitoring</strong> - Performance metrics, logs</li>
+<li><strong>Financial markets</strong> - Stock prices, trading data</li>
+<li><strong>DevOps monitoring</strong> - System metrics, alerts</li>
+<li><strong>Business analytics</strong> - Sales trends, user activity</li>
+<li><strong>Industrial automation</strong> - Manufacturing sensors</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-5">Pros<a href="#pros-5" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Optimized for time-series</strong> - Purpose-built for temporal data<br>
+<!-- -->✅ <strong>High ingestion rates</strong> - Handle millions of data points/second<br>
+<!-- -->✅ <strong>Efficient compression</strong> - Excellent compression ratios<br>
+<!-- -->✅ <strong>Built-in retention</strong> - Automatic data lifecycle management<br>
+<!-- -->✅ <strong>Time-based queries</strong> - Specialized query capabilities<br>
+<!-- -->✅ <strong>Downsampling</strong> - Automatic data aggregation over time</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-5">Cons<a href="#cons-5" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Limited use cases</strong> - Not suitable for general-purpose data<br>
+<!-- -->❌ <strong>Append-only</strong> - Updates are typically not supported<br>
+<!-- -->❌ <strong>Complex queries</strong> - Limited support for non-temporal queries<br>
+<!-- -->❌ <strong>Retention management</strong> - Need to carefully manage data retention</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="7-search-engines">7. Search Engines<a href="#7-search-engines" class="hash-link" aria-label="Direct link to 7. Search Engines" title="Direct link to 7. Search Engines" translate="no">​</a></h3>
+<p>Specialized databases optimized for full-text search and analytics.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-6">Popular Systems<a href="#popular-systems-6" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>Elasticsearch</strong> - Distributed search and analytics engine</li>
+<li><strong>Apache Solr</strong> - Enterprise search platform</li>
+<li><strong>Algolia</strong> - Hosted search API</li>
+<li><strong>Meilisearch</strong> - Lightweight search engine</li>
+<li><strong>Typesense</strong> - Fast, typo-tolerant search engine</li>
+<li><strong>Amazon CloudSearch</strong> - Managed search service</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-6">Use Cases<a href="#use-cases-6" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Full-text search</strong> - Website search, documentation</li>
+<li><strong>Log analytics</strong> - Centralized logging (ELK stack)</li>
+<li><strong>E-commerce search</strong> - Product search with filters</li>
+<li><strong>Application monitoring</strong> - Real-time log analysis</li>
+<li><strong>Business intelligence</strong> - Analytics dashboards</li>
+<li><strong>Content discovery</strong> - News, articles, media search</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-6">Pros<a href="#pros-6" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Powerful search</strong> - Advanced full-text search capabilities<br>
+<!-- -->✅ <strong>Real-time indexing</strong> - Near real-time search updates<br>
+<!-- -->✅ <strong>Faceted search</strong> - Complex filtering and aggregations<br>
+<!-- -->✅ <strong>Relevance ranking</strong> - Sophisticated scoring algorithms<br>
+<!-- -->✅ <strong>Scalability</strong> - Distributed architecture for large datasets<br>
+<!-- -->✅ <strong>Analytics</strong> - Built-in analytics and visualization</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-6">Cons<a href="#cons-6" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Not a primary database</strong> - Should complement, not replace RDBMS<br>
+<!-- -->❌ <strong>Resource intensive</strong> - High memory and CPU requirements<br>
+<!-- -->❌ <strong>Complex configuration</strong> - Many tuning parameters<br>
+<!-- -->❌ <strong>Eventual consistency</strong> - Search index may lag behind source<br>
+<!-- -->❌ <strong>Operational overhead</strong> - Requires dedicated management</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="8-newsql-databases">8. NewSQL Databases<a href="#8-newsql-databases" class="hash-link" aria-label="Direct link to 8. NewSQL Databases" title="Direct link to 8. NewSQL Databases" translate="no">​</a></h3>
+<p>Modern databases that combine SQL/ACID with NoSQL scalability.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-7">Popular Systems<a href="#popular-systems-7" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>Google Spanner</strong> - Globally distributed database</li>
+<li><strong>CockroachDB</strong> - Distributed SQL database</li>
+<li><strong>VoltDB</strong> - In-memory NewSQL database</li>
+<li><strong>NuoDB</strong> - Elastic SQL database</li>
+<li><strong>TiDB</strong> - MySQL-compatible distributed database</li>
+<li><strong>YugabyteDB</strong> - PostgreSQL-compatible distributed database</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-7">Use Cases<a href="#use-cases-7" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Global applications</strong> - Multi-region deployments</li>
+<li><strong>Financial services</strong> - ACID with high scale requirements</li>
+<li><strong>Gaming platforms</strong> - Real-time, globally distributed data</li>
+<li><strong>SaaS applications</strong> - Multi-tenant platforms</li>
+<li><strong>E-commerce</strong> - High-scale transactional systems</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-7">Pros<a href="#pros-7" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>ACID compliance</strong> - Strong consistency guarantees<br>
+<!-- -->✅ <strong>Horizontal scalability</strong> - SQL with NoSQL-like scaling<br>
+<!-- -->✅ <strong>SQL compatibility</strong> - Familiar query language<br>
+<!-- -->✅ <strong>Global distribution</strong> - Multi-region support<br>
+<!-- -->✅ <strong>High availability</strong> - Built-in fault tolerance<br>
+<!-- -->✅ <strong>Best of both worlds</strong> - Combines SQL and NoSQL benefits</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-7">Cons<a href="#cons-7" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Complexity</strong> - More complex than traditional databases<br>
+<!-- -->❌ <strong>Cost</strong> - Often more expensive than alternatives<br>
+<!-- -->❌ <strong>Young technology</strong> - Less mature than traditional RDBMS<br>
+<!-- -->❌ <strong>Limited ecosystem</strong> - Fewer tools and integrations<br>
+<!-- -->❌ <strong>Performance tradeoffs</strong> - Distributed consensus overhead</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="9-multi-model-databases">9. Multi-Model Databases<a href="#9-multi-model-databases" class="hash-link" aria-label="Direct link to 9. Multi-Model Databases" title="Direct link to 9. Multi-Model Databases" translate="no">​</a></h3>
+<p>Databases that support multiple data models within a single system.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="popular-systems-8">Popular Systems<a href="#popular-systems-8" class="hash-link" aria-label="Direct link to Popular Systems" title="Direct link to Popular Systems" translate="no">​</a></h4>
+<ul>
+<li><strong>Azure Cosmos DB</strong> - Globally distributed multi-model database</li>
+<li><strong>ArangoDB</strong> - Document, graph, and key-value support</li>
+<li><strong>OrientDB</strong> - Multi-model with document and graph</li>
+<li><strong>Couchbase</strong> - Document and key-value</li>
+<li><strong>MarkLogic</strong> - Document, graph, and relational</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases-8">Use Cases<a href="#use-cases-8" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h4>
+<ul>
+<li><strong>Complex applications</strong> - Multiple data model requirements</li>
+<li><strong>Flexible architectures</strong> - Evolving data modeling needs</li>
+<li><strong>Hybrid workloads</strong> - Different access patterns</li>
+<li><strong>Simplified infrastructure</strong> - Single database for multiple needs</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="pros-8">Pros<a href="#pros-8" class="hash-link" aria-label="Direct link to Pros" title="Direct link to Pros" translate="no">​</a></h4>
+<p>✅ <strong>Flexibility</strong> - Multiple data models in one system<br>
+<!-- -->✅ <strong>Simplified architecture</strong> - Fewer databases to manage<br>
+<!-- -->✅ <strong>Consistent API</strong> - Single interface for multiple models<br>
+<!-- -->✅ <strong>Reduced complexity</strong> - No need for data synchronization<br>
+<!-- -->✅ <strong>Cost-effective</strong> - Consolidated infrastructure</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cons-8">Cons<a href="#cons-8" class="hash-link" aria-label="Direct link to Cons" title="Direct link to Cons" translate="no">​</a></h4>
+<p>❌ <strong>Jack of all trades</strong> - May not excel at any single model<br>
+<!-- -->❌ <strong>Complex optimization</strong> - Tuning for multiple workloads<br>
+<!-- -->❌ <strong>Vendor lock-in</strong> - Less standardization<br>
+<!-- -->❌ <strong>Learning curve</strong> - Need to understand multiple paradigms</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="choosing-the-right-database">Choosing the Right Database<a href="#choosing-the-right-database" class="hash-link" aria-label="Direct link to Choosing the Right Database" title="Direct link to Choosing the Right Database" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="decision-framework">Decision Framework<a href="#decision-framework" class="hash-link" aria-label="Direct link to Decision Framework" title="Direct link to Decision Framework" translate="no">​</a></h3>
+<div>Loading diagram...</div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-considerations">Key Considerations<a href="#key-considerations" class="hash-link" aria-label="Direct link to Key Considerations" title="Direct link to Key Considerations" translate="no">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="1-data-structure">1. Data Structure<a href="#1-data-structure" class="hash-link" aria-label="Direct link to 1. Data Structure" title="Direct link to 1. Data Structure" translate="no">​</a></h4>
+<ul>
+<li><strong>Structured, relational</strong> → SQL databases</li>
+<li><strong>Semi-structured, flexible</strong> → Document databases</li>
+<li><strong>Simple key-value</strong> → Key-value stores</li>
+<li><strong>Highly connected</strong> → Graph databases</li>
+<li><strong>Time-stamped</strong> → Time-series databases</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="2-scalability-requirements">2. Scalability Requirements<a href="#2-scalability-requirements" class="hash-link" aria-label="Direct link to 2. Scalability Requirements" title="Direct link to 2. Scalability Requirements" translate="no">​</a></h4>
+<ul>
+<li><strong>Vertical scaling</strong> → Traditional RDBMS</li>
+<li><strong>Horizontal scaling</strong> → NoSQL, NewSQL</li>
+<li><strong>Global distribution</strong> → NewSQL, Cosmos DB</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="3-consistency-requirements">3. Consistency Requirements<a href="#3-consistency-requirements" class="hash-link" aria-label="Direct link to 3. Consistency Requirements" title="Direct link to 3. Consistency Requirements" translate="no">​</a></h4>
+<ul>
+<li><strong>Strong consistency (ACID)</strong> → SQL, NewSQL</li>
+<li><strong>Eventual consistency acceptable</strong> → Most NoSQL</li>
+<li><strong>Mixed requirements</strong> → Multi-model or hybrid</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="4-query-complexity">4. Query Complexity<a href="#4-query-complexity" class="hash-link" aria-label="Direct link to 4. Query Complexity" title="Direct link to 4. Query Complexity" translate="no">​</a></h4>
+<ul>
+<li><strong>Complex joins, aggregations</strong> → SQL databases</li>
+<li><strong>Simple lookups</strong> → Key-value stores</li>
+<li><strong>Graph traversals</strong> → Graph databases</li>
+<li><strong>Full-text search</strong> → Search engines</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="5-performance-requirements">5. Performance Requirements<a href="#5-performance-requirements" class="hash-link" aria-label="Direct link to 5. Performance Requirements" title="Direct link to 5. Performance Requirements" translate="no">​</a></h4>
+<ul>
+<li><strong>Sub-millisecond latency</strong> → In-memory databases (Redis)</li>
+<li><strong>High write throughput</strong> → Column-family, time-series</li>
+<li><strong>High read throughput</strong> → Caching + any database</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="6-development-speed">6. Development Speed<a href="#6-development-speed" class="hash-link" aria-label="Direct link to 6. Development Speed" title="Direct link to 6. Development Speed" translate="no">​</a></h4>
+<ul>
+<li><strong>Rapid prototyping</strong> → Document databases</li>
+<li><strong>Well-defined requirements</strong> → SQL databases</li>
+<li><strong>Evolving schema</strong> → NoSQL databases</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="database-patterns-and-best-practices">Database Patterns and Best Practices<a href="#database-patterns-and-best-practices" class="hash-link" aria-label="Direct link to Database Patterns and Best Practices" title="Direct link to Database Patterns and Best Practices" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-database-per-service-pattern">1. Database per Service Pattern<a href="#1-database-per-service-pattern" class="hash-link" aria-label="Direct link to 1. Database per Service Pattern" title="Direct link to 1. Database per Service Pattern" translate="no">​</a></h3>
+<p>Each microservice owns its database, ensuring loose coupling.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Service independence</li>
+<li>Technology diversity</li>
+<li>Easier scaling</li>
+</ul>
+<p><strong>Challenges:</strong></p>
+<ul>
+<li>Distributed transactions</li>
+<li>Data consistency</li>
+<li>Operational complexity</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-cqrs-command-query-responsibility-segregation">2. CQRS (Command Query Responsibility Segregation)<a href="#2-cqrs-command-query-responsibility-segregation" class="hash-link" aria-label="Direct link to 2. CQRS (Command Query Responsibility Segregation)" title="Direct link to 2. CQRS (Command Query Responsibility Segregation)" translate="no">​</a></h3>
+<p>Separate read and write data models for better performance and scalability.</p>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>Different read/write performance characteristics</li>
+<li>Complex business logic</li>
+<li>Event sourcing</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-database-sharding">3. Database Sharding<a href="#3-database-sharding" class="hash-link" aria-label="Direct link to 3. Database Sharding" title="Direct link to 3. Database Sharding" translate="no">​</a></h3>
+<p>Horizontal partitioning of data across multiple databases.</p>
+<p><strong>Strategies:</strong></p>
+<ul>
+<li><strong>Hash-based</strong>: Partition by hash of key</li>
+<li><strong>Range-based</strong>: Partition by value ranges</li>
+<li><strong>Geographic</strong>: Partition by location</li>
+<li><strong>Directory-based</strong>: Lookup table for shard location</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-read-replicas">4. Read Replicas<a href="#4-read-replicas" class="hash-link" aria-label="Direct link to 4. Read Replicas" title="Direct link to 4. Read Replicas" translate="no">​</a></h3>
+<p>Create read-only copies of database for scaling read operations.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Improved read performance</li>
+<li>Geographic distribution</li>
+<li>High availability</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="5-caching-strategies">5. Caching Strategies<a href="#5-caching-strategies" class="hash-link" aria-label="Direct link to 5. Caching Strategies" title="Direct link to 5. Caching Strategies" translate="no">​</a></h3>
+<p><strong>Cache-aside</strong>: Application manages cache<br>
+<strong>Write-through</strong>: Write to cache and database simultaneously<br>
+<strong>Write-behind</strong>: Write to cache first, database asynchronously<br>
+<strong>Read-through</strong>: Cache manages database reads</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="comparison-matrix">Comparison Matrix<a href="#comparison-matrix" class="hash-link" aria-label="Direct link to Comparison Matrix" title="Direct link to Comparison Matrix" translate="no">​</a></h2>
+<table><thead><tr><th>Feature</th><th>SQL</th><th>Document</th><th>Key-Value</th><th>Column</th><th>Graph</th><th>Time-Series</th></tr></thead><tbody><tr><td><strong>Schema</strong></td><td>Fixed</td><td>Flexible</td><td>None</td><td>Flexible</td><td>Flexible</td><td>Fixed</td></tr><tr><td><strong>Scalability</strong></td><td>Vertical</td><td>Horizontal</td><td>Horizontal</td><td>Horizontal</td><td>Mixed</td><td>Horizontal</td></tr><tr><td><strong>Consistency</strong></td><td>Strong</td><td>Eventual</td><td>Eventual</td><td>Eventual</td><td>Strong</td><td>Strong</td></tr><tr><td><strong>Query Complexity</strong></td><td>High</td><td>Medium</td><td>Low</td><td>Medium</td><td>High</td><td>Medium</td></tr><tr><td><strong>Transaction Support</strong></td><td>Full</td><td>Limited</td><td>Minimal</td><td>Limited</td><td>Full</td><td>Minimal</td></tr><tr><td><strong>Learning Curve</strong></td><td>Low</td><td>Low</td><td>Low</td><td>High</td><td>Medium</td><td>Medium</td></tr><tr><td><strong>Best For</strong></td><td>Structured</td><td>Flexible</td><td>Speed</td><td>Scale</td><td>Relationships</td><td>Time data</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="popular-database-combinations">Popular Database Combinations<a href="#popular-database-combinations" class="hash-link" aria-label="Direct link to Popular Database Combinations" title="Direct link to Popular Database Combinations" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-lampmean-stack">1. LAMP/MEAN Stack<a href="#1-lampmean-stack" class="hash-link" aria-label="Direct link to 1. LAMP/MEAN Stack" title="Direct link to 1. LAMP/MEAN Stack" translate="no">​</a></h3>
+<ul>
+<li><strong>Primary</strong>: PostgreSQL/MySQL (LAMP) or MongoDB (MEAN)</li>
+<li><strong>Cache</strong>: Redis</li>
+<li><strong>Search</strong>: Elasticsearch</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-microservices-architecture">2. Microservices Architecture<a href="#2-microservices-architecture" class="hash-link" aria-label="Direct link to 2. Microservices Architecture" title="Direct link to 2. Microservices Architecture" translate="no">​</a></h3>
+<ul>
+<li><strong>Transactional</strong>: PostgreSQL per service</li>
+<li><strong>Session</strong>: Redis</li>
+<li><strong>Search</strong>: Elasticsearch</li>
+<li><strong>Analytics</strong>: ClickHouse or BigQuery</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-real-time-analytics">3. Real-time Analytics<a href="#3-real-time-analytics" class="hash-link" aria-label="Direct link to 3. Real-time Analytics" title="Direct link to 3. Real-time Analytics" translate="no">​</a></h3>
+<ul>
+<li><strong>OLTP</strong>: PostgreSQL/MySQL</li>
+<li><strong>OLAP</strong>: ClickHouse, BigQuery, Snowflake</li>
+<li><strong>Streaming</strong>: Apache Kafka</li>
+<li><strong>Time-series</strong>: InfluxDB</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-social-network">4. Social Network<a href="#4-social-network" class="hash-link" aria-label="Direct link to 4. Social Network" title="Direct link to 4. Social Network" translate="no">​</a></h3>
+<ul>
+<li><strong>User data</strong>: PostgreSQL</li>
+<li><strong>Relationships</strong>: Neo4j</li>
+<li><strong>Cache</strong>: Redis</li>
+<li><strong>Feed</strong>: Cassandra</li>
+<li><strong>Search</strong>: Elasticsearch</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="migration-strategies">Migration Strategies<a href="#migration-strategies" class="hash-link" aria-label="Direct link to Migration Strategies" title="Direct link to Migration Strategies" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-big-bang-migration">1. Big Bang Migration<a href="#1-big-bang-migration" class="hash-link" aria-label="Direct link to 1. Big Bang Migration" title="Direct link to 1. Big Bang Migration" translate="no">​</a></h3>
+<p>Complete migration in one operation.</p>
+<p><strong>Pros</strong>: Clean, simple<br>
+<strong>Cons</strong>: Risky, requires downtime</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-trickle-migration">2. Trickle Migration<a href="#2-trickle-migration" class="hash-link" aria-label="Direct link to 2. Trickle Migration" title="Direct link to 2. Trickle Migration" translate="no">​</a></h3>
+<p>Gradual migration of data and traffic.</p>
+<p><strong>Pros</strong>: Low risk, reversible<br>
+<strong>Cons</strong>: Complex, dual maintenance</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-strangler-fig-pattern">3. Strangler Fig Pattern<a href="#3-strangler-fig-pattern" class="hash-link" aria-label="Direct link to 3. Strangler Fig Pattern" title="Direct link to 3. Strangler Fig Pattern" translate="no">​</a></h3>
+<p>Gradually replace old system with new.</p>
+<p><strong>Pros</strong>: Incremental, safe<br>
+<strong>Cons</strong>: Longer timeline</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="database-security-best-practices">Database Security Best Practices<a href="#database-security-best-practices" class="hash-link" aria-label="Direct link to Database Security Best Practices" title="Direct link to Database Security Best Practices" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="access-control">Access Control<a href="#access-control" class="hash-link" aria-label="Direct link to Access Control" title="Direct link to Access Control" translate="no">​</a></h3>
+<ul>
+<li>✅ Principle of least privilege</li>
+<li>✅ Role-based access control (RBAC)</li>
+<li>✅ Strong authentication mechanisms</li>
+<li>✅ Regular access audits</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="encryption">Encryption<a href="#encryption" class="hash-link" aria-label="Direct link to Encryption" title="Direct link to Encryption" translate="no">​</a></h3>
+<ul>
+<li>✅ Encryption at rest</li>
+<li>✅ Encryption in transit (TLS/SSL)</li>
+<li>✅ Encrypted backups</li>
+<li>✅ Key management systems</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="monitoring-and-auditing">Monitoring and Auditing<a href="#monitoring-and-auditing" class="hash-link" aria-label="Direct link to Monitoring and Auditing" title="Direct link to Monitoring and Auditing" translate="no">​</a></h3>
+<ul>
+<li>✅ Query logging</li>
+<li>✅ Access logging</li>
+<li>✅ Anomaly detection</li>
+<li>✅ Regular security audits</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="network-security">Network Security<a href="#network-security" class="hash-link" aria-label="Direct link to Network Security" title="Direct link to Network Security" translate="no">​</a></h3>
+<ul>
+<li>✅ Firewall rules</li>
+<li>✅ VPC/private networks</li>
+<li>✅ IP whitelisting</li>
+<li>✅ Bastion hosts for access</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="performance-optimization">Performance Optimization<a href="#performance-optimization" class="hash-link" aria-label="Direct link to Performance Optimization" title="Direct link to Performance Optimization" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="query-optimization">Query Optimization<a href="#query-optimization" class="hash-link" aria-label="Direct link to Query Optimization" title="Direct link to Query Optimization" translate="no">​</a></h3>
+<ol>
+<li><strong>Indexing</strong>: Create appropriate indexes</li>
+<li><strong>Query analysis</strong>: Use EXPLAIN plans</li>
+<li><strong>Denormalization</strong>: Strategic data duplication</li>
+<li><strong>Connection pooling</strong>: Reuse database connections</li>
+<li><strong>Prepared statements</strong>: Reduce parsing overhead</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="database-tuning">Database Tuning<a href="#database-tuning" class="hash-link" aria-label="Direct link to Database Tuning" title="Direct link to Database Tuning" translate="no">​</a></h3>
+<ol>
+<li><strong>Buffer pool sizing</strong>: Optimize memory allocation</li>
+<li><strong>Cache configuration</strong>: Tune query and result caches</li>
+<li><strong>Checkpoint tuning</strong>: Optimize write performance</li>
+<li><strong>Vacuum/compaction</strong>: Regular maintenance operations</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="application-level-optimization">Application-Level Optimization<a href="#application-level-optimization" class="hash-link" aria-label="Direct link to Application-Level Optimization" title="Direct link to Application-Level Optimization" translate="no">​</a></h3>
+<ol>
+<li><strong>Caching</strong>: Implement application-level caching</li>
+<li><strong>Batch operations</strong>: Group multiple operations</li>
+<li><strong>Lazy loading</strong>: Load data only when needed</li>
+<li><strong>Pagination</strong>: Limit result set sizes</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="backup-and-recovery">Backup and Recovery<a href="#backup-and-recovery" class="hash-link" aria-label="Direct link to Backup and Recovery" title="Direct link to Backup and Recovery" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="backup-strategies">Backup Strategies<a href="#backup-strategies" class="hash-link" aria-label="Direct link to Backup Strategies" title="Direct link to Backup Strategies" translate="no">​</a></h3>
+<p><strong>Full Backup</strong>: Complete database copy<br>
+<strong>Incremental Backup</strong>: Only changed data since last backup<br>
+<strong>Differential Backup</strong>: Changes since last full backup<br>
+<strong>Point-in-Time Recovery</strong>: Restore to specific timestamp</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="backup-best-practices">Backup Best Practices<a href="#backup-best-practices" class="hash-link" aria-label="Direct link to Backup Best Practices" title="Direct link to Backup Best Practices" translate="no">​</a></h3>
+<ul>
+<li>✅ Regular automated backups</li>
+<li>✅ Test restore procedures</li>
+<li>✅ Off-site backup storage</li>
+<li>✅ Encrypted backups</li>
+<li>✅ Documented recovery procedures</li>
+<li>✅ Multiple backup retention periods</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="high-availability-options">High Availability Options<a href="#high-availability-options" class="hash-link" aria-label="Direct link to High Availability Options" title="Direct link to High Availability Options" translate="no">​</a></h3>
+<ul>
+<li><strong>Replication</strong>: Primary-replica setup</li>
+<li><strong>Clustering</strong>: Multi-node clusters</li>
+<li><strong>Auto-failover</strong>: Automatic failover mechanisms</li>
+<li><strong>Multi-region</strong>: Geographic distribution</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="monitoring-and-observability">Monitoring and Observability<a href="#monitoring-and-observability" class="hash-link" aria-label="Direct link to Monitoring and Observability" title="Direct link to Monitoring and Observability" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="key-metrics-to-monitor">Key Metrics to Monitor<a href="#key-metrics-to-monitor" class="hash-link" aria-label="Direct link to Key Metrics to Monitor" title="Direct link to Key Metrics to Monitor" translate="no">​</a></h3>
+<p><strong>Performance Metrics:</strong></p>
+<ul>
+<li>Query response times</li>
+<li>Throughput (queries/second)</li>
+<li>Connection pool usage</li>
+<li>Cache hit rates</li>
+</ul>
+<p><strong>Resource Metrics:</strong></p>
+<ul>
+<li>CPU utilization</li>
+<li>Memory usage</li>
+<li>Disk I/O</li>
+<li>Network throughput</li>
+</ul>
+<p><strong>Reliability Metrics:</strong></p>
+<ul>
+<li>Uptime/availability</li>
+<li>Replication lag</li>
+<li>Error rates</li>
+<li>Failed queries</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="monitoring-tools">Monitoring Tools<a href="#monitoring-tools" class="hash-link" aria-label="Direct link to Monitoring Tools" title="Direct link to Monitoring Tools" translate="no">​</a></h3>
+<ul>
+<li><strong>Database-specific</strong>: pgAdmin, MySQL Workbench</li>
+<li><strong>General-purpose</strong>: Prometheus, Grafana</li>
+<li><strong>Cloud-native</strong>: AWS CloudWatch, Azure Monitor</li>
+<li><strong>APM</strong>: New Relic, Datadog, AppDynamics</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="cost-considerations">Cost Considerations<a href="#cost-considerations" class="hash-link" aria-label="Direct link to Cost Considerations" title="Direct link to Cost Considerations" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="factors-affecting-database-costs">Factors Affecting Database Costs<a href="#factors-affecting-database-costs" class="hash-link" aria-label="Direct link to Factors Affecting Database Costs" title="Direct link to Factors Affecting Database Costs" translate="no">​</a></h3>
+<ol>
+<li><strong>Infrastructure</strong>: Compute, storage, network</li>
+<li><strong>Licensing</strong>: Commercial database licenses</li>
+<li><strong>Operations</strong>: Management, maintenance, support</li>
+<li><strong>Scaling</strong>: Growth and scale overhead</li>
+<li><strong>High availability</strong>: Redundancy costs</li>
+<li><strong>Backup and recovery</strong>: Storage and bandwidth</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cost-optimization-strategies">Cost Optimization Strategies<a href="#cost-optimization-strategies" class="hash-link" aria-label="Direct link to Cost Optimization Strategies" title="Direct link to Cost Optimization Strategies" translate="no">​</a></h3>
+<ul>
+<li>✅ Right-size instances based on actual usage</li>
+<li>✅ Use reserved instances for predictable workloads</li>
+<li>✅ Implement auto-scaling for variable loads</li>
+<li>✅ Optimize storage (archive old data)</li>
+<li>✅ Consider open-source alternatives</li>
+<li>✅ Use serverless options for sporadic workloads</li>
+<li>✅ Regular performance tuning to reduce resource needs</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="future-trends">Future Trends<a href="#future-trends" class="hash-link" aria-label="Direct link to Future Trends" title="Direct link to Future Trends" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="emerging-technologies">Emerging Technologies<a href="#emerging-technologies" class="hash-link" aria-label="Direct link to Emerging Technologies" title="Direct link to Emerging Technologies" translate="no">​</a></h3>
+<p><strong>Serverless Databases</strong><br>
+<!-- -->Pay-per-use databases with automatic scaling (Aurora Serverless, Cosmos DB serverless)</p>
+<p><strong>AI-Powered Optimization</strong><br>
+<!-- -->Self-tuning databases using machine learning</p>
+<p><strong>Blockchain Databases</strong><br>
+<!-- -->Immutable, distributed ledger databases</p>
+<p><strong>Quantum Databases</strong><br>
+<!-- -->Databases designed for quantum computing</p>
+<p><strong>Edge Databases</strong><br>
+<!-- -->Distributed databases for edge computing scenarios</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="industry-evolution">Industry Evolution<a href="#industry-evolution" class="hash-link" aria-label="Direct link to Industry Evolution" title="Direct link to Industry Evolution" translate="no">​</a></h3>
+<ul>
+<li><strong>Cloud-native</strong>: Shift to cloud-managed databases</li>
+<li><strong>Multi-cloud</strong>: Database solutions spanning multiple clouds</li>
+<li><strong>Unified platforms</strong>: Multi-model and polyglot persistence</li>
+<li><strong>Automation</strong>: Self-managing, self-healing databases</li>
+<li><strong>Real-time</strong>: Everything moving to real-time processing</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="resources-and-further-reading">Resources and Further Reading<a href="#resources-and-further-reading" class="hash-link" aria-label="Direct link to Resources and Further Reading" title="Direct link to Resources and Further Reading" translate="no">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="documentation">Documentation<a href="#documentation" class="hash-link" aria-label="Direct link to Documentation" title="Direct link to Documentation" translate="no">​</a></h3>
+<ul>
+<li><a href="https://www.postgresql.org/docs/" target="_blank" rel="noopener noreferrer">PostgreSQL Official Docs</a></li>
+<li><a href="https://docs.mongodb.com/" target="_blank" rel="noopener noreferrer">MongoDB Manual</a></li>
+<li><a href="https://redis.io/documentation" target="_blank" rel="noopener noreferrer">Redis Documentation</a></li>
+<li><a href="https://neo4j.com/docs/" target="_blank" rel="noopener noreferrer">Neo4j Graph Database</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="learning-resources">Learning Resources<a href="#learning-resources" class="hash-link" aria-label="Direct link to Learning Resources" title="Direct link to Learning Resources" translate="no">​</a></h3>
+<ul>
+<li><a href="https://www.coursera.org/learn/database-design" target="_blank" rel="noopener noreferrer">Database Design Course</a></li>
+<li><a href="https://www.sqltutorial.org/" target="_blank" rel="noopener noreferrer">SQL Tutorial</a></li>
+<li><a href="https://martinfowler.com/books/nosql.html" target="_blank" rel="noopener noreferrer">NoSQL Distilled (Book)</a></li>
+<li><a href="https://dataintensive.net/" target="_blank" rel="noopener noreferrer">Designing Data-Intensive Applications (Book)</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="community">Community<a href="#community" class="hash-link" aria-label="Direct link to Community" title="Direct link to Community" translate="no">​</a></h3>
+<ul>
+<li>Database Weekly Newsletter</li>
+<li>Reddit: r/database, r/SQL, r/mongodb</li>
+<li>Stack Overflow database tags</li>
+<li>Database-specific Discord/Slack communities</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
+<p>Choosing the right database is a critical architectural decision that impacts performance, scalability, development speed, and operational costs. There&#x27;s no one-size-fits-all solution—the best choice depends on your specific requirements:</p>
+<ul>
+<li><strong>Start with SQL</strong> for most traditional applications with structured data</li>
+<li><strong>Use NoSQL</strong> when you need flexibility, scale, or specific data models</li>
+<li><strong>Consider polyglot persistence</strong> for complex applications with varied needs</li>
+<li><strong>Evaluate NewSQL</strong> for global-scale applications requiring ACID guarantees</li>
+<li><strong>Always prototype</strong> and test with realistic workloads before committing</li>
+</ul>
+<p>Remember that database selection is not permanent—you can migrate and evolve your database strategy as your application grows and requirements change.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/tamnk74/fullstack-dev/tree/main/docs-site/docs/backend/database/index.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/fullstack-dev/docs/backend/event-sourcing-outbox-pattern"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Event Sourcing and Outbox Pattern Guide</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/fullstack-dev/docs/backend/database/postgresql-architecture"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">PostgreSQL Architecture</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-is-a-database" class="table-of-contents__link toc-highlight">What is a Database?</a></li><li><a href="#key-database-concepts" class="table-of-contents__link toc-highlight">Key Database Concepts</a><ul><li><a href="#acid-properties" class="table-of-contents__link toc-highlight">ACID Properties</a></li><li><a href="#base-properties" class="table-of-contents__link toc-highlight">BASE Properties</a></li><li><a href="#cap-theorem" class="table-of-contents__link toc-highlight">CAP Theorem</a></li></ul></li><li><a href="#database-types" class="table-of-contents__link toc-highlight">Database Types</a><ul><li><a href="#1-relational-databases-sql" class="table-of-contents__link toc-highlight">1. Relational Databases (SQL)</a></li><li><a href="#2-document-databases-nosql" class="table-of-contents__link toc-highlight">2. Document Databases (NoSQL)</a></li><li><a href="#3-key-value-stores-nosql" class="table-of-contents__link toc-highlight">3. Key-Value Stores (NoSQL)</a></li><li><a href="#4-column-family-databases-nosql" class="table-of-contents__link toc-highlight">4. Column-Family Databases (NoSQL)</a></li><li><a href="#5-graph-databases-nosql" class="table-of-contents__link toc-highlight">5. Graph Databases (NoSQL)</a></li><li><a href="#6-time-series-databases" class="table-of-contents__link toc-highlight">6. Time-Series Databases</a></li><li><a href="#7-search-engines" class="table-of-contents__link toc-highlight">7. Search Engines</a></li><li><a href="#8-newsql-databases" class="table-of-contents__link toc-highlight">8. NewSQL Databases</a></li><li><a href="#9-multi-model-databases" class="table-of-contents__link toc-highlight">9. Multi-Model Databases</a></li></ul></li><li><a href="#choosing-the-right-database" class="table-of-contents__link toc-highlight">Choosing the Right Database</a><ul><li><a href="#decision-framework" class="table-of-contents__link toc-highlight">Decision Framework</a></li><li><a href="#key-considerations" class="table-of-contents__link toc-highlight">Key Considerations</a></li></ul></li><li><a href="#database-patterns-and-best-practices" class="table-of-contents__link toc-highlight">Database Patterns and Best Practices</a><ul><li><a href="#1-database-per-service-pattern" class="table-of-contents__link toc-highlight">1. Database per Service Pattern</a></li><li><a href="#2-cqrs-command-query-responsibility-segregation" class="table-of-contents__link toc-highlight">2. CQRS (Command Query Responsibility Segregation)</a></li><li><a href="#3-database-sharding" class="table-of-contents__link toc-highlight">3. Database Sharding</a></li><li><a href="#4-read-replicas" class="table-of-contents__link toc-highlight">4. Read Replicas</a></li><li><a href="#5-caching-strategies" class="table-of-contents__link toc-highlight">5. Caching Strategies</a></li></ul></li><li><a href="#comparison-matrix" class="table-of-contents__link toc-highlight">Comparison Matrix</a></li><li><a href="#popular-database-combinations" class="table-of-contents__link toc-highlight">Popular Database Combinations</a><ul><li><a href="#1-lampmean-stack" class="table-of-contents__link toc-highlight">1. LAMP/MEAN Stack</a></li><li><a href="#2-microservices-architecture" class="table-of-contents__link toc-highlight">2. Microservices Architecture</a></li><li><a href="#3-real-time-analytics" class="table-of-contents__link toc-highlight">3. Real-time Analytics</a></li><li><a href="#4-social-network" class="table-of-contents__link toc-highlight">4. Social Network</a></li></ul></li><li><a href="#migration-strategies" class="table-of-contents__link toc-highlight">Migration Strategies</a><ul><li><a href="#1-big-bang-migration" class="table-of-contents__link toc-highlight">1. Big Bang Migration</a></li><li><a href="#2-trickle-migration" class="table-of-contents__link toc-highlight">2. Trickle Migration</a></li><li><a href="#3-strangler-fig-pattern" class="table-of-contents__link toc-highlight">3. Strangler Fig Pattern</a></li></ul></li><li><a href="#database-security-best-practices" class="table-of-contents__link toc-highlight">Database Security Best Practices</a><ul><li><a href="#access-control" class="table-of-contents__link toc-highlight">Access Control</a></li><li><a href="#encryption" class="table-of-contents__link toc-highlight">Encryption</a></li><li><a href="#monitoring-and-auditing" class="table-of-contents__link toc-highlight">Monitoring and Auditing</a></li><li><a href="#network-security" class="table-of-contents__link toc-highlight">Network Security</a></li></ul></li><li><a href="#performance-optimization" class="table-of-contents__link toc-highlight">Performance Optimization</a><ul><li><a href="#query-optimization" class="table-of-contents__link toc-highlight">Query Optimization</a></li><li><a href="#database-tuning" class="table-of-contents__link toc-highlight">Database Tuning</a></li><li><a href="#application-level-optimization" class="table-of-contents__link toc-highlight">Application-Level Optimization</a></li></ul></li><li><a href="#backup-and-recovery" class="table-of-contents__link toc-highlight">Backup and Recovery</a><ul><li><a href="#backup-strategies" class="table-of-contents__link toc-highlight">Backup Strategies</a></li><li><a href="#backup-best-practices" class="table-of-contents__link toc-highlight">Backup Best Practices</a></li><li><a href="#high-availability-options" class="table-of-contents__link toc-highlight">High Availability Options</a></li></ul></li><li><a href="#monitoring-and-observability" class="table-of-contents__link toc-highlight">Monitoring and Observability</a><ul><li><a href="#key-metrics-to-monitor" class="table-of-contents__link toc-highlight">Key Metrics to Monitor</a></li><li><a href="#monitoring-tools" class="table-of-contents__link toc-highlight">Monitoring Tools</a></li></ul></li><li><a href="#cost-considerations" class="table-of-contents__link toc-highlight">Cost Considerations</a><ul><li><a href="#factors-affecting-database-costs" class="table-of-contents__link toc-highlight">Factors Affecting Database Costs</a></li><li><a href="#cost-optimization-strategies" class="table-of-contents__link toc-highlight">Cost Optimization Strategies</a></li></ul></li><li><a href="#future-trends" class="table-of-contents__link toc-highlight">Future Trends</a><ul><li><a href="#emerging-technologies" class="table-of-contents__link toc-highlight">Emerging Technologies</a></li><li><a href="#industry-evolution" class="table-of-contents__link toc-highlight">Industry Evolution</a></li></ul></li><li><a href="#resources-and-further-reading" class="table-of-contents__link toc-highlight">Resources and Further Reading</a><ul><li><a href="#documentation" class="table-of-contents__link toc-highlight">Documentation</a></li><li><a href="#learning-resources" class="table-of-contents__link toc-highlight">Learning Resources</a></li><li><a href="#community" class="table-of-contents__link toc-highlight">Community</a></li></ul></li><li><a href="#conclusion" class="table-of-contents__link toc-highlight">Conclusion</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/intro">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/architecture-practices">Architecture Practices</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/features">Features</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Development</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/setup">Setup &amp; Installation</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/testing">Testing</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/deployment">Deployment</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub (Fullstack Dev)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Next.js for Production. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

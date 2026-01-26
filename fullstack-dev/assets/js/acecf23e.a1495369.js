@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkdocs_site=globalThis.webpackChunkdocs_site||[]).push([[81903],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/fullstack-dev/blog","blogTitle":"Blog","authorsListPath":"/fullstack-dev/blog/authors"}')}}]);
