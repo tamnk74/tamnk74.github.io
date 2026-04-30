@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-security-practices/training/security-awareness/owasp-top-10-training" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">OWASP Top 10 2025 Training | Full-Stack Developer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://tamnk74.github.io/fullstack-dev/docs/security-practices/training/security-awareness/owasp-top-10-training"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="OWASP Top 10 2025 Training | Full-Stack Developer"><meta data-rh="true" name="description" content="Overview"><meta data-rh="true" property="og:description" content="Overview"><link data-rh="true" rel="icon" href="/fullstack-dev/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://tamnk74.github.io/fullstack-dev/docs/security-practices/training/security-awareness/owasp-top-10-training"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/security-practices/training/security-awareness/owasp-top-10-training" hreflang="en"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/security-practices/training/security-awareness/owasp-top-10-training" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"🔐 Security","item":"https://tamnk74.github.io/fullstack-dev/docs/security-practices/"},{"@type":"ListItem","position":2,"name":"🎓 Training & Awareness","item":"https://tamnk74.github.io/fullstack-dev/docs/security-practices/training/"},{"@type":"ListItem","position":3,"name":"OWASP Top 10 2025","item":"https://tamnk74.github.io/fullstack-dev/docs/security-practices/training/security-awareness/owasp-top-10-training"}]}</script><link rel="alternate" type="application/rss+xml" href="/fullstack-dev/blog/rss.xml" title="Full-Stack Developer RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/fullstack-dev/blog/atom.xml" title="Full-Stack Developer Atom Feed">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/fullstack-dev/assets/css/styles.d96e413c.css">
+<script src="/fullstack-dev/assets/js/runtime~main.e5b980a3.js" defer="defer"></script>
+<script src="/fullstack-dev/assets/js/main.9bd1df7f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/fullstack-dev/"><div class="navbar__logo"><img src="/fullstack-dev/img/logo.png" alt="Full-Stack Developer Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/fullstack-dev/img/logo.png" alt="Full-Stack Developer Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Full-Stack Developer</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/fullstack-dev/docs/intro">Documentation</a><a class="navbar__item navbar__link" href="/fullstack-dev/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/search-guide"><span title="Search Documentation" class="linkLabel_WmDU">Search Documentation</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/fullstack-dev/docs/setup"><span title="🚀 Getting Started" class="categoryLinkLabel_W154">🚀 Getting Started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/setup"><span title="Setup &amp; Installation" class="linkLabel_WmDU">Setup &amp; Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/how-web-works"><span title="How Web Works" class="linkLabel_WmDU">How Web Works</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fundamentals/concurrency"><span title="📚 Fundamentals" class="categoryLinkLabel_W154">📚 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/coding-conventions/"><span title="👨‍💻 Coding Conventions" class="categoryLinkLabel_W154">👨‍💻 Coding Conventions</span></a><button aria-label="Expand sidebar category &#x27;👨‍💻 Coding Conventions&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/design-patterns/"><span title="📐 Design Patterns" class="categoryLinkLabel_W154">📐 Design Patterns</span></a><button aria-label="Expand sidebar category &#x27;📐 Design Patterns&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/frontend/"><span title="🎨 Frontend" class="categoryLinkLabel_W154">🎨 Frontend</span></a><button aria-label="Expand sidebar category &#x27;🎨 Frontend&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/backend/"><span title="⚙️ Backend" class="categoryLinkLabel_W154">⚙️ Backend</span></a><button aria-label="Expand sidebar category &#x27;⚙️ Backend&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fullstack/http-caching-headers-guide"><span title="🔄 Fullstack" class="categoryLinkLabel_W154">🔄 Fullstack</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/system-design/"><span title="🏗️ System Design" class="categoryLinkLabel_W154">🏗️ System Design</span></a><button aria-label="Expand sidebar category &#x27;🏗️ System Design&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/architecture-practices/overview/"><span title="🏢 Architecture Practices" class="categoryLinkLabel_W154">🏢 Architecture Practices</span></a><button aria-label="Expand sidebar category &#x27;🏢 Architecture Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/devops/"><span title="☁️ DevOps &amp; Cloud" class="categoryLinkLabel_W154">☁️ DevOps &amp; Cloud</span></a><button aria-label="Expand sidebar category &#x27;☁️ DevOps &amp; Cloud&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/fullstack-dev/docs/security-practices/"><span title="🔐 Security" class="categoryLinkLabel_W154">🔐 Security</span></a><button aria-label="Collapse sidebar category &#x27;🔐 Security&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/foundations/"><span title="🏛️ Foundations" class="categoryLinkLabel_W154">🏛️ Foundations</span></a><button aria-label="Expand sidebar category &#x27;🏛️ Foundations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/controls/"><span title="🛡️ Controls" class="categoryLinkLabel_W154">🛡️ Controls</span></a><button aria-label="Expand sidebar category &#x27;🛡️ Controls&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/testing/"><span title="🔍 Testing &amp; Assessment" class="categoryLinkLabel_W154">🔍 Testing &amp; Assessment</span></a><button aria-label="Expand sidebar category &#x27;🔍 Testing &amp; Assessment&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/fullstack-dev/docs/security-practices/training/"><span title="🎓 Training &amp; Awareness" class="categoryLinkLabel_W154">🎓 Training &amp; Awareness</span></a><button aria-label="Collapse sidebar category &#x27;🎓 Training &amp; Awareness&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness-training"><span title="Security Awareness Training Implementation Guide" class="linkLabel_WmDU">Security Awareness Training Implementation Guide</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible menu__list-item-collapsible--active"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" aria-current="page" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/owasp-top-10-training"><span title="OWASP Top 10 2025" class="categoryLinkLabel_W154">OWASP Top 10 2025</span></a><button aria-label="Collapse sidebar category &#x27;OWASP Top 10 2025&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a01-broken-access-control"><span title="A01:2025 - Broken Access Control (includes SSRF) - Real Scenarios" class="linkLabel_WmDU">A01:2025 - Broken Access Control (includes SSRF) - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a02-security-misconfiguration"><span title="A02: Security Misconfiguration - Real Scenarios" class="linkLabel_WmDU">A02: Security Misconfiguration - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a03-software-supply-chain-failures"><span title="A03:2025 - Software Supply Chain Failures - Real Scenarios" class="linkLabel_WmDU">A03:2025 - Software Supply Chain Failures - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a04-cryptographic-failures"><span title="A04: Cryptographic Failures - Real Scenarios" class="linkLabel_WmDU">A04: Cryptographic Failures - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a05-injection"><span title="A05: Injection - Real Scenarios" class="linkLabel_WmDU">A05: Injection - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a06-insecure-design"><span title="A06: Insecure Design - Real Scenarios" class="linkLabel_WmDU">A06: Insecure Design - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a07-authentication-failures"><span title="A07: Identification and Authentication Failures - Real Scenarios" class="linkLabel_WmDU">A07: Identification and Authentication Failures - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a08-software-data-integrity-failures"><span title="A08: Software and Data Integrity Failures - Real Scenarios" class="linkLabel_WmDU">A08: Software and Data Integrity Failures - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a09-security-logging-alerting-failures"><span title="A09: Security Logging and Monitoring Failures - Real Scenarios" class="linkLabel_WmDU">A09: Security Logging and Monitoring Failures - Real Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/a10-mishandling-exceptional-conditions"><span title="A10:2025 - Mishandling of Exceptional Conditions - Real Scenarios" class="linkLabel_WmDU">A10:2025 - Mishandling of Exceptional Conditions - Real Scenarios</span></a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/sans-cwe-top25-training"><span title="SANS CWE Top 25 Training" class="linkLabel_WmDU">SANS CWE Top 25 Training</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/security-champions-program"><span title="Security Champions Program" class="linkLabel_WmDU">Security Champions Program</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/hands-on-security-labs"><span title="Hands-On Security Labs" class="linkLabel_WmDU">Hands-On Security Labs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/industry-specific-training"><span title="Industry-Specific Training" class="linkLabel_WmDU">Industry-Specific Training</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/training-program-structure"><span title="Training Program Structure" class="linkLabel_WmDU">Training Program Structure</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/training/security-awareness/training-management-service"><span title="Training Management Service (Reference)" class="linkLabel_WmDU">Training Management Service (Reference)</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/compliance/"><span title="📋 Compliance &amp; Privacy" class="categoryLinkLabel_W154">📋 Compliance &amp; Privacy</span></a><button aria-label="Expand sidebar category &#x27;📋 Compliance &amp; Privacy&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/operations/"><span title="⚙️ Operations" class="categoryLinkLabel_W154">⚙️ Operations</span></a><button aria-label="Expand sidebar category &#x27;⚙️ Operations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-learning/"><span title="📖 90-Day Learning Program" class="categoryLinkLabel_W154">📖 90-Day Learning Program</span></a><button aria-label="Expand sidebar category &#x27;📖 90-Day Learning Program&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/testing"><span title="🧪 QA &amp; Testing" class="categoryLinkLabel_W154">🧪 QA &amp; Testing</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/ai-machine-learning/vertex-ai-gemini-guide"><span title="🤖 AI &amp; Machine Learning" class="categoryLinkLabel_W154">🤖 AI &amp; Machine Learning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/mobile/architecture-process/"><span title="📱 Mobile" class="categoryLinkLabel_W154">📱 Mobile</span></a><button aria-label="Expand sidebar category &#x27;📱 Mobile&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/analytics/google-analytics-comparison"><span title="📊 Analytics &amp; Marketing" class="categoryLinkLabel_W154">📊 Analytics &amp; Marketing</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/features"><span title="✨ Features" class="categoryLinkLabel_W154">✨ Features</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/assessments/developer-assessment-with-development-plans"><span title="💼 Career &amp; Assessments" class="categoryLinkLabel_W154">💼 Career &amp; Assessments</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/deployment"><span title="🛠️ Development &amp; Deployment" class="categoryLinkLabel_W154">🛠️ Development &amp; Deployment</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/api-reference"><span title="📚 API Reference" class="categoryLinkLabel_W154">📚 API Reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-basics/create-a-document"><span title="🎓 Tutorials" class="categoryLinkLabel_W154">🎓 Tutorials</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/fullstack-dev/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/fullstack-dev/docs/security-practices/"><span>🔐 Security</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/fullstack-dev/docs/security-practices/training/"><span>🎓 Training &amp; Awareness</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">OWASP Top 10 2025</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>OWASP Top 10 2025 Training</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="overview">Overview<a href="#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h2>
+<p>This document defines how to implement an OWASP Top 10 2025 training track with module definitions, hands-on labs, and assessments aligned to common NestJS/Next.js application risks.</p>
+<p><strong>Updated for OWASP Top 10 2025:</strong> This training reflects the latest 2025 release with updated rankings, two new categories (Software Supply Chain Failures, Mishandling of Exceptional Conditions), and renamed categories.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="objectives">Objectives<a href="#objectives" class="hash-link" aria-label="Direct link to Objectives" title="Direct link to Objectives" translate="no">​</a></h2>
+<ul>
+<li class="">Build shared language for OWASP Top 10 risks and mitigations</li>
+<li class="">Teach engineers to spot issues during design, implementation, and code review</li>
+<li class="">Practice secure patterns in NestJS (APIs) and Next.js (web)</li>
+<li class="">Establish measurable outcomes (completion rate, pass rate, remediation impact)</li>
+</ul>
+<p>If you are implementing a training platform/service, pair this track with <a class="" href="/fullstack-dev/docs/security-practices/training/security-awareness/training-management-service">training-management-service.md</a> for the training catalog and progress tracking contract.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="audience-and-prerequisites">Audience and prerequisites<a href="#audience-and-prerequisites" class="hash-link" aria-label="Direct link to Audience and prerequisites" title="Direct link to Audience and prerequisites" translate="no">​</a></h2>
+<p>Audience:</p>
+<ul>
+<li class="">Backend engineers (NestJS)</li>
+<li class="">Frontend engineers (Next.js)</li>
+<li class="">QA/automation engineers</li>
+<li class="">SRE/DevOps (reviewers of auth, secrets, and deployment practices)</li>
+</ul>
+<p>Prerequisites (recommended):</p>
+<ul>
+<li class="">Basic web security concepts (HTTP, cookies, sessions, tokens)</li>
+<li class="">Familiarity with the team&#x27;s auth model and API patterns</li>
+<li class="">Ability to run the application locally and execute tests</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="track-structure">Track structure<a href="#track-structure" class="hash-link" aria-label="Direct link to Track structure" title="Direct link to Track structure" translate="no">​</a></h2>
+<p>Format:</p>
+<ul>
+<li class="">10 modules aligned to OWASP Top 10 (A01-A10)</li>
+<li class="">Each module includes: concept briefing, examples, lab, and short assessment</li>
+</ul>
+<p>Suggested delivery:</p>
+<ul>
+<li class="">New joiners: complete A01-A10 within 30-60 days</li>
+<li class="">Ongoing: 1 module per month (or 2 per quarter)</li>
+</ul>
+<p>Passing standard (default):</p>
+<ul>
+<li class="">Quiz: at least 80%</li>
+<li class="">Lab: completed checklist plus reviewer sign-off</li>
+</ul>
+<p>Evidence captured:</p>
+<ul>
+<li class="">Learner identity, module ID, completion date</li>
+<li class="">Score (quiz) and lab completion record (checklist, PR link, or reviewer sign-off)</li>
+<li class="">Optional certificate ID if your program issues certificates</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="module-catalog-a01-a10---owasp-top-10-2025">Module catalog (A01-A10) - OWASP Top 10 2025<a href="#module-catalog-a01-a10---owasp-top-10-2025" class="hash-link" aria-label="Direct link to Module catalog (A01-A10) - OWASP Top 10 2025" title="Direct link to Module catalog (A01-A10) - OWASP Top 10 2025" translate="no">​</a></h2>
+<table><thead><tr><th>ID</th><th>Name</th><th>2025 Status</th></tr></thead><tbody><tr><td>A01</td><td>Broken Access Control (includes SSRF)</td><td>Remains #1</td></tr><tr><td>A02</td><td>Security Misconfiguration</td><td>Moved from #5</td></tr><tr><td>A03</td><td>Software Supply Chain Failures</td><td><strong>NEW in 2025</strong></td></tr><tr><td>A04</td><td>Cryptographic Failures</td><td>Moved from #2</td></tr><tr><td>A05</td><td>Injection</td><td>Moved from #3</td></tr><tr><td>A06</td><td>Insecure Design</td><td>Moved from #4</td></tr><tr><td>A07</td><td>Authentication Failures</td><td>Renamed</td></tr><tr><td>A08</td><td>Software or Data Integrity Failures</td><td>Slight rename</td></tr><tr><td>A09</td><td>Security Logging &amp; Alerting Failures</td><td>Renamed</td></tr><tr><td>A10</td><td>Mishandling of Exceptional Conditions</td><td><strong>NEW in 2025</strong></td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a012025---broken-access-control-includes-ssrf">A01:2025 - Broken Access Control (includes SSRF)<a href="#a012025---broken-access-control-includes-ssrf" class="hash-link" aria-label="Direct link to A01:2025 - Broken Access Control (includes SSRF)" title="Direct link to A01:2025 - Broken Access Control (includes SSRF)" translate="no">​</a></h2>
+<p><strong>Note:</strong> In OWASP 2025, Server-Side Request Forgery (SSRF) has been rolled into this category.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Enforce authorization server-side for every sensitive action</li>
+<li class="">Prevent IDOR (Insecure Direct Object References)</li>
+<li class="">Avoid client-side only checks</li>
+<li class=""><strong>NEW:</strong> Prevent SSRF attacks through URL validation and network access controls</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Centralized authorization (guards/policies) with resource-based checks</li>
+<li class="">Tenant isolation checks for multi-tenant systems</li>
+<li class="">Consistent 401/403 behavior and tests</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Pick a resource endpoint (read and write).</li>
+<li class="">Add explicit authorization checks for: owner, role, and tenant.</li>
+<li class="">Add tests for: unauthenticated, wrong-tenant, wrong-role.</li>
+<li class=""><strong>NEW:</strong> If endpoint fetches external URLs, add URL validation and allowlist checks.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">Identify an IDOR risk in a handler and propose the fix.</li>
+<li class="">Explain why UI checks are insufficient.</li>
+<li class=""><strong>NEW:</strong> List three SSRF attack vectors and their mitigations.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a022025---security-misconfiguration">A02:2025 - Security Misconfiguration<a href="#a022025---security-misconfiguration" class="hash-link" aria-label="Direct link to A02:2025 - Security Misconfiguration" title="Direct link to A02:2025 - Security Misconfiguration" translate="no">​</a></h2>
+<p><strong>Note:</strong> Moved from #5 to #2 in 2025 due to increased prevalence as software becomes more configuration-driven.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Secure defaults and hardened configurations across app, infra, and CI/CD</li>
+<li class="">Disabling debug endpoints and unsafe error disclosure</li>
+<li class="">Proper environment separation and secrets management</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Error handling that does not leak stack traces or secrets</li>
+<li class="">Security headers baseline appropriate for your application</li>
+<li class="">Least-privilege runtime configuration and environment separation</li>
+<li class="">Never expose sensitive environment variables to client</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Verify production defaults (debug off, safe error pages).</li>
+<li class="">Add/verify HTTP security headers (Helmet.js).</li>
+<li class="">Confirm no sensitive debug endpoints are exposed.</li>
+<li class="">Audit environment variable exposure (server-side only).</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">Identify a configuration that increases attack surface and propose a safer default.</li>
+<li class="">List common misconfiguration risks in cloud storage, containers, and APIs.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a032025---software-supply-chain-failures">A03:2025 - Software Supply Chain Failures<a href="#a032025---software-supply-chain-failures" class="hash-link" aria-label="Direct link to A03:2025 - Software Supply Chain Failures" title="Direct link to A03:2025 - Software Supply Chain Failures" translate="no">​</a></h2>
+<p><strong>Note:</strong> NEW category in 2025. Expands &quot;Vulnerable and Outdated Components&quot; to cover broader supply chain risks including build systems and distribution infrastructure.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Reduce risk from vulnerable dependencies and compromised build systems</li>
+<li class="">Understand transitive dependency exposure and supply chain attacks</li>
+<li class="">Secure CI/CD pipelines and artifact distribution</li>
+<li class="">Verify package integrity and provenance</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Lockfile discipline and reproducible installs</li>
+<li class="">Dependency scanning in CI with defined triage process</li>
+<li class="">SBOM (Software Bill of Materials) generation</li>
+<li class="">Package integrity verification (checksums, signatures)</li>
+<li class="">Secure CI/CD with protected branches and required checks</li>
+<li class="">SLSA framework implementation for supply chain security</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Pick a dependency alert (or create a simulated one).</li>
+<li class="">Upgrade the package and document: impact assessment, tests run, rollback plan.</li>
+<li class="">Add CI gate to verify lockfile integrity on changes.</li>
+<li class="">Configure Dependabot or Renovate for automated updates.</li>
+<li class="">Generate SBOM for your application.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">Explain direct vs transitive dependency risk.</li>
+<li class="">Describe how to decide between patching, upgrading, or replacing.</li>
+<li class="">List three supply chain attack vectors (e.g., typosquatting, compromised maintainer, malicious package).</li>
+<li class="">How does SLSA framework improve supply chain security?</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a042025---cryptographic-failures">A04:2025 - Cryptographic Failures<a href="#a042025---cryptographic-failures" class="hash-link" aria-label="Direct link to A04:2025 - Cryptographic Failures" title="Direct link to A04:2025 - Cryptographic Failures" translate="no">​</a></h2>
+<p><strong>Note:</strong> Moved from #2 to #4 in 2025 rankings.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Secure transport and storage of sensitive data</li>
+<li class="">Correct use of modern crypto primitives and key management</li>
+<li class="">Avoid weak hashing for passwords or secrets</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">TLS-only endpoints and secure cookie attributes</li>
+<li class="">Password hashing with bcrypt/Argon2 (not MD5/SHA1)</li>
+<li class="">Key management via secret manager/KMS (not in code or env files)</li>
+<li class="">AES-256-GCM for encryption (not weak algorithms)</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Identify data fields that should be encrypted at rest (or tokenized).</li>
+<li class="">Verify secure cookie settings for session/auth cookies.</li>
+<li class="">Rotate a non-production secret and document the operational steps.</li>
+<li class="">Audit password hashing implementation.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">When do you hash vs encrypt?</li>
+<li class="">Where do keys live and how are they rotated?</li>
+<li class="">Why are MD5 and SHA1 insufficient for passwords?</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a052025---injection">A05:2025 - Injection<a href="#a052025---injection" class="hash-link" aria-label="Direct link to A05:2025 - Injection" title="Direct link to A05:2025 - Injection" translate="no">​</a></h2>
+<p><strong>Note:</strong> Moved from #3 to #5 in 2025 rankings.</p>
+<p>Focus:</p>
+<ul>
+<li class="">SQL/NoSQL injection, command injection, and unsafe templating patterns</li>
+<li class="">Input validation and safe query construction</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Parameterized queries/ORM safe APIs</li>
+<li class="">Validation and normalization at boundaries (DTO validation)</li>
+<li class="">Escaping/encoding rules for template output</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Fix an injected query example and add regression tests.</li>
+<li class="">Add validation to an endpoint and confirm correct rejection behavior.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">Spot string concatenation risks in data access code.</li>
+<li class="">Explain defense in depth (validation plus parameterization).</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a062025---insecure-design">A06:2025 - Insecure Design<a href="#a062025---insecure-design" class="hash-link" aria-label="Direct link to A06:2025 - Insecure Design" title="Direct link to A06:2025 - Insecure Design" translate="no">​</a></h2>
+<p><strong>Note:</strong> Moved from #4 to #6 in 2025. Industry showing improvements in threat modeling and secure design.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Threat modeling and secure-by-design requirements</li>
+<li class="">Abuse case thinking for flows like checkout, login, refunds, promotions</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Document trust boundaries and invariants (what must always be true)</li>
+<li class="">Rate limits and anti-automation controls on high-risk flows</li>
+<li class="">Replay protection for sensitive actions (idempotency)</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Create a lightweight threat model for one feature:<!-- -->
+<ul>
+<li class="">assets, entry points, trust boundaries, top threats, mitigations.</li>
+</ul>
+</li>
+<li class="">Add at least one mitigation (e.g., rate limit, invariant checks) and tests.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">Given a feature, list 3 abuse cases and mitigations.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a072025---authentication-failures">A07:2025 - Authentication Failures<a href="#a072025---authentication-failures" class="hash-link" aria-label="Direct link to A07:2025 - Authentication Failures" title="Direct link to A07:2025 - Authentication Failures" translate="no">​</a></h2>
+<p><strong>Note:</strong> Remains at #7, renamed from &quot;Identification and Authentication Failures&quot; to better reflect the category focus. Industry showing improvements due to increased use of standardized authentication frameworks.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Correct authentication flows and session handling</li>
+<li class="">Prevent account takeover through secure defaults</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Secure cookie/session settings aligned to your deployment</li>
+<li class="">Consistent token validation and expiration handling</li>
+<li class="">Brute-force protections and MFA support where applicable</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Validate secure cookie attributes for auth/session cookies.</li>
+<li class="">Add tests for invalid/expired tokens and replay attempts.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">When should you use cookies vs bearer tokens?</li>
+<li class="">List three common auth implementation mistakes and mitigations.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a082025---software-or-data-integrity-failures">A08:2025 - Software or Data Integrity Failures<a href="#a082025---software-or-data-integrity-failures" class="hash-link" aria-label="Direct link to A08:2025 - Software or Data Integrity Failures" title="Direct link to A08:2025 - Software or Data Integrity Failures" translate="no">​</a></h2>
+<p><strong>Note:</strong> Continues at #8. Focuses on lower-level integrity verification compared to A03 Supply Chain Failures.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Protect build and deployment integrity (supply chain)</li>
+<li class="">Prevent unsafe updates and untrusted artifacts</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Protected branches and required CI checks</li>
+<li class="">Artifact provenance and immutable builds</li>
+<li class="">Least-privilege deploy credentials and separation of duties</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Add a CI gate that enforces required checks before deploy.</li>
+<li class="">Add an integrity check for lockfile changes (policy + review).</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">Identify common CI/CD misconfigurations that enable tampering.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a092025---security-logging--alerting-failures">A09:2025 - Security Logging &amp; Alerting Failures<a href="#a092025---security-logging--alerting-failures" class="hash-link" aria-label="Direct link to A09:2025 - Security Logging &amp; Alerting Failures" title="Direct link to A09:2025 - Security Logging &amp; Alerting Failures" translate="no">​</a></h2>
+<p><strong>Note:</strong> Remains at #9, renamed from &quot;Security Logging and Monitoring Failures&quot; to emphasize the importance of alerting. Great logging without alerting has minimal value in identifying security incidents.</p>
+<p>Focus:</p>
+<ul>
+<li class="">Detect and respond to suspicious activity</li>
+<li class="">Ensure logs are useful for investigations without leaking secrets</li>
+<li class=""><strong>Implement real-time alerting</strong> - crucial for timely incident response</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Structured security event logging (auth failures, access denials, admin actions)</li>
+<li class="">Correlation identifiers for traceability</li>
+<li class=""><strong>Real-time alerting on anomalous patterns</strong> (rate spikes, repeated failures)</li>
+<li class="">Automated alerting workflows and runbooks</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Add structured logs for failed authz decisions.</li>
+<li class="">Define an alert for repeated suspicious events and document runbook steps.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">Explain how logs support incident response and forensics.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a102025---mishandling-of-exceptional-conditions">A10:2025 - Mishandling of Exceptional Conditions<a href="#a102025---mishandling-of-exceptional-conditions" class="hash-link" aria-label="Direct link to A10:2025 - Mishandling of Exceptional Conditions" title="Direct link to A10:2025 - Mishandling of Exceptional Conditions" translate="no">​</a></h2>
+<p><strong>Note:</strong> NEW category in 2025. Focuses on improper error handling, logical errors, and failing open scenarios (24 CWEs).</p>
+<p>Focus:</p>
+<ul>
+<li class="">Fail securely (default to deny on errors)</li>
+<li class="">Proper error handling without information disclosure</li>
+<li class="">Handle race conditions and null/undefined safely</li>
+<li class="">Prevent application crashes from unhandled exceptions</li>
+</ul>
+<p>NestJS/Next.js patterns to practice:</p>
+<ul>
+<li class="">Secure error handling that defaults to deny access on failures</li>
+<li class="">Generic error messages for users, detailed logs server-side only</li>
+<li class="">TypeScript strict mode and proper null/undefined checks</li>
+<li class="">Exception handling in all async operations</li>
+<li class="">Circuit breakers for external dependencies</li>
+<li class="">Proper handling of edge cases and boundary conditions</li>
+</ul>
+<p>Lab (suggested):</p>
+<ul>
+<li class="">Identify &quot;fail open&quot; patterns in access control code and fix to &quot;fail closed&quot;.</li>
+<li class="">Audit error messages for sensitive information disclosure (stack traces, SQL queries, file paths).</li>
+<li class="">Add proper error handling to async operations with tests for error paths.</li>
+<li class="">Implement TypeScript strict mode and fix null/undefined issues.</li>
+</ul>
+<p>Assessment prompts:</p>
+<ul>
+<li class="">What is &quot;failing open&quot; vs &quot;failing closed&quot;? Which is more secure?</li>
+<li class="">Why should production error messages be generic?</li>
+<li class="">List three ways improper error handling can lead to security issues.</li>
+<li class="">How do race conditions relate to security?</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="track-level-assessment">Track-level assessment<a href="#track-level-assessment" class="hash-link" aria-label="Direct link to Track-level assessment" title="Direct link to Track-level assessment" translate="no">​</a></h2>
+<p>Recommended track-level checkpoint (choose one):</p>
+<ul>
+<li class="">Code review exercise: learner reviews a PR that includes multiple OWASP issues and writes the review</li>
+<li class="">Practical exercise: learner implements two mitigations (e.g., authz + input validation) with tests</li>
+</ul>
+<p>Passing rule (default):</p>
+<ul>
+<li class="">Completed module quizzes and labs, plus passed the track-level checkpoint</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="operational-checklist">Operational checklist<a href="#operational-checklist" class="hash-link" aria-label="Direct link to Operational checklist" title="Direct link to Operational checklist" translate="no">​</a></h2>
+<ul>
+<li class="">Define required modules per role (developer, QA, SRE/DevOps, security)</li>
+<li class="">Define passing scores and certification rules per module/track</li>
+<li class="">Track evidence (completion date, score, reviewer sign-off, certificate ID)</li>
+<li class="">Publish cadence (monthly sessions + annual refresh)</li>
+<li class="">Generate weekly/monthly reports for managers and security champions</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://owasp.org/Top10/2025/" target="_blank" rel="noopener noreferrer" class="">OWASP Top 10 2025</a> (current version)</li>
+<li class=""><a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener noreferrer" class="">OWASP Cheat Sheet Series</a></li>
+<li class=""><a href="https://slsa.dev/" target="_blank" rel="noopener noreferrer" class="">SLSA Framework</a> (for A03 Supply Chain)</li>
+<li class="">Team secure coding standards and code review checklists</li>
+<li class="">Recent incident/postmortem learnings to prioritize modules</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementation-overview">Implementation Overview<a href="#implementation-overview" class="hash-link" aria-label="Direct link to Implementation Overview" title="Direct link to Implementation Overview" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="owasp-training-module-creator">OWASP Training Module Creator<a href="#owasp-training-module-creator" class="hash-link" aria-label="Direct link to OWASP Training Module Creator" title="Direct link to OWASP Training Module Creator" translate="no">​</a></h3>
+<p>Note: This guide documents the OWASP Top 10 training track as a curriculum. If you implement a training platform, keep code listings in platform docs and treat this page as the source of truth for module content, labs, and assessments.</p>
+<pre tabindex="0" class="codeBlockStandalone_MEMb thin-scrollbar codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"></code></pre></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/tamnk74/fullstack-dev/tree/main/docs-site/docs/security-practices/training/security-awareness/owasp-top-10-training.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/fullstack-dev/docs/security-practices/training/security-awareness-training"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Security Awareness Training Implementation Guide</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/fullstack-dev/docs/security-practices/training/security-awareness/a01-broken-access-control"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">A01:2025 - Broken Access Control (includes SSRF) - Real Scenarios</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a></li><li><a href="#objectives" class="table-of-contents__link toc-highlight">Objectives</a></li><li><a href="#audience-and-prerequisites" class="table-of-contents__link toc-highlight">Audience and prerequisites</a></li><li><a href="#track-structure" class="table-of-contents__link toc-highlight">Track structure</a></li><li><a href="#module-catalog-a01-a10---owasp-top-10-2025" class="table-of-contents__link toc-highlight">Module catalog (A01-A10) - OWASP Top 10 2025</a></li><li><a href="#a012025---broken-access-control-includes-ssrf" class="table-of-contents__link toc-highlight">A01:2025 - Broken Access Control (includes SSRF)</a></li><li><a href="#a022025---security-misconfiguration" class="table-of-contents__link toc-highlight">A02:2025 - Security Misconfiguration</a></li><li><a href="#a032025---software-supply-chain-failures" class="table-of-contents__link toc-highlight">A03:2025 - Software Supply Chain Failures</a></li><li><a href="#a042025---cryptographic-failures" class="table-of-contents__link toc-highlight">A04:2025 - Cryptographic Failures</a></li><li><a href="#a052025---injection" class="table-of-contents__link toc-highlight">A05:2025 - Injection</a></li><li><a href="#a062025---insecure-design" class="table-of-contents__link toc-highlight">A06:2025 - Insecure Design</a></li><li><a href="#a072025---authentication-failures" class="table-of-contents__link toc-highlight">A07:2025 - Authentication Failures</a></li><li><a href="#a082025---software-or-data-integrity-failures" class="table-of-contents__link toc-highlight">A08:2025 - Software or Data Integrity Failures</a></li><li><a href="#a092025---security-logging--alerting-failures" class="table-of-contents__link toc-highlight">A09:2025 - Security Logging &amp; Alerting Failures</a></li><li><a href="#a102025---mishandling-of-exceptional-conditions" class="table-of-contents__link toc-highlight">A10:2025 - Mishandling of Exceptional Conditions</a></li><li><a href="#track-level-assessment" class="table-of-contents__link toc-highlight">Track-level assessment</a></li><li><a href="#operational-checklist" class="table-of-contents__link toc-highlight">Operational checklist</a></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li><li><a href="#implementation-overview" class="table-of-contents__link toc-highlight">Implementation Overview</a><ul><li><a href="#owasp-training-module-creator" class="table-of-contents__link toc-highlight">OWASP Training Module Creator</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/intro">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/architecture-practices/overview">Architecture Practices</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/features">Features</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Development</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/setup">Setup &amp; Installation</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/testing">Testing</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/deployment">Deployment</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub (Fullstack Dev)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Next.js for Production. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

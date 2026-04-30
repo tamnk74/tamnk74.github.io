@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-security-practices/operations/index" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Security Operations | Full-Stack Developer</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://tamnk74.github.io/fullstack-dev/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://tamnk74.github.io/fullstack-dev/docs/security-practices/operations/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Security Operations | Full-Stack Developer"><meta data-rh="true" name="description" content="Day-to-day security operations, incident response, and continuous security monitoring."><meta data-rh="true" property="og:description" content="Day-to-day security operations, incident response, and continuous security monitoring."><link data-rh="true" rel="icon" href="/fullstack-dev/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://tamnk74.github.io/fullstack-dev/docs/security-practices/operations/"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/security-practices/operations/" hreflang="en"><link data-rh="true" rel="alternate" href="https://tamnk74.github.io/fullstack-dev/docs/security-practices/operations/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"🔐 Security","item":"https://tamnk74.github.io/fullstack-dev/docs/security-practices/"},{"@type":"ListItem","position":2,"name":"⚙️ Operations","item":"https://tamnk74.github.io/fullstack-dev/docs/security-practices/operations/"}]}</script><link rel="alternate" type="application/rss+xml" href="/fullstack-dev/blog/rss.xml" title="Full-Stack Developer RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/fullstack-dev/blog/atom.xml" title="Full-Stack Developer Atom Feed">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/fullstack-dev/assets/css/styles.d96e413c.css">
+<script src="/fullstack-dev/assets/js/runtime~main.e5b980a3.js" defer="defer"></script>
+<script src="/fullstack-dev/assets/js/main.9bd1df7f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/fullstack-dev/"><div class="navbar__logo"><img src="/fullstack-dev/img/logo.png" alt="Full-Stack Developer Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/fullstack-dev/img/logo.png" alt="Full-Stack Developer Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Full-Stack Developer</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/fullstack-dev/docs/intro">Documentation</a><a class="navbar__item navbar__link" href="/fullstack-dev/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/intro"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/fullstack-dev/docs/search-guide"><span title="Search Documentation" class="linkLabel_WmDU">Search Documentation</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/fullstack-dev/docs/setup"><span title="🚀 Getting Started" class="categoryLinkLabel_W154">🚀 Getting Started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/setup"><span title="Setup &amp; Installation" class="linkLabel_WmDU">Setup &amp; Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/how-web-works"><span title="How Web Works" class="linkLabel_WmDU">How Web Works</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fundamentals/concurrency"><span title="📚 Fundamentals" class="categoryLinkLabel_W154">📚 Fundamentals</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/coding-conventions/"><span title="👨‍💻 Coding Conventions" class="categoryLinkLabel_W154">👨‍💻 Coding Conventions</span></a><button aria-label="Expand sidebar category &#x27;👨‍💻 Coding Conventions&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/design-patterns/"><span title="📐 Design Patterns" class="categoryLinkLabel_W154">📐 Design Patterns</span></a><button aria-label="Expand sidebar category &#x27;📐 Design Patterns&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/frontend/"><span title="🎨 Frontend" class="categoryLinkLabel_W154">🎨 Frontend</span></a><button aria-label="Expand sidebar category &#x27;🎨 Frontend&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/backend/"><span title="⚙️ Backend" class="categoryLinkLabel_W154">⚙️ Backend</span></a><button aria-label="Expand sidebar category &#x27;⚙️ Backend&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/fullstack/http-caching-headers-guide"><span title="🔄 Fullstack" class="categoryLinkLabel_W154">🔄 Fullstack</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/system-design/"><span title="🏗️ System Design" class="categoryLinkLabel_W154">🏗️ System Design</span></a><button aria-label="Expand sidebar category &#x27;🏗️ System Design&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/architecture-practices/overview/"><span title="🏢 Architecture Practices" class="categoryLinkLabel_W154">🏢 Architecture Practices</span></a><button aria-label="Expand sidebar category &#x27;🏢 Architecture Practices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/devops/"><span title="☁️ DevOps &amp; Cloud" class="categoryLinkLabel_W154">☁️ DevOps &amp; Cloud</span></a><button aria-label="Expand sidebar category &#x27;☁️ DevOps &amp; Cloud&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/fullstack-dev/docs/security-practices/"><span title="🔐 Security" class="categoryLinkLabel_W154">🔐 Security</span></a><button aria-label="Collapse sidebar category &#x27;🔐 Security&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/foundations/"><span title="🏛️ Foundations" class="categoryLinkLabel_W154">🏛️ Foundations</span></a><button aria-label="Expand sidebar category &#x27;🏛️ Foundations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/controls/"><span title="🛡️ Controls" class="categoryLinkLabel_W154">🛡️ Controls</span></a><button aria-label="Expand sidebar category &#x27;🛡️ Controls&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/testing/"><span title="🔍 Testing &amp; Assessment" class="categoryLinkLabel_W154">🔍 Testing &amp; Assessment</span></a><button aria-label="Expand sidebar category &#x27;🔍 Testing &amp; Assessment&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/training/"><span title="🎓 Training &amp; Awareness" class="categoryLinkLabel_W154">🎓 Training &amp; Awareness</span></a><button aria-label="Expand sidebar category &#x27;  🎓 Training &amp; Awareness&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-practices/compliance/"><span title="📋 Compliance &amp; Privacy" class="categoryLinkLabel_W154">📋 Compliance &amp; Privacy</span></a><button aria-label="Expand sidebar category &#x27;📋 Compliance &amp; Privacy&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible menu__list-item-collapsible--active"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" aria-current="page" tabindex="0" href="/fullstack-dev/docs/security-practices/operations/"><span title="⚙️ Operations" class="categoryLinkLabel_W154">⚙️ Operations</span></a><button aria-label="Collapse sidebar category &#x27;⚙️ Operations&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/operations/security-operations-overview"><span title="Security Operations" class="linkLabel_WmDU">Security Operations</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/fullstack-dev/docs/security-practices/operations/incident-management"><span title="Incident Management Implementation Guide" class="linkLabel_WmDU">Incident Management Implementation Guide</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/fullstack-dev/docs/security-learning/"><span title="📖 90-Day Learning Program" class="categoryLinkLabel_W154">📖 90-Day Learning Program</span></a><button aria-label="Expand sidebar category &#x27;📖 90-Day Learning Program&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/testing"><span title="🧪 QA &amp; Testing" class="categoryLinkLabel_W154">🧪 QA &amp; Testing</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/ai-machine-learning/vertex-ai-gemini-guide"><span title="🤖 AI &amp; Machine Learning" class="categoryLinkLabel_W154">🤖 AI &amp; Machine Learning</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/fullstack-dev/docs/mobile/architecture-process/"><span title="📱 Mobile" class="categoryLinkLabel_W154">📱 Mobile</span></a><button aria-label="Expand sidebar category &#x27;📱 Mobile&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/analytics/google-analytics-comparison"><span title="📊 Analytics &amp; Marketing" class="categoryLinkLabel_W154">📊 Analytics &amp; Marketing</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/features"><span title="✨ Features" class="categoryLinkLabel_W154">✨ Features</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/assessments/developer-assessment-with-development-plans"><span title="💼 Career &amp; Assessments" class="categoryLinkLabel_W154">💼 Career &amp; Assessments</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/deployment"><span title="🛠️ Development &amp; Deployment" class="categoryLinkLabel_W154">🛠️ Development &amp; Deployment</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/api-reference"><span title="📚 API Reference" class="categoryLinkLabel_W154">📚 API Reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/fullstack-dev/docs/tutorial-basics/create-a-document"><span title="🎓 Tutorials" class="categoryLinkLabel_W154">🎓 Tutorials</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/fullstack-dev/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/fullstack-dev/docs/security-practices/"><span>🔐 Security</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">⚙️ Operations</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Security Operations</h1></header>
+<p>Day-to-day security operations, incident response, and continuous security monitoring.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="overview">Overview<a href="#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h2>
+<p>Security operations (SecOps) encompasses the processes, tools, and practices for detecting, responding to, and recovering from security incidents while maintaining ongoing security monitoring and threat intelligence.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="contents">Contents<a href="#contents" class="hash-link" aria-label="Direct link to Contents" title="Direct link to Contents" translate="no">​</a></h2>
+<ul>
+<li class=""><strong><a class="" href="/fullstack-dev/docs/security-practices/operations/security-operations-overview">Security Operations Overview</a></strong> - SecOps fundamentals and organization</li>
+<li class=""><strong><a class="" href="/fullstack-dev/docs/security-practices/operations/incident-management">Incident Management</a></strong> - Comprehensive incident response and management</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="security-operations-center-soc">Security Operations Center (SOC)<a href="#security-operations-center-soc" class="hash-link" aria-label="Direct link to Security Operations Center (SOC)" title="Direct link to Security Operations Center (SOC)" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="soc-functions">SOC Functions<a href="#soc-functions" class="hash-link" aria-label="Direct link to SOC Functions" title="Direct link to SOC Functions" translate="no">​</a></h3>
+<p><strong>24/7 Monitoring</strong></p>
+<ul>
+<li class="">Security event monitoring</li>
+<li class="">Alert triage and analysis</li>
+<li class="">Threat detection</li>
+<li class="">Incident escalation</li>
+</ul>
+<p><strong>Incident Response</strong></p>
+<ul>
+<li class="">Initial response coordination</li>
+<li class="">Evidence collection</li>
+<li class="">Containment and eradication</li>
+<li class="">Recovery and remediation</li>
+</ul>
+<p><strong>Threat Intelligence</strong></p>
+<ul>
+<li class="">Threat feed monitoring</li>
+<li class="">Indicator of Compromise (IOC) tracking</li>
+<li class="">Vulnerability intelligence</li>
+<li class="">Threat actor profiling</li>
+</ul>
+<p><strong>Security Analysis</strong></p>
+<ul>
+<li class="">Log analysis</li>
+<li class="">Anomaly detection</li>
+<li class="">Pattern recognition</li>
+<li class="">Root cause analysis</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="security-monitoring">Security Monitoring<a href="#security-monitoring" class="hash-link" aria-label="Direct link to Security Monitoring" title="Direct link to Security Monitoring" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-to-monitor">What to Monitor<a href="#what-to-monitor" class="hash-link" aria-label="Direct link to What to Monitor" title="Direct link to What to Monitor" translate="no">​</a></h3>
+<p><strong>Application Layer</strong></p>
+<ul>
+<li class="">Authentication attempts (successful/failed)</li>
+<li class="">Authorization failures</li>
+<li class="">Input validation errors</li>
+<li class="">Application errors and exceptions</li>
+<li class="">API rate limiting violations</li>
+<li class="">Data access patterns</li>
+</ul>
+<p><strong>Infrastructure Layer</strong></p>
+<ul>
+<li class="">Network traffic anomalies</li>
+<li class="">Firewall rule violations</li>
+<li class="">Intrusion detection alerts</li>
+<li class="">System resource usage</li>
+<li class="">Configuration changes</li>
+<li class="">Patch status</li>
+</ul>
+<p><strong>Data Layer</strong></p>
+<ul>
+<li class="">Database access patterns</li>
+<li class="">Data exfiltration attempts</li>
+<li class="">Encryption status</li>
+<li class="">Backup completion</li>
+<li class="">Data integrity checks</li>
+</ul>
+<p><strong>Identity &amp; Access</strong></p>
+<ul>
+<li class="">Privilege escalations</li>
+<li class="">New account creations</li>
+<li class="">Permission changes</li>
+<li class="">MFA enrollment/usage</li>
+<li class="">Session anomalies</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="monitoring-tools">Monitoring Tools<a href="#monitoring-tools" class="hash-link" aria-label="Direct link to Monitoring Tools" title="Direct link to Monitoring Tools" translate="no">​</a></h3>
+<p><strong>SIEM (Security Information and Event Management)</strong></p>
+<ul>
+<li class="">Splunk</li>
+<li class="">Elastic Security (ELK Stack)</li>
+<li class="">Google Chronicle</li>
+<li class="">Azure Sentinel</li>
+</ul>
+<p><strong>Log Management</strong></p>
+<ul>
+<li class="">CloudWatch (AWS)</li>
+<li class="">Stackdriver (GCP)</li>
+<li class="">Azure Monitor</li>
+<li class="">Datadog</li>
+</ul>
+<p><strong>Intrusion Detection/Prevention</strong></p>
+<ul>
+<li class="">Snort</li>
+<li class="">Suricata</li>
+<li class="">Zeek (formerly Bro)</li>
+<li class="">Cloud-native IDS/IPS</li>
+</ul>
+<p><strong>Endpoint Detection &amp; Response (EDR)</strong></p>
+<ul>
+<li class="">CrowdStrike Falcon</li>
+<li class="">Carbon Black</li>
+<li class="">SentinelOne</li>
+<li class="">Microsoft Defender for Endpoint</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="incident-response">Incident Response<a href="#incident-response" class="hash-link" aria-label="Direct link to Incident Response" title="Direct link to Incident Response" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="incident-response-lifecycle">Incident Response Lifecycle<a href="#incident-response-lifecycle" class="hash-link" aria-label="Direct link to Incident Response Lifecycle" title="Direct link to Incident Response Lifecycle" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-preparation">1. Preparation<a href="#1-preparation" class="hash-link" aria-label="Direct link to 1. Preparation" title="Direct link to 1. Preparation" translate="no">​</a></h4>
+<ul>
+<li class="">Incident response plan</li>
+<li class="">Team roles and responsibilities</li>
+<li class="">Communication channels</li>
+<li class="">Tools and resources</li>
+<li class="">Runbooks and playbooks</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-detection--analysis">2. Detection &amp; Analysis<a href="#2-detection--analysis" class="hash-link" aria-label="Direct link to 2. Detection &amp; Analysis" title="Direct link to 2. Detection &amp; Analysis" translate="no">​</a></h4>
+<ul>
+<li class="">Event correlation</li>
+<li class="">Alert validation</li>
+<li class="">Incident classification</li>
+<li class="">Impact assessment</li>
+<li class="">Scope determination</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-containment">3. Containment<a href="#3-containment" class="hash-link" aria-label="Direct link to 3. Containment" title="Direct link to 3. Containment" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Short-term</strong>: Isolate affected systems</li>
+<li class=""><strong>Long-term</strong>: Implement temporary fixes</li>
+<li class="">Preserve evidence</li>
+<li class="">Prevent spread</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-eradication">4. Eradication<a href="#4-eradication" class="hash-link" aria-label="Direct link to 4. Eradication" title="Direct link to 4. Eradication" translate="no">​</a></h4>
+<ul>
+<li class="">Remove threat actor access</li>
+<li class="">Eliminate malware</li>
+<li class="">Close vulnerabilities</li>
+<li class="">Patch systems</li>
+<li class="">Reset credentials</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-recovery">5. Recovery<a href="#5-recovery" class="hash-link" aria-label="Direct link to 5. Recovery" title="Direct link to 5. Recovery" translate="no">​</a></h4>
+<ul>
+<li class="">Restore from clean backups</li>
+<li class="">Rebuild compromised systems</li>
+<li class="">Validate system integrity</li>
+<li class="">Return to normal operations</li>
+<li class="">Enhanced monitoring</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-post-incident">6. Post-Incident<a href="#6-post-incident" class="hash-link" aria-label="Direct link to 6. Post-Incident" title="Direct link to 6. Post-Incident" translate="no">​</a></h4>
+<ul>
+<li class="">Incident report</li>
+<li class="">Lessons learned</li>
+<li class="">Process improvements</li>
+<li class="">Update playbooks</li>
+<li class="">Team debriefing</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="incident-severity-levels">Incident Severity Levels<a href="#incident-severity-levels" class="hash-link" aria-label="Direct link to Incident Severity Levels" title="Direct link to Incident Severity Levels" translate="no">​</a></h3>
+<p><strong>Critical (P0)</strong></p>
+<ul>
+<li class="">Active data breach</li>
+<li class="">Ransomware encryption</li>
+<li class="">Production system compromise</li>
+<li class=""><strong>Response Time</strong>: Immediate</li>
+<li class=""><strong>Escalation</strong>: C-level, all hands</li>
+</ul>
+<p><strong>High (P1)</strong></p>
+<ul>
+<li class="">Confirmed security incident</li>
+<li class="">Potential data exposure</li>
+<li class="">Service disruption</li>
+<li class=""><strong>Response Time</strong>: &lt; 1 hour</li>
+<li class=""><strong>Escalation</strong>: Security team, management</li>
+</ul>
+<p><strong>Medium (P2)</strong></p>
+<ul>
+<li class="">Suspicious activity</li>
+<li class="">Policy violations</li>
+<li class="">Minor security issues</li>
+<li class=""><strong>Response Time</strong>: &lt; 4 hours</li>
+<li class=""><strong>Escalation</strong>: Security team</li>
+</ul>
+<p><strong>Low (P3)</strong></p>
+<ul>
+<li class="">Security alerts</li>
+<li class="">False positives</li>
+<li class="">Information requests</li>
+<li class=""><strong>Response Time</strong>: &lt; 24 hours</li>
+<li class=""><strong>Escalation</strong>: On-call engineer</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="security-metrics--kpis">Security Metrics &amp; KPIs<a href="#security-metrics--kpis" class="hash-link" aria-label="Direct link to Security Metrics &amp; KPIs" title="Direct link to Security Metrics &amp; KPIs" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="detection-metrics">Detection Metrics<a href="#detection-metrics" class="hash-link" aria-label="Direct link to Detection Metrics" title="Direct link to Detection Metrics" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Mean Time to Detect (MTTD)</strong> - Average time to identify incidents</li>
+<li class=""><strong>Alert Volume</strong> - Number of security alerts</li>
+<li class=""><strong>True Positive Rate</strong> - Percentage of valid alerts</li>
+<li class=""><strong>False Positive Rate</strong> - Percentage of invalid alerts</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="response-metrics">Response Metrics<a href="#response-metrics" class="hash-link" aria-label="Direct link to Response Metrics" title="Direct link to Response Metrics" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Mean Time to Respond (MTTR)</strong> - Average time to respond to incidents</li>
+<li class=""><strong>Mean Time to Contain (MTTC)</strong> - Average time to contain threats</li>
+<li class=""><strong>Mean Time to Recover (MTTR)</strong> - Average time to full recovery</li>
+<li class=""><strong>Incident Escalation Rate</strong> - Percentage requiring escalation</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="operational-metrics">Operational Metrics<a href="#operational-metrics" class="hash-link" aria-label="Direct link to Operational Metrics" title="Direct link to Operational Metrics" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Security Event Volume</strong> - Total security events processed</li>
+<li class=""><strong>Coverage</strong> - Percentage of assets monitored</li>
+<li class=""><strong>Uptime</strong> - Monitoring system availability</li>
+<li class=""><strong>Staff Utilization</strong> - SOC analyst workload</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-metrics">Business Metrics<a href="#business-metrics" class="hash-link" aria-label="Direct link to Business Metrics" title="Direct link to Business Metrics" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Incidents Prevented</strong> - Attacks blocked</li>
+<li class=""><strong>Compliance Score</strong> - Adherence to security policies</li>
+<li class=""><strong>Security Debt</strong> - Outstanding security issues</li>
+<li class=""><strong>Cost per Incident</strong> - Average incident handling cost</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="on-call-rotation">On-Call Rotation<a href="#on-call-rotation" class="hash-link" aria-label="Direct link to On-Call Rotation" title="Direct link to On-Call Rotation" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="on-call-schedule">On-Call Schedule<a href="#on-call-schedule" class="hash-link" aria-label="Direct link to On-Call Schedule" title="Direct link to On-Call Schedule" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Primary</strong>: First responder</li>
+<li class=""><strong>Secondary</strong>: Backup support</li>
+<li class=""><strong>Escalation</strong>: Management/specialist</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="on-call-responsibilities">On-Call Responsibilities<a href="#on-call-responsibilities" class="hash-link" aria-label="Direct link to On-Call Responsibilities" title="Direct link to On-Call Responsibilities" translate="no">​</a></h3>
+<ul>
+<li class="">Monitor security alerts</li>
+<li class="">Respond to incidents</li>
+<li class="">Escalate as needed</li>
+<li class="">Document actions</li>
+<li class="">Post-incident handoff</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="on-call-tools">On-Call Tools<a href="#on-call-tools" class="hash-link" aria-label="Direct link to On-Call Tools" title="Direct link to On-Call Tools" translate="no">​</a></h3>
+<ul>
+<li class="">PagerDuty / Opsgenie</li>
+<li class="">Slack / Microsoft Teams</li>
+<li class="">VPN access</li>
+<li class="">Mobile device</li>
+<li class="">Laptop with tools</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="runbooks--playbooks">Runbooks &amp; Playbooks<a href="#runbooks--playbooks" class="hash-link" aria-label="Direct link to Runbooks &amp; Playbooks" title="Direct link to Runbooks &amp; Playbooks" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="security-playbooks">Security Playbooks<a href="#security-playbooks" class="hash-link" aria-label="Direct link to Security Playbooks" title="Direct link to Security Playbooks" translate="no">​</a></h3>
+<p><strong>Malware Incident</strong></p>
+<ol>
+<li class="">Isolate affected systems</li>
+<li class="">Identify malware variant</li>
+<li class="">Check for data exfiltration</li>
+<li class="">Remove malware</li>
+<li class="">Restore from backup</li>
+<li class="">Update signatures</li>
+</ol>
+<p><strong>DDoS Attack</strong></p>
+<ol>
+<li class="">Confirm DDoS attack</li>
+<li class="">Enable rate limiting</li>
+<li class="">Activate CDN/WAF protections</li>
+<li class="">Scale infrastructure</li>
+<li class="">Contact ISP if needed</li>
+<li class="">Monitor and adjust</li>
+</ol>
+<p><strong>Data Breach</strong></p>
+<ol>
+<li class="">Confirm unauthorized access</li>
+<li class="">Assess data exposure</li>
+<li class="">Contain breach</li>
+<li class="">Notify stakeholders</li>
+<li class="">Legal/compliance review</li>
+<li class="">Public disclosure if required</li>
+</ol>
+<p><strong>Credential Compromise</strong></p>
+<ol>
+<li class="">Disable compromised accounts</li>
+<li class="">Force password reset</li>
+<li class="">Review access logs</li>
+<li class="">Check for lateral movement</li>
+<li class="">Enable MFA</li>
+<li class="">Notify affected users</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="threat-intelligence">Threat Intelligence<a href="#threat-intelligence" class="hash-link" aria-label="Direct link to Threat Intelligence" title="Direct link to Threat Intelligence" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="intelligence-sources">Intelligence Sources<a href="#intelligence-sources" class="hash-link" aria-label="Direct link to Intelligence Sources" title="Direct link to Intelligence Sources" translate="no">​</a></h3>
+<p><strong>Commercial Feeds</strong></p>
+<ul>
+<li class="">Recorded Future</li>
+<li class="">Anomali ThreatStream</li>
+<li class="">CrowdStrike Intelligence</li>
+<li class="">Mandiant Threat Intelligence</li>
+</ul>
+<p><strong>Open Source Intelligence (OSINT)</strong></p>
+<ul>
+<li class="">MISP (Malware Information Sharing Platform)</li>
+<li class="">AlienVault OTX</li>
+<li class="">Threat Crowd</li>
+<li class="">VirusTotal</li>
+</ul>
+<p><strong>Government Sources</strong></p>
+<ul>
+<li class="">CISA (Cybersecurity &amp; Infrastructure Security Agency)</li>
+<li class="">FBI InfraGard</li>
+<li class="">US-CERT</li>
+<li class="">National CVE Database</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="intelligence-integration">Intelligence Integration<a href="#intelligence-integration" class="hash-link" aria-label="Direct link to Intelligence Integration" title="Direct link to Intelligence Integration" translate="no">​</a></h3>
+<ul>
+<li class="">Integrate feeds into SIEM</li>
+<li class="">Automate IOC blocking</li>
+<li class="">Enrich security alerts</li>
+<li class="">Update detection rules</li>
+<li class="">Share internally</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="continuous-improvement">Continuous Improvement<a href="#continuous-improvement" class="hash-link" aria-label="Direct link to Continuous Improvement" title="Direct link to Continuous Improvement" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="security-operations-maturity">Security Operations Maturity<a href="#security-operations-maturity" class="hash-link" aria-label="Direct link to Security Operations Maturity" title="Direct link to Security Operations Maturity" translate="no">​</a></h3>
+<p><strong>Level 1: Initial</strong></p>
+<ul>
+<li class="">Ad-hoc monitoring</li>
+<li class="">Manual processes</li>
+<li class="">Reactive response</li>
+</ul>
+<p><strong>Level 2: Developing</strong></p>
+<ul>
+<li class="">Basic SIEM deployment</li>
+<li class="">Some automation</li>
+<li class="">Defined processes</li>
+</ul>
+<p><strong>Level 3: Defined</strong></p>
+<ul>
+<li class="">Comprehensive monitoring</li>
+<li class="">Playbook-driven response</li>
+<li class="">Threat intelligence integration</li>
+</ul>
+<p><strong>Level 4: Managed</strong></p>
+<ul>
+<li class="">Advanced analytics</li>
+<li class="">Automated response</li>
+<li class="">Proactive threat hunting</li>
+</ul>
+<p><strong>Level 5: Optimized</strong></p>
+<ul>
+<li class="">AI/ML-driven detection</li>
+<li class="">Orchestrated response</li>
+<li class="">Continuous optimization</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="regular-reviews">Regular Reviews<a href="#regular-reviews" class="hash-link" aria-label="Direct link to Regular Reviews" title="Direct link to Regular Reviews" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Daily</strong>: Alert review, incident updates</li>
+<li class=""><strong>Weekly</strong>: Metrics review, playbook updates</li>
+<li class=""><strong>Monthly</strong>: Trend analysis, process improvements</li>
+<li class=""><strong>Quarterly</strong>: Strategy review, tool evaluation</li>
+<li class=""><strong>Annually</strong>: Program assessment, budget planning</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="next-steps">Next Steps<a href="#next-steps" class="hash-link" aria-label="Direct link to Next Steps" title="Direct link to Next Steps" translate="no">​</a></h2>
+<ul>
+<li class="">Review <strong><a class="" href="/fullstack-dev/docs/security-practices/operations/incident-management">Incident Management</a></strong> for detailed response procedures</li>
+<li class="">Implement <strong><a class="" href="/fullstack-dev/docs/security-practices/testing/security-monitoring">Security Monitoring</a></strong> for visibility</li>
+<li class="">Connect with <strong><a class="" href="/fullstack-dev/docs/security-practices/testing/">Security Testing</a></strong> for proactive security</li>
+<li class="">Ensure team is trained with <strong><a class="" href="/fullstack-dev/docs/security-practices/training/">Security Training</a></strong></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/tamnk74/fullstack-dev/tree/main/docs-site/docs/security-practices/operations/index.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/fullstack-dev/docs/security-practices/compliance/privacy-compliance/mobile-consent-management"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Mobile Consent Management Platform Solutions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/fullstack-dev/docs/security-practices/operations/security-operations-overview"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Security Operations</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a></li><li><a href="#contents" class="table-of-contents__link toc-highlight">Contents</a></li><li><a href="#security-operations-center-soc" class="table-of-contents__link toc-highlight">Security Operations Center (SOC)</a><ul><li><a href="#soc-functions" class="table-of-contents__link toc-highlight">SOC Functions</a></li></ul></li><li><a href="#security-monitoring" class="table-of-contents__link toc-highlight">Security Monitoring</a><ul><li><a href="#what-to-monitor" class="table-of-contents__link toc-highlight">What to Monitor</a></li><li><a href="#monitoring-tools" class="table-of-contents__link toc-highlight">Monitoring Tools</a></li></ul></li><li><a href="#incident-response" class="table-of-contents__link toc-highlight">Incident Response</a><ul><li><a href="#incident-response-lifecycle" class="table-of-contents__link toc-highlight">Incident Response Lifecycle</a></li><li><a href="#incident-severity-levels" class="table-of-contents__link toc-highlight">Incident Severity Levels</a></li></ul></li><li><a href="#security-metrics--kpis" class="table-of-contents__link toc-highlight">Security Metrics &amp; KPIs</a><ul><li><a href="#detection-metrics" class="table-of-contents__link toc-highlight">Detection Metrics</a></li><li><a href="#response-metrics" class="table-of-contents__link toc-highlight">Response Metrics</a></li><li><a href="#operational-metrics" class="table-of-contents__link toc-highlight">Operational Metrics</a></li><li><a href="#business-metrics" class="table-of-contents__link toc-highlight">Business Metrics</a></li></ul></li><li><a href="#on-call-rotation" class="table-of-contents__link toc-highlight">On-Call Rotation</a><ul><li><a href="#on-call-schedule" class="table-of-contents__link toc-highlight">On-Call Schedule</a></li><li><a href="#on-call-responsibilities" class="table-of-contents__link toc-highlight">On-Call Responsibilities</a></li><li><a href="#on-call-tools" class="table-of-contents__link toc-highlight">On-Call Tools</a></li></ul></li><li><a href="#runbooks--playbooks" class="table-of-contents__link toc-highlight">Runbooks &amp; Playbooks</a><ul><li><a href="#security-playbooks" class="table-of-contents__link toc-highlight">Security Playbooks</a></li></ul></li><li><a href="#threat-intelligence" class="table-of-contents__link toc-highlight">Threat Intelligence</a><ul><li><a href="#intelligence-sources" class="table-of-contents__link toc-highlight">Intelligence Sources</a></li><li><a href="#intelligence-integration" class="table-of-contents__link toc-highlight">Intelligence Integration</a></li></ul></li><li><a href="#continuous-improvement" class="table-of-contents__link toc-highlight">Continuous Improvement</a><ul><li><a href="#security-operations-maturity" class="table-of-contents__link toc-highlight">Security Operations Maturity</a></li><li><a href="#regular-reviews" class="table-of-contents__link toc-highlight">Regular Reviews</a></li></ul></li><li><a href="#next-steps" class="table-of-contents__link toc-highlight">Next Steps</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/intro">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/architecture-practices/overview">Architecture Practices</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/features">Features</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Development</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/setup">Setup &amp; Installation</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/testing">Testing</a></li><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/docs/deployment">Deployment</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/fullstack-dev/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/tamnk74/fullstack-dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub (Fullstack Dev)<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Next.js for Production. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
